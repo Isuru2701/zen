@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1234398956541450282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7073893, w: 0.7068242}
-  m_LocalPosition: {x: 0.02, y: -1.01, z: 0}
+  m_LocalPosition: {x: -0.01, y: -0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6585906302514900824}
   - component: {fileID: 3241073229526553163}
   - component: {fileID: 6760548973329821045}
+  - component: {fileID: 8205298480685935201}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -115,8 +116,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.9687846, b: 0.7754717, a: 1}
+  m_Sprite: {fileID: 4723107735738678597, guid: 62f04051508281b4e9820abb495d1510, type: 3}
+  m_Color: {r: 0.9372549, g: 0.9372549, b: 0.8862745, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,8 +188,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.009786427}
+  m_Size: {x: 0.44761705, y: 1.3541032}
   m_Direction: 0
 --- !u!114 &3241073229526553163
 MonoBehaviour:
@@ -343,6 +344,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1e722f13-ee8d-4c79-b22c-020782200162
     m_ActionName: 'Player/Dodge[/Mouse/rightButton,/XInputControllerWindows/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EnterGameMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 498c1bcd-d387-4e28-b637-4606368ae3b0
+    m_ActionName: 'Player/Clarity[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -368,5 +385,27 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck: {fileID: 6629871091455199569}
   attackPrefab: {fileID: 4679690267188328770, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
-  spawnDistance: 1
-  dodgeForce: 20
+  spawnDistance: 2
+  dodgeForce: 100
+--- !u!95 &8205298480685935201
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16c06c13e7f931c48b108af43be5f0b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

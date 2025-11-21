@@ -35,11 +35,17 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal;
     private float direction = -1;
-    
 
     private State state = State.Normal;
 
+    private Animator animator;
+    private SpriteRenderer sprite;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+    }
     
     private void FixedUpdate()
     {
@@ -60,10 +66,21 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
+    private float lastHorizontal = 1f;
     #region Player Controls
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+
+        if (lastHorizontal!= horizontal && horizontal != 0) lastHorizontal = horizontal;
+
+        sprite.flipX = lastHorizontal <0 ? true : false;
+
+        animator.SetBool("isWalking", true);
+
+        if (context.canceled)
+        animator.SetBool("isWalking", false);
 
     }
 
@@ -76,13 +93,15 @@ public class PlayerController : MonoBehaviour
             if (context.performed)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+                
+                animator.SetBool("isJumping", true);
             }
 
             else if (context.canceled)
             {
 
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.2f);
-
+                animator.SetBool("isJumping", false);
             }
         }
     }
@@ -108,9 +127,9 @@ public class PlayerController : MonoBehaviour
             Vector2 spawnPos = (Vector2)transform.position + dir * spawnDistance;
 
             // instantiate the sprite prefab and rotate to face the direction (optional)
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
             Instantiate(attackPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
-
+            animator.SetBool("isAttacking", true);
             Debug.Log("Attack towards " + mousePosition + " -> world " + worldMouse);
         }
     }
@@ -120,6 +139,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             state = State.Dodging;
+            animator.SetBool("isDodging", true);
         }
     }
 
