@@ -95,15 +95,25 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
                 
                 animator.SetBool("isJumping", true);
+                
             }
 
             else if (context.canceled)
             {
 
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.2f);
-                animator.SetBool("isJumping", false);
+                
             }
+
+            else
+            {
+                Debug.Log("before " + animator.GetBool("isJumping"));
+                animator.SetBool("isJumping", false);
+                Debug.Log("before " + animator.GetBool("isJumping"));
+            }
+            
         }
+        
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -154,6 +164,7 @@ public class PlayerController : MonoBehaviour
     {
 
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.1f, 0.1f), CapsuleDirection2D.Horizontal, 0f, layerMask);
+        
     }
 
 
