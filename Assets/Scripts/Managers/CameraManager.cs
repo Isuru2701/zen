@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class CameraManager : MonoBehaviour
@@ -26,6 +27,23 @@ public class CameraManager : MonoBehaviour
     public bool LerpedFromPlayerFalling { get; set; }
 
     private float _normYPanAmount;
+
+
+    [SerializeField] private float mouseLookStrength = 0.5f;
+    private Vector2 mouseLookOffset;
+
+    private void LateUpdate()
+{
+    if (_transposer == null) return;
+
+    // Apply mouse offset
+    _transposer.TargetOffset = new Vector3(
+        mouseLookOffset.x,
+        mouseLookOffset.y,
+        0
+    );
+}
+
 
 
     private void Awake()
@@ -62,11 +80,11 @@ public class CameraManager : MonoBehaviour
     {
         IsLerpingYDamping = true;
 
-        float startDampAmount  =_transposer.Damping.y;
+        float startDampAmount = _transposer.Damping.y;
         Debug.Log("damping on Y " + startDampAmount);
         float endDampAmount = 0f;
 
-        if(isPlayerFalling)
+        if (isPlayerFalling)
         {
             endDampAmount = _fallPanAmount;
             LerpedFromPlayerFalling = true;
@@ -78,7 +96,7 @@ public class CameraManager : MonoBehaviour
         }
 
         float elapsedTime = 0f;
-        while(elapsedTime < _fallPanTime)
+        while (elapsedTime < _fallPanTime)
         {
             elapsedTime += Time.deltaTime;
             float lerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, ((elapsedTime / _fallPanTime)));
@@ -89,6 +107,17 @@ public class CameraManager : MonoBehaviour
 
         IsLerpingYDamping = false;
     }
+
+    #endregion
+
+
+    #region Mouse Look
+
+    public void OnLookInput(InputAction.CallbackContext context)
+    {
+        //TODO
+    }
+
 
     #endregion
 
