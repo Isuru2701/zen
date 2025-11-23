@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 {
 
     //manage Clarity expenditure
-    [SerializeField] private float clarityAmount = 10f;
-    [SerializeField] private float decayMultiplier = 1.5f;
+    [SerializeField] private float clarityAmount;
+    [SerializeField] private float decayMultiplier;
 
 
 
