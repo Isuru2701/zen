@@ -1,14 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour
 {
-
-    //save a copy of the player data alongside location
 
     //manage Clarity expenditure
     [SerializeField] private float clarityAmount = 10f;
@@ -16,7 +14,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    enum GameMode
+    public enum GameMode
     {
         Normal,
         Clarity
@@ -36,8 +34,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    [Header("Checkpoints")]
     private GameMode currentGameMode;
     private Checkpoint currentCheckpoint;
 
@@ -95,6 +91,9 @@ public class GameManager : MonoBehaviour
             StopTimer();
             flag = false;
         }
+
+        GameEvents.OnGameModeChanged?.Invoke(currentGameMode);
+
 
 
     }

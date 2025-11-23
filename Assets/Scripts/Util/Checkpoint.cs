@@ -5,6 +5,6 @@ public class Checkpoint : MonoBehaviour
     {
         PlayerController playerState;
 
-        [SerializeField]Transform location;
+        // [SerializeField]Transform location;
         
     }

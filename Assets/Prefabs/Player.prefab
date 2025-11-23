@@ -348,7 +348,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnterGameMode
+        m_MethodName: CheckClarityTrigger
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -379,8 +379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rb: {fileID: 1767707297615455996}
   moveSpeed: 10
-  jumpForce: 20
-  fallMultiplier: 2
+  jumpForce: 23
+  fallMultiplier: 1.5
   layerMask:
     serializedVersion: 2
     m_Bits: 64
