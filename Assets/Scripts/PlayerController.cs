@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,10 +43,16 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
 
+    private float _fallSpeedYDampingChangeThreshold;
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+
+
+        _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
     }
 
     private void FixedUpdate()
@@ -58,6 +65,26 @@ public class PlayerController : MonoBehaviour
                 {
                     rb.linearVelocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.fixedDeltaTime;
                 }
+
+
+                //camera logic
+                // falling speed past threshold? -> fix camera
+                if (rb.linearVelocityY < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
+                {
+                    Debug.Log("Damping Fired");
+                    CameraManager.instance.LerpYDamping(true);
+                }
+
+                //standing still or moving up
+                if(rb.linearVelocityY >=0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
+                {
+                    Debug.Log("Damping UnFired");   
+                    CameraManager.instance.LerpedFromPlayerFalling = false;
+                    CameraManager.instance.LerpYDamping(false);
+                }
+
+
+
                 break;
 
             case State.Dodging:
