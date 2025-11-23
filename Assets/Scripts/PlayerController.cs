@@ -21,13 +21,14 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 2f;
+    [SerializeField] float fallMultiplier = 2f;
 
     [Header("Ground")]
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform groundCheck;
-    
+
     [Header("Attack")]
-    [SerializeField] GameObject attackPrefab;   
+    [SerializeField] GameObject attackPrefab;
     [SerializeField] float spawnDistance = 1f;
 
     [Header("Dodge")]
@@ -46,24 +47,28 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
-    
+
     private void FixedUpdate()
     {
         switch (state)
         {
             case State.Normal:
-            rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocityY);
-            break;
+                rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocityY);
+                if (rb.linearVelocityY < 0)
+                {
+                    rb.linearVelocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.fixedDeltaTime;
+                }
+                break;
 
             case State.Dodging:
-            direction = horizontal == 0? -1: horizontal;
-            rb.linearVelocity = new Vector2(rb.linearVelocityX + dodgeForce *direction, rb.linearVelocityY);
+                direction = horizontal == 0 ? -1 : horizontal;
+                rb.linearVelocity = new Vector2(rb.linearVelocityX + dodgeForce * direction, rb.linearVelocityY);
 
-            state = State.Normal;
-            break;
+                state = State.Normal;
+                break;
         }
-        
-        
+
+
     }
 
 
@@ -73,48 +78,41 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = context.ReadValue<Vector2>().x;
 
-        if (lastHorizontal!= horizontal && horizontal != 0) lastHorizontal = horizontal;
+        if (lastHorizontal != horizontal && horizontal != 0) lastHorizontal = horizontal;
 
-        sprite.flipX = lastHorizontal <0 ? true : false;
+        sprite.flipX = lastHorizontal < 0 ? true : false;
 
         animator.SetBool("isWalking", true);
 
         if (context.canceled)
-        animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
 
     }
 
 
     public void Jump(InputAction.CallbackContext context)
     {
-
-        if (IsGrounded())
+        // JUMP PRESSED
+        if (context.performed)
         {
-            if (context.performed)
+            if (IsGrounded())
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
-                
                 animator.SetBool("isJumping", true);
-                
             }
-
-            else if (context.canceled)
-            {
-
-                rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.2f);
-                
-            }
-
-            else
-            {
-                Debug.Log("before " + animator.GetBool("isJumping"));
-                animator.SetBool("isJumping", false);
-                Debug.Log("before " + animator.GetBool("isJumping"));
-            }
-            
         }
-        
+
+        // JUMP RELEASED
+        if (context.canceled)
+        {
+            // Only cut jump if going upward
+            if (rb.linearVelocityY > 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY * 0.3f);
+            }
+        }
     }
+
 
     public void Attack(InputAction.CallbackContext context)
     {
@@ -164,7 +162,7 @@ public class PlayerController : MonoBehaviour
     {
 
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.1f, 0.1f), CapsuleDirection2D.Horizontal, 0f, layerMask);
-        
+
     }
 
 

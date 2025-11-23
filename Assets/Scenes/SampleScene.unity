@@ -614,17 +614,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6585906302514900824, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
-      propertyPath: m_Size.y
-      value: 1.3163848
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: jumpForce
+      value: 23
       objectReference: {fileID: 0}
-    - target: {fileID: 6585906302514900824, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.009072781
-      objectReference: {fileID: 0}
-    - target: {fileID: 6629871091455199569, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.678
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: fallMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.x
