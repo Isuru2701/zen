@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         Normal,
         Dodging,
-        Jumping
+        Jumping,
+        Lily
     }
 
     [Header("Player Component References")]
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite indicator;
 
     private float horizontal;
-    private float direction = -1;
+    private float spriteDirection = -1;
 
     private State state = State.Normal;
 
@@ -132,8 +133,8 @@ public class PlayerController : MonoBehaviour
             // DODGE STATE
             // -----------------------
             case State.Dodging:
-                direction = horizontal == 0 ? -1 : horizontal;
-                rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * direction, rb.linearVelocityY), ForceMode2D.Impulse);
+                spriteDirection = horizontal == 0 ? -1 : horizontal;
+                rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
 
                 state = State.Normal;
                 break;
@@ -154,6 +155,18 @@ public class PlayerController : MonoBehaviour
                     coyoteCounter = 0;
                 }
 
+                state = State.Normal;
+                break;
+
+
+            // -----------------------
+            // LILY JUMP STATE
+            // -----------------------
+
+            case State.Lily:
+                Vector2 dir = CalculateLilyDirection();
+                //apply it as a force
+                rb.linearVelocity = dir * lilyForce;
                 state = State.Normal;
                 break;
         }
@@ -291,10 +304,12 @@ public class PlayerController : MonoBehaviour
     //On Right Click
     public void WaterLily(InputAction.CallbackContext context)
     {
-        
+        //set state to Lily
+        if(GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
+           state = State.Lily;
+
+        //handle the rest inside the case 
     }
-        
-    
 
 
 
@@ -366,15 +381,7 @@ public class PlayerController : MonoBehaviour
         {
             if (mouse != null && Camera.main != null)
             {
-                Vector2 mousePos = mouse.position.ReadValue();
-                float z = -Camera.main.transform.position.z;
-
-                Vector3 worldMouse = Camera.main.ScreenToWorldPoint(
-                    new Vector3(mousePos.x, mousePos.y, z)
-                );
-
-                // Direction vector
-                Vector2 dir = ((Vector2)worldMouse - (Vector2)transform.position).normalized;
+                Vector2 dir = CalculateLilyDirection();
 
                 // Keep indicator at fixed radius
                 indicatorInstance.transform.localPosition = dir * indicatorRadius;
@@ -391,6 +398,22 @@ public class PlayerController : MonoBehaviour
         if (indicatorInstance != null)
             Destroy(indicatorInstance);
     }
+
+    public Vector2 CalculateLilyDirection()
+    {
+        Mouse mouse = Mouse.current;
+        Vector2 mousePos = mouse.position.ReadValue();
+        float z = -Camera.main.transform.position.z;
+
+        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(
+            new Vector3(mousePos.x, mousePos.y, z)
+        );
+
+        // Direction vector
+        return ((Vector2)worldMouse - (Vector2)transform.position).normalized;
+    }
+
+
 
 
 
