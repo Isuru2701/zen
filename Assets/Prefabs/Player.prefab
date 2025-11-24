@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3241073229526553163}
   - component: {fileID: 6760548973329821045}
   - component: {fileID: 8205298480685935201}
+  - component: {fileID: 8012089982585414377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -381,6 +382,8 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 23
   fallMultiplier: 1.5
+  lowJumpMultiplier: 3
+  coyoteTime: 0.1
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -388,6 +391,9 @@ MonoBehaviour:
   attackPrefab: {fileID: 4679690267188328770, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
   spawnDistance: 2
   dodgeForce: 100
+  lilyForce: 25
+  indicator: {fileID: 0}
+  indicatorRadius: 1.5
 --- !u!95 &8205298480685935201
 Animator:
   serializedVersion: 7
@@ -410,3 +416,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &8012089982585414377
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1

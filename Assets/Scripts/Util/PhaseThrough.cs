@@ -4,20 +4,21 @@ public class PhaseThrough : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private Collider2D collider;
+    private Collider2D colliderHandle;
     void Start()
     {
 
         GameEvents.OnGameModeChanged += TurnOffCollider;
-        collider = GetComponent<Collider2D>();
+        colliderHandle = GetComponent<Collider2D>();
     }
 
     void TurnOffCollider(GameManager.GameMode mode)
     {
-        if(mode == GameManager.GameMode.Clarity)
-            collider.enabled = false;
+        Debug.Log("orchid: " + Abilities.Orchid);
+        if(mode == GameManager.GameMode.Clarity && Abilities.Orchid)
+            colliderHandle.enabled = false;
         else
-            collider.enabled = true;
+            colliderHandle.enabled = true;
     }
 
 

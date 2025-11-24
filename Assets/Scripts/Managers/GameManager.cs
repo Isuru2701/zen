@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private GameMode currentGameMode;
+    public static GameMode CurrentGameMode { get; set; }
     private Checkpoint currentCheckpoint;
 
     private GameTimer timer;
@@ -50,11 +50,13 @@ public class GameManager : MonoBehaviour
 
         GameEvents.OnGameModeChanged += StopSlowMotion;
 
+        Abilities.Initialize();
+
     }
 
     void Update()
     {
-        switch (currentGameMode)
+        switch (CurrentGameMode)
         {
             case GameMode.Normal:
                 break;
@@ -77,29 +79,23 @@ public class GameManager : MonoBehaviour
     }
     public void ToggleGameMode()
     {
+        bool switchingToClarity = CurrentGameMode == GameMode.Normal;
 
-
-        if (flag == false)
+        if (switchingToClarity)
         {
-            Debug.Log("context sent, Clarity mode");
-            currentGameMode = GameMode.Clarity;
+            CurrentGameMode = GameMode.Clarity;
             StartTimer();
             TriggerSlowMotion();
-            flag = true;
         }
         else
         {
-            Debug.Log("context sent, Normal mode");
-            currentGameMode = GameMode.Normal;
+            CurrentGameMode = GameMode.Normal;
             StopTimer();
-            flag = false;
         }
 
-        GameEvents.OnGameModeChanged?.Invoke(currentGameMode);
-
-
-
+        GameEvents.OnGameModeChanged?.Invoke(CurrentGameMode);
     }
+
 
     #endregion
 
@@ -168,6 +164,7 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
 
 
 

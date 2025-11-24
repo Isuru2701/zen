@@ -8,17 +8,6 @@ public class HideSettings : MonoBehaviour
     private bool hideNormally = false;
     private bool flag = false;
 
-    // private void OnEnable()
-    // {
- 
-    //     GameEvents.OnGameModeChanged += OnGameModeChanged;
-    // }
-
-    // private void OnDisable()
-    // {
- 
-    //     GameEvents.OnGameModeChanged -= OnGameModeChanged;
-    // }
 
     private void Start()
     {

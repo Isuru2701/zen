@@ -6,6 +6,31 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
+#region Abilities Class
+/// <summary>
+/// Record for Tracking Abilities Obtained
+/// </summary>
+public static class Abilities
+
+{
+    public static bool Lily { get; set; }
+    public static bool Orchid { get; set; }
+
+    /// <summary>
+    /// Set all ability flags to false
+    /// </summary>
+    public static void Initialize()
+    {
+        //TODO: change afterwards
+        Lily = true;
+        Orchid = true;
+    }
+
+}
+
+
+#endregion
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -13,13 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         Normal,
         Dodging,
-        Jumping,
-        Clarity
+        Jumping
     }
-
-    //abilities
-    bool lily = false;
-    bool orchid = false;
 
     [Header("Player Component References")]
     [SerializeField] Rigidbody2D rb;
@@ -47,6 +67,10 @@ public class PlayerController : MonoBehaviour
     [Header("Dodge")]
     [SerializeField] float dodgeForce = 20f;
 
+    [Header("Ability Related")]
+    [SerializeField] private float lilyForce = 25f;
+    [SerializeField] private Sprite indicator;
+
     private float horizontal;
     private float direction = -1;
 
@@ -59,12 +83,17 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
         _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
+
+        GameEvents.OnGameModeChanged += SpawnIndicatorSprite;
     }
 
 
@@ -175,6 +204,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    #region Input Handling
 
     // ---------------------------------------------------------
     // INPUT SYSTEM
@@ -249,12 +279,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
 
 
 
-    // ---------------------------------------------------------
-    // HELPERS
-    // ---------------------------------------------------------
+    #region Abilities
+
+
+
+    //Lily
+    //On Right Click
+    public void WaterLily(InputAction.CallbackContext context)
+    {
+        
+    }
+        
+    
+
+
+
+    #endregion
+
+
+
+    #region Helpers
+
 
     private bool IsGrounded()
     {
@@ -268,4 +317,84 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheck.position, new Vector3(0.1f, 0.1f, 0.1f));
     }
+
+
+    //add to onGameModeChanged event
+    //basically, spawn a triangle confined to a circle around the player, which points in the 
+    //direction of mouse, and thereby the waterlily jump direction
+
+    private GameObject indicatorObj;
+    private Transform indicatorTransform;
+
+    [Header("Indicator")]
+    private GameObject indicatorInstance;
+    [SerializeField] private float indicatorRadius = 1.5f;
+
+
+    private void SpawnIndicatorSprite(GameManager.GameMode mode)
+    {
+        // Remove previous indicator if any
+        if (indicatorInstance != null)
+            Destroy(indicatorInstance);
+
+        // Only show in Clarity mode + Lily unlocked
+        if (mode != GameManager.GameMode.Clarity || !Abilities.Lily)
+            return;
+
+        // Instantiate child object to follow player
+        indicatorInstance = new GameObject("LilyIndicator");
+        var sr = indicatorInstance.AddComponent<SpriteRenderer>();
+        sr.sprite = indicator;
+
+        // Small fade or color tint if needed
+        sr.color = new Color(1f, 1f, 1f, 0.85f);
+        sr.sortingOrder = 50;
+
+        // Parent it to player
+        indicatorInstance.transform.SetParent(transform);
+        indicatorInstance.transform.localScale = Vector3.one * 0.7f;
+
+        // Start updating it
+        StartCoroutine(UpdateIndicator());
+    }
+
+    private IEnumerator UpdateIndicator()
+    {
+        Mouse mouse = Mouse.current;
+
+        while (indicatorInstance != null && GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
+        {
+            if (mouse != null && Camera.main != null)
+            {
+                Vector2 mousePos = mouse.position.ReadValue();
+                float z = -Camera.main.transform.position.z;
+
+                Vector3 worldMouse = Camera.main.ScreenToWorldPoint(
+                    new Vector3(mousePos.x, mousePos.y, z)
+                );
+
+                // Direction vector
+                Vector2 dir = ((Vector2)worldMouse - (Vector2)transform.position).normalized;
+
+                // Keep indicator at fixed radius
+                indicatorInstance.transform.localPosition = dir * indicatorRadius;
+
+                // Rotate indicator (triangle) so the tip faces mouse
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                indicatorInstance.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+            }
+
+            yield return null;
+        }
+
+        // Clean up if mode changed suddenly
+        if (indicatorInstance != null)
+            Destroy(indicatorInstance);
+    }
+
+
+
+    #endregion
+
 }
+
