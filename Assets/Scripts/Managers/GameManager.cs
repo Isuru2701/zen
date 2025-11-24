@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         timer = new GameTimer(this);
         clarityRecord = new Clarity(clarityAmount, decayMultiplier);
 
+        GameEvents.OnGameModeChanged += StopSlowMotion;
+
     }
 
     void Update()
@@ -63,7 +65,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #region GameMode switching logic
+    #region Switching Logic
     private bool flag = false;
 
     public void CheckClarityTrigger(InputAction.CallbackContext context)
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("context sent, Clarity mode");
             currentGameMode = GameMode.Clarity;
             StartTimer();
+            TriggerSlowMotion();
             flag = true;
         }
         else
@@ -121,6 +124,50 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
+
+
+    #region Slow Motion
+
+    private Coroutine slowMotionCoroutineHandler;
+    public void TriggerSlowMotion()
+    {
+        slowMotionCoroutineHandler = StartCoroutine(SlowMotionRoutine());
+    }
+
+    IEnumerator SlowMotionRoutine()
+    {
+        // slow down
+        Time.timeScale = 0.2f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;   // keep physics stable
+
+        // wait 1 second in REAL TIME
+        yield return new WaitForSecondsRealtime(1f);
+
+        returnToNormalTime();
+
+    }
+
+    void returnToNormalTime()
+    {
+        // return to normal
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+    }
+
+    void StopSlowMotion(GameManager.GameMode mode)
+    {
+        //pre-emptively stop corountine if player returns back to Normal
+        //cuz slow motion might keep playing otherwise even though its 1 second
+
+        if (mode == GameMode.Normal)
+        {
+            StopCoroutine(slowMotionCoroutineHandler);
+            returnToNormalTime();
+        }
+    }
+
+    #endregion
 
 
 

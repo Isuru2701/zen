@@ -13,8 +13,13 @@ public class PlayerController : MonoBehaviour
     {
         Normal,
         Dodging,
-        Jumping
+        Jumping,
+        Clarity
     }
+
+    //abilities
+    bool lily = false;
+    bool orchid = false;
 
     [Header("Player Component References")]
     [SerializeField] Rigidbody2D rb;
