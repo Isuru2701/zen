@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -67,11 +69,19 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dodge")]
     [SerializeField] float dodgeForce = 20f;
+    private float maxDodges = 2;
+    private float dodgeTimes = 0;
+
 
     [Header("Ability Related")]
     [SerializeField] private float lilyForce = 25f;
     [SerializeField] private Sprite indicator;
     [SerializeField] private float lilyVerticalScale = 0.75f;
+
+    [Header("health")]
+    [SerializeField] private float maxhHealth = 100f;
+    [SerializeField] private float recoveryRate = 1f;
+    private float health;
 
     private float horizontal;
     private float spriteDirection = -1;
@@ -88,11 +98,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private float finalAttackCooldown;
     [SerializeField] private float lilyCooldown;
+    [SerializeField] private float immunityCooldown;
+    [SerializeField] private float regenerateCooldown;
 
-    private float maxDodges = 2;
-    private float dodgeTimes = 0;
+
 
     private bool finalAttackFlag = false;
+
+
+    [Header("UI Handles")]
+    [SerializeField] private TMP_Text lilyDisplay;
+    [SerializeField] private TMP_Text dodgeDisplay;
+    [SerializeField] private UIValueBar healthBar;
+
+
 
 
 
@@ -104,6 +123,10 @@ public class PlayerController : MonoBehaviour
         _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
 
         GameEvents.OnGameModeChanged += SpawnIndicatorSprite;
+
+        resetLily();
+
+        health = maxhHealth;
     }
 
 
@@ -119,6 +142,21 @@ public class PlayerController : MonoBehaviour
             coyoteCounter -= Time.deltaTime;
 
 
+
+        if (CooldownManager.Ready("lily"))
+        {
+            resetLily();
+        }
+
+        if (CooldownManager.Ready("dodge"))
+        {
+            UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + (maxDodges - dodgeTimes));
+        }
+
+        UpdateHealthBar();
+
+        RegenerateHealth();
+
         #region States
 
         switch (state)
@@ -130,6 +168,7 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocityY);
 
                 // Apply jump gravity logic every frame
+                //TODO: is this whats causing issues in LILY?
                 ApplyJumpPhysics();
 
                 // Camera fall damping
@@ -143,9 +182,14 @@ public class PlayerController : MonoBehaviour
             // DODGE STATE
             // -----------------------
             case State.Dodging:
-                
+
                 spriteDirection = horizontal == 0 ? -1 : horizontal;
                 rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
+
+                if (CooldownManager.Ready("dodge"))
+                {
+                    UpdateTextDisplay(dodgeDisplay, "Dodges Remaining: " + (maxDodges - dodgeTimes));
+                }
 
                 state = State.Normal;
                 break;
@@ -174,16 +218,22 @@ public class PlayerController : MonoBehaviour
             // LILY JUMP STATE
             // -----------------------
             case State.Lily:
-                {
-                    // Apply vertical scaling so straight upward doesn't overshoot
-                    Vector2 dir = new Vector2(lilyDirection.x, lilyDirection.y * lilyVerticalScale).normalized;
 
-                    rb.linearVelocity = dir * lilyForce;
-                    Debug.Log("Lily Direction (scaled): " + dir);
 
-                    state = State.Normal;
-                    break;
-                }
+
+
+                // Apply vertical scaling so straight upward doesn't overshoot
+                Vector2 dir = new Vector2(lilyDirection.x, lilyDirection.y * lilyVerticalScale).normalized;
+
+                rb.linearVelocity = dir * lilyForce;
+                Debug.Log("Lily Direction (scaled): " + dir);
+                Debug.Log("RB linear velocity " + rb.linearVelocity);
+
+
+
+                state = State.Normal;
+                break;
+
         }
     }
 
@@ -310,14 +360,22 @@ public class PlayerController : MonoBehaviour
             dodgeTimes += 1;
             animator.SetBool("isDodging", true);
 
-            if (dodgeTimes >= maxDodges)
+
+            if (dodgeTimes == maxDodges)
             {
                 CooldownManager.Start("dodge", dodgeCooldown);
+                UpdateTextDisplay(dodgeDisplay, "Dodge on cooldown");
                 dodgeTimes = 0;
+            }
+            else
+            {
+                UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + (maxDodges - dodgeTimes));
             }
 
         }
     }
+
+
 
     #endregion
 
@@ -336,19 +394,26 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("lily fired");
         //set state to Lily
         if (context.performed && GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
         {
+            state = State.Lily;
             Debug.Log("Lily mode");
             lilyDirection = CalculateLilyDirection();
-            state = State.Lily;
             CooldownManager.Start("lily", lilyCooldown);
+            UpdateTextDisplay(lilyDisplay, "Lily on Cooldown");
+
         }
-        
+
 
         //handle the rest inside the case 
     }
+
+    private void resetLily()
+    {
+        UpdateTextDisplay(lilyDisplay, "Lily available");
+    }
+
 
 
 
@@ -376,9 +441,6 @@ public class PlayerController : MonoBehaviour
     //add to onGameModeChanged event
     //basically, spawn a triangle confined to a circle around the player, which points in the 
     //direction of mouse, and thereby the waterlily jump direction
-
-    private GameObject indicatorObj;
-    private Transform indicatorTransform;
 
     [Header("Indicator")]
     [SerializeField] private float indicatorRadius = 1.5f;
@@ -453,11 +515,69 @@ public class PlayerController : MonoBehaviour
         return ((Vector2)worldMouse - (Vector2)transform.position).normalized;
     }
 
+    #endregion
+
+
+    #region UI Handlers
+    private void UpdateTextDisplay(TMP_Text textDisplay, string text)
+    {
+        textDisplay.text = text;
+    }
+
+
+    private void UpdateHealthBar()
+    {
+        healthBar.UpdateBar(health, maxhHealth);
+    }
 
 
 
 
     #endregion
 
+    #region Health
+
+
+
+    private void TakeDamage(float amount)
+    {
+        if (!IsDead())
+            health -= amount;
+    }
+
+    private bool IsDead()
+    {
+        if (health <= 0) return true;
+        else return false;
+    }
+
+    private void RegenerateHealth()
+    {
+        if (!CooldownManager.Ready("regenerate")) return;
+
+        if (health != maxhHealth)
+            health += recoveryRate * Time.deltaTime;
+    }
+
+
+    #endregion
+
+    #region Collisions
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+
+            if (!CooldownManager.Ready("immunity")) return;
+
+            TakeDamage(50);
+
+            CooldownManager.Start("regenerate", regenerateCooldown);
+            CooldownManager.Start("immunity", immunityCooldown);
+        }
+    }
+
+    #endregion
 }
 

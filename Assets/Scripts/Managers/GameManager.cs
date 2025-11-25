@@ -48,9 +48,15 @@ public class GameManager : MonoBehaviour
 
         if (CurrentGameMode == GameMode.Clarity)
         {
-            //add any code here   
-            clarityBar.UpdateBar(timer.TimeRemaining, maxClarityAmount);
+            // reduce clarity over time
+            clarityAmount -= decayMultiplier * Time.unscaledDeltaTime;
+            clarityAmount = Mathf.Clamp(clarityAmount, 0, maxClarityAmount);
 
+            clarityBar.UpdateBar(clarityAmount, maxClarityAmount);
+
+            // if depleted, auto-exit
+            if (clarityAmount <= 0f)
+                ToggleGameMode();
         }
 
         //if in normal mode, make sure to increment clarity
@@ -84,13 +90,13 @@ public class GameManager : MonoBehaviour
         if (switchingToClarity)
         {
             CurrentGameMode = GameMode.Clarity;
-            StartTimer();
+            // StartTimer();
             TriggerSlowMotion();
         }
         else
         {
             CurrentGameMode = GameMode.Normal;
-            StopTimer();
+            // StopTimer();
         }
 
         GameEvents.OnGameModeChanged?.Invoke(CurrentGameMode);
