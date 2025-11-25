@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel.Design;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,8 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIValueBar clarityBar;
 
     //manage Clarity expenditure
-    [SerializeField] private float clarityAmount;
+    [SerializeField] private float maxClarityAmount;
     [SerializeField] private float decayMultiplier;
+    [SerializeField] private float recoveryRate;
+    private float clarityAmount;
 
 
 
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        clarityAmount = maxClarityAmount;
         timer = new GameTimer(this);
 
         GameEvents.OnGameModeChanged += StopSlowMotion;
@@ -41,8 +45,25 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
-        clarityBar.UpdateBar(timer.TimeRemaining, clarityAmount);
+
+        if (CurrentGameMode == GameMode.Clarity)
+        {
+            //add any code here   
+            clarityBar.UpdateBar(timer.TimeRemaining, maxClarityAmount);
+
+        }
+
+        //if in normal mode, make sure to increment clarity
+        else if (CurrentGameMode == GameMode.Normal)
+        {
+            if (clarityAmount < maxClarityAmount)
+            {
+                clarityAmount += recoveryRate * Time.deltaTime;
+            }
+            clarityBar.UpdateBar(clarityAmount, maxClarityAmount);
+        }
+
+
     }
 
 
