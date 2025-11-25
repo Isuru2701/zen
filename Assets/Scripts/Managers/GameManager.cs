@@ -20,33 +20,15 @@ public class GameManager : MonoBehaviour
         Clarity
     }
 
-    //helper class to manage clarity levels
-    class Clarity
-    {
-        public float ClarityAmount { get; set; }
-        public float DecayMultiplier { get; set; }
-
-        public Clarity(float c, float d)
-        {
-            ClarityAmount = c;
-            DecayMultiplier = d;
-        }
-
-    }
-
     public static GameMode CurrentGameMode { get; set; }
     private Checkpoint currentCheckpoint;
 
     private GameTimer timer;
-    private Clarity clarityRecord;
-
-
 
 
     void Start()
     {
         timer = new GameTimer(this);
-        clarityRecord = new Clarity(clarityAmount, decayMultiplier);
 
         GameEvents.OnGameModeChanged += StopSlowMotion;
 
@@ -105,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
 
         //if the player is in this mode for > allowed, force ToggleGameMode
-        timer.Start(clarityRecord.ClarityAmount, clarityRecord.DecayMultiplier, ToggleGameMode);
+        timer.Start(clarityAmount, decayMultiplier, ToggleGameMode);
 
     }
 
@@ -130,14 +112,18 @@ public class GameManager : MonoBehaviour
         slowMotionCoroutineHandler = StartCoroutine(SlowMotionRoutine());
     }
 
+
+    [SerializeField] private float slowTimeScale = 0.2f;
+    [SerializeField] private float slowDurationRealTime = 0.25f;
+
     IEnumerator SlowMotionRoutine()
     {
         // slow down
-        Time.timeScale = 0.2f;
+        Time.timeScale = slowTimeScale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;   // keep physics stable
 
         // wait 1 second in REAL TIME
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(slowDurationRealTime);
 
         returnToNormalTime();
 

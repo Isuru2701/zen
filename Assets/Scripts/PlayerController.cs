@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
     [Header("Ability Related")]
     [SerializeField] private float lilyForce = 25f;
     [SerializeField] private Sprite indicator;
+    [SerializeField] private float lilyVerticalScale = 0.75f;
+    private bool lilyUsedThisFrame = false;
+
 
     private float horizontal;
     private float spriteDirection = -1;
@@ -163,12 +166,20 @@ public class PlayerController : MonoBehaviour
             // LILY JUMP STATE
             // -----------------------
 
+            // -----------------------
+            // LILY JUMP STATE
+            // -----------------------
             case State.Lily:
-                Vector2 dir = CalculateLilyDirection();
-                //apply it as a force
-                rb.linearVelocity = dir * lilyForce;
-                state = State.Normal;
-                break;
+                {
+                    // Apply vertical scaling so straight upward doesn't overshoot
+                    Vector2 dir = new Vector2(lilyDirection.x, lilyDirection.y * lilyVerticalScale).normalized;
+
+                    rb.linearVelocity = dir * lilyForce;
+                    Debug.Log("Lily Direction (scaled): " + dir);
+
+                    state = State.Normal;
+                    break;
+                }
         }
     }
 
@@ -302,11 +313,17 @@ public class PlayerController : MonoBehaviour
 
     //Lily
     //On Right Click
+
+    private Vector2 lilyDirection;
     public void WaterLily(InputAction.CallbackContext context)
     {
         //set state to Lily
-        if(GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
-           state = State.Lily;
+        if (context.performed && GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
+        {
+            Debug.Log("Lily mode");
+            lilyDirection = CalculateLilyDirection();
+            state = State.Lily;
+        }
 
         //handle the rest inside the case 
     }
