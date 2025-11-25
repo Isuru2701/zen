@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+
+    [SerializeField] private UIValueBar clarityBar;
+
     //manage Clarity expenditure
     [SerializeField] private float clarityAmount;
     [SerializeField] private float decayMultiplier;
@@ -38,14 +41,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        switch (CurrentGameMode)
-        {
-            case GameMode.Normal:
-                break;
-
-            case GameMode.Clarity:
-                break;
-        }
+        
+        clarityBar.UpdateBar(timer.TimeRemaining, clarityAmount);
     }
 
 

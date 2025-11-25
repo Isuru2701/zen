@@ -452,7 +452,7 @@
                     "name": "",
                     "id": "33ee47e3-ecb1-4563-9ddc-cae88ffe11ac",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Dodge",

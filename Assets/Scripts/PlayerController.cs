@@ -72,8 +72,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lilyForce = 25f;
     [SerializeField] private Sprite indicator;
     [SerializeField] private float lilyVerticalScale = 0.75f;
-    private bool lilyUsedThisFrame = false;
-
 
     private float horizontal;
     private float spriteDirection = -1;
@@ -85,8 +83,16 @@ public class PlayerController : MonoBehaviour
 
     private float _fallSpeedYDampingChangeThreshold;
 
+    [Header("Cooldowns")]
+    [SerializeField] private float dodgeCooldown;
+    [SerializeField] private float attackCooldown;
+    [SerializeField] private float finalAttackCooldown;
+    [SerializeField] private float lilyCooldown;
 
+    private float maxDodges = 2;
+    private float dodgeTimes = 0;
 
+    private bool finalAttackFlag = false;
 
 
 
@@ -113,6 +119,7 @@ public class PlayerController : MonoBehaviour
             coyoteCounter -= Time.deltaTime;
 
 
+        #region States
 
         switch (state)
         {
@@ -136,6 +143,7 @@ public class PlayerController : MonoBehaviour
             // DODGE STATE
             // -----------------------
             case State.Dodging:
+                
                 spriteDirection = horizontal == 0 ? -1 : horizontal;
                 rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
 
@@ -165,10 +173,6 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             // LILY JUMP STATE
             // -----------------------
-
-            // -----------------------
-            // LILY JUMP STATE
-            // -----------------------
             case State.Lily:
                 {
                     // Apply vertical scaling so straight upward doesn't overshoot
@@ -182,6 +186,8 @@ public class PlayerController : MonoBehaviour
                 }
         }
     }
+
+    #endregion
 
 
 
@@ -296,10 +302,20 @@ public class PlayerController : MonoBehaviour
 
     public void Dodge(InputAction.CallbackContext context)
     {
+        if (!CooldownManager.Ready("dodge")) return;
+
         if (context.performed)
         {
             state = State.Dodging;
+            dodgeTimes += 1;
             animator.SetBool("isDodging", true);
+
+            if (dodgeTimes >= maxDodges)
+            {
+                CooldownManager.Start("dodge", dodgeCooldown);
+                dodgeTimes = 0;
+            }
+
         }
     }
 
@@ -308,22 +324,28 @@ public class PlayerController : MonoBehaviour
 
 
     #region Abilities
-
-
-
     //Lily
     //On Right Click
 
     private Vector2 lilyDirection;
     public void WaterLily(InputAction.CallbackContext context)
     {
+        if (!CooldownManager.Ready("lily"))
+        {
+            Debug.Log("lily not ready yet");
+            return;
+        }
+
+        Debug.Log("lily fired");
         //set state to Lily
         if (context.performed && GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
         {
             Debug.Log("Lily mode");
             lilyDirection = CalculateLilyDirection();
             state = State.Lily;
+            CooldownManager.Start("lily", lilyCooldown);
         }
+        
 
         //handle the rest inside the case 
     }
@@ -359,8 +381,9 @@ public class PlayerController : MonoBehaviour
     private Transform indicatorTransform;
 
     [Header("Indicator")]
-    private GameObject indicatorInstance;
     [SerializeField] private float indicatorRadius = 1.5f;
+    private GameObject indicatorInstance;
+
 
 
     private void SpawnIndicatorSprite(GameManager.GameMode mode)

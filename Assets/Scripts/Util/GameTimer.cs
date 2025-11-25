@@ -51,7 +51,7 @@ public class GameTimer
         while (timeRemaining > 0f)
         {
             timeRemaining -= Time.deltaTime * step;
-            Debug.Log("timeRemaining: " + timeRemaining);
+            // Debug.Log("timeRemaining: " + timeRemaining);
             yield return null;
         }
 

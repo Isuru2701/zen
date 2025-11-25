@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CooldownManager
+public class CooldownManager : MonoBehaviour
 {
     private static Dictionary<string, float> cooldownTimers = new Dictionary<string, float>();
 
