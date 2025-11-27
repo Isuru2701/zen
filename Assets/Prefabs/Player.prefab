@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6629871091455199569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3241073229526553163}
   - component: {fileID: 6760548973329821045}
   - component: {fileID: 8205298480685935201}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -360,6 +360,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 498c1bcd-d387-4e28-b637-4606368ae3b0
     m_ActionName: 'Player/Clarity[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6760548973329821045}
+        m_TargetAssemblyTypeName: PlayerController, UserScripts
+        m_MethodName: WaterLily
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5729a57a-f930-49be-bd0e-19bee5ff2342
+    m_ActionName: 'Player/Lily[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6760548973329821045}
+        m_TargetAssemblyTypeName: PlayerController, UserScripts
+        m_MethodName: DropDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 277d4205-4906-4f9d-a05a-191fadaaede5
+    m_ActionName: 'Player/DropDown[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -381,8 +413,8 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 23
   fallMultiplier: 1.5
-  lowJumpMultiplier: 3
-  coyoteTime: 0.1
+  lowJumpMultiplier: 15
+  coyoteTime: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -390,8 +422,26 @@ MonoBehaviour:
   attackPrefab: {fileID: 4679690267188328770, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
   spawnDistance: 2
   dodgeForce: 100
-  lilyForce: 25
-  indicator: {fileID: 0}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dropDuration: 0.25
+  lilyForce: 100
+  indicator: {fileID: 7482667652216324306, guid: e58cd8935f567a349bda1a7f0937c171, type: 3}
+  lilyVerticalScale: 0.75
+  lilyDistance: 8
+  lilyDuration: 0.25
+  maxhHealth: 100
+  recoveryRate: 1
+  dodgeCooldown: 2
+  attackCooldown: 0.2
+  finalAttackCooldown: 0.5
+  lilyCooldown: 2
+  immunityCooldown: 1
+  regenerateCooldown: 2
+  lilyDisplay: {fileID: 0}
+  dodgeDisplay: {fileID: 0}
+  healthBar: {fileID: 0}
   indicatorRadius: 1.5
 --- !u!95 &8205298480685935201
 Animator:

@@ -72,6 +72,11 @@ public class PlayerController : MonoBehaviour
     private float maxDodges = 2;
     private float dodgeTimes = 0;
 
+    [Header("Dropdown")]
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private float dropDuration = 0.25f;
+
+
 
     [Header("Ability Related")]
     [SerializeField] private float lilyForce = 25f;
@@ -208,14 +213,13 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             case State.Jumping:
 
-                if (IsGrounded() || coyoteCounter > 0f)
-                {
-                    rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
-                    animator.SetBool("isJumping", true);
 
-                    // Consume coyote time
-                    coyoteCounter = 0;
-                }
+                rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+                animator.SetBool("isJumping", true);
+
+                // Consume coyote time
+                coyoteCounter = 0;
+
 
                 state = State.Normal;
                 break;
@@ -300,7 +304,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpHeld = true;
 
-            if (IsGrounded() || coyoteCounter > 0f)
+            if (IsGrounded() || IsOnPlatform() || coyoteCounter > 0f)
                 state = State.Jumping;
         }
 
@@ -362,6 +366,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DropDown(InputAction.CallbackContext context)
+    {
+        Collider2D platform = Physics2D.OverlapCapsule(
+    groundCheck.position, new Vector2(0.1f, 0.1f),
+    CapsuleDirection2D.Horizontal,
+    0f,
+    platformLayer
+    );
+        if (platform != null)
+        {
+            StartCoroutine(DropTillGroundReached(platform));
+        }
+
+
+    }
+
+    private IEnumerator DropTillGroundReached(Collider2D platformCollider)
+    {
+
+        platformCollider.enabled = false;
+
+        while (!IsGrounded())
+        {
+
+            yield return null;
+        }
+
+        platformCollider.enabled = true;
+
+
+    }
+
+
 
 
     #endregion
@@ -408,7 +445,7 @@ public class PlayerController : MonoBehaviour
         float speed = lilyDistance / lilyDuration;
 
         // Apply your vertical scale tweak [removed for testing] 
-        dir = new Vector2(dir.x, dir.y ).normalized;
+        dir = new Vector2(dir.x, dir.y).normalized;
 
         // Begin cooldown
         CooldownManager.Start("lily", lilyCooldown);
@@ -441,7 +478,15 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
+
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.1f, 0.1f), CapsuleDirection2D.Horizontal, 0f, layerMask);
+    }
+
+    private bool IsOnPlatform()
+    {
+        bool v = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.1f, 0.1f), CapsuleDirection2D.Horizontal, 0f, platformLayer);
+        Debug.Log("platform " + v);
+        return v;
     }
 
 
