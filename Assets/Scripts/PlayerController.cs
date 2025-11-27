@@ -78,6 +78,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite indicator;
     [SerializeField] private float lilyVerticalScale = 0.75f;
 
+    // --- LILY SETTINGS ---
+    [SerializeField] private float lilyDistance = 8f;
+    [SerializeField] private float lilyDuration = 0.25f;
+
+
+
+
     [Header("health")]
     [SerializeField] private float maxhHealth = 100f;
     [SerializeField] private float recoveryRate = 1f;
@@ -213,26 +220,6 @@ public class PlayerController : MonoBehaviour
                 state = State.Normal;
                 break;
 
-
-            // -----------------------
-            // LILY JUMP STATE
-            // -----------------------
-            case State.Lily:
-
-
-
-
-                // Apply vertical scaling so straight upward doesn't overshoot
-                Vector2 dir = new Vector2(lilyDirection.x, lilyDirection.y * lilyVerticalScale).normalized;
-
-                rb.linearVelocity = dir * lilyForce;
-                Debug.Log("Lily Direction (scaled): " + dir);
-                Debug.Log("RB linear velocity " + rb.linearVelocity);
-
-
-
-                state = State.Normal;
-                break;
 
         }
     }
@@ -388,30 +375,58 @@ public class PlayerController : MonoBehaviour
     private Vector2 lilyDirection;
     public void WaterLily(InputAction.CallbackContext context)
     {
-        if (!CooldownManager.Ready("lily"))
-        {
-            Debug.Log("lily not ready yet");
-            return;
-        }
+        if (!context.performed) return;
+        if (!Abilities.Lily) return;
+        if (!CooldownManager.Ready("lily")) return;
+        if (GameManager.CurrentGameMode != GameManager.GameMode.Clarity) return;
 
-        //set state to Lily
-        if (context.performed && GameManager.CurrentGameMode == GameManager.GameMode.Clarity)
-        {
-            state = State.Lily;
-            Debug.Log("Lily mode");
-            lilyDirection = CalculateLilyDirection();
-            CooldownManager.Start("lily", lilyCooldown);
-            UpdateTextDisplay(lilyDisplay, "Lily on Cooldown");
+        // Direction from indicator
+        lilyDirection = CalculateLilyDirection();
 
-        }
-
-
-        //handle the rest inside the case 
+        // Start dash
+        if (lilyRoutine != null) StopCoroutine(lilyRoutine);
+        lilyRoutine = StartCoroutine(DoLilyDash(lilyDirection));
     }
 
     private void resetLily()
     {
         UpdateTextDisplay(lilyDisplay, "Lily available");
+    }
+
+
+    private Coroutine lilyRoutine;
+
+    private IEnumerator DoLilyDash(Vector2 dir)
+    {
+        state = State.Lily;
+
+        // Lock input for dash duration
+        float t = 0f;
+
+        // Precompute the target velocity needed to travel fixed distance
+        // dist = speed * time  →  speed = dist / time
+        float speed = lilyDistance / lilyDuration;
+
+        // Apply your vertical scale tweak [removed for testing] 
+        dir = new Vector2(dir.x, dir.y ).normalized;
+
+        // Begin cooldown
+        CooldownManager.Start("lily", lilyCooldown);
+
+        UpdateTextDisplay(lilyDisplay, "Lily on cooldown");
+
+        // Player becomes fully velocity-controlled
+        while (t < lilyDuration)
+        {
+            rb.linearVelocity = dir * speed;
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        state = State.Normal;
+
+        lilyRoutine = null;
     }
 
 

@@ -3379,7 +3379,7 @@ MonoBehaviour:
   decayMultiplier: 1
   recoveryRate: 0.5
   slowTimeScale: 0.2
-  slowDurationRealTime: 0.25
+  slowDurationRealTime: 0.75
 --- !u!4 &1885299391
 Transform:
   m_ObjectHideFlags: 0
