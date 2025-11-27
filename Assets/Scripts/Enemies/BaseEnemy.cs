@@ -10,11 +10,16 @@ public class EnemyController : MonoBehaviour
         PrepareAttack,
         Attack,
         Die
-    }    
+    }
 
     private Transform player;
     private Rigidbody2D rb;
+
+    [SerializeField]
     private Animator animator;
+
+    [SerializeField]
+    private SpriteRenderer normalSprite;
 
     [Header("Movement")]
     public float moveSpeed = 2f;
@@ -35,7 +40,6 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         health = maxHealth;
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -88,8 +92,8 @@ public class EnemyController : MonoBehaviour
         rb.linearVelocity = direction * moveSpeed;
 
         // Flip sprite if using 2D
-        if (direction.x != 0)
-            transform.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
+
+        normalSprite.flipX = !(direction.x > 0);
     }
 
     private void CheckAttackRange()

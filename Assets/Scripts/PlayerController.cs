@@ -624,19 +624,40 @@ public class PlayerController : MonoBehaviour
 
     #region Collisions
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        Debug.Log("in Collision");
+
+        Debug.Log("tag is : " + collision.gameObject.tag.ToString());
+    
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("tag compared");
 
             if (!CooldownManager.Ready("immunity")) return;
-
-            TakeDamage(50);
+            Debug.Log("immunity passed");
+            TakeDamage(10); //TODO: make this serialized or better yet, make a health manager seperately
 
             CooldownManager.Start("regenerate", regenerateCooldown);
             CooldownManager.Start("immunity", immunityCooldown);
         }
     }
+
+
+    // private void OnCollisionEnter(Collision2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+
+    //         if (!CooldownManager.Ready("immunity")) return;
+
+    //         TakeDamage(50);
+
+    //         CooldownManager.Start("regenerate", regenerateCooldown);
+    //         CooldownManager.Start("immunity", immunityCooldown);
+    //     }
+    // }
 
     #endregion
 }
