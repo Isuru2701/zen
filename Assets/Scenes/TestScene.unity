@@ -4379,10 +4379,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 844714532435332529, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
-      propertyPath: attackForce
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4393476881799131538, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.57
@@ -4574,7 +4570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: maxhHealth
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: lilyDisplay

@@ -52,11 +52,13 @@ MonoBehaviour:
   animator: {fileID: 1483880164487575947}
   normalSprite: {fileID: 4143667439114252308}
   moveSpeed: 2
-  stoppingDistance: 2
+  stoppingDistance: 1
+  detectionRange: 2
   attackDelay: 0.5
   attackForce: 10
   attackDuration: 0.3
   maxHealth: 50
+  health: 0
   state: 0
 --- !u!50 &4987905221945874471
 Rigidbody2D:

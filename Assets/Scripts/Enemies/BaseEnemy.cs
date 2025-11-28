@@ -22,22 +22,37 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer normalSprite;
 
     [Header("Movement")]
-    public float moveSpeed = 2f;
-    public float stoppingDistance = 2f; // distance to start attack
+    [SerializeField]
+    private float moveSpeed = 2f;
+
+
+    [SerializeField]
+    private float detectionRange = 2f;
 
     [Header("Attack")]
-    public float attackDelay = 0.5f; // time to prepare attack
-    public float attackForce = 5f;   // force applied during attack
-    public float attackDuration = 0.3f;
+    [SerializeField]
+    private float attackDelay = 0.5f; // time to prepare attack
+    [SerializeField]
+    private float attackForce = 5f;   // force applied during attack
+    [SerializeField]
+    private float attackDuration = 0.3f;
 
     [Header("Health")]
-    public float maxHealth = 50f;
+    [SerializeField]
+    private float maxHealth = 50f;
+    [SerializeField]
     private float health;
 
     [Header("FSM")]
     public State state = State.Idle;
 
-    private void Awake()
+
+    [Header("Pathing")]
+    [SerializeField] Transform[] points;
+    [SerializeField] float lerpingSpeed = 0.2f;
+    [SerializeField]private float stoppingDistance = 2f; // distance to start attack
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
@@ -47,113 +62,39 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (state == State.Die) return; // do nothing if dead
 
-        switch (state)
+    }
+
+    private void TrackBetweenPoints()
+    {
+
+    }
+
+    private IEnumerator MoveTowardsPoint(Transform b)
+    {
+        if (b == null) yield return null;
+
+
+        while (CalculateDistance(transform, b) > 0.01f)
         {
-            case State.Idle:
-                LookForPlayer();
-                break;
-
-            case State.Tracking:
-                MoveTowardsPlayer();
-                CheckAttackRange();
-                break;
-
-            case State.PrepareAttack:
-                // Waiting handled by coroutine
-                break;
-
-            case State.Attack:
-                // Attack movement handled by coroutine
-                break;
+            transform.position = Vector2.MoveTowards(transform.position, b.position, lerpingSpeed * Time.deltaTime);
         }
+
+
+
+        yield break;
     }
 
-    #region FSM Methods
 
-    private void LookForPlayer()
+
+    #region Helpers
+
+    private float CalculateDistance(Transform a, Transform b)
     {
-        if (player == null) return;
-
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (distance < 5f) // detection range
-        {
-            state = State.Tracking;
-            animator?.SetBool("isWalking", true);
-        }
-    }
-
-    private void MoveTowardsPlayer()
-    {
-        if (player == null) return;
-
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * moveSpeed;
-
-        // Flip sprite if using 2D
-
-        normalSprite.flipX = !(direction.x > 0);
-    }
-
-    private void CheckAttackRange()
-    {
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (distance <= stoppingDistance)
-        {
-            rb.linearVelocity = Vector2.zero;
-            state = State.PrepareAttack;
-            animator?.SetTrigger("prepareAttack");
-            StartCoroutine(DoAttack());
-        }
-    }
-
-    private IEnumerator DoAttack()
-    {
-        // Wait to simulate "prepare attack"
-        yield return new WaitForSeconds(attackDelay);
-
-        if (state == State.Die) yield break;
-
-        state = State.Attack;
-        animator?.SetTrigger("attack");
-
-        // Apply a quick lunge
-        Vector2 dir = (player.position - transform.position).normalized;
-        rb.AddForce(dir * attackForce, ForceMode2D.Impulse);
-
-        yield return new WaitForSeconds(attackDuration);
-
-        if (state == State.Die) yield break;
-
-        // Back to tracking after attack
-        state = State.Tracking;
-        animator?.SetBool("isWalking", true);
+        return Vector2.Distance(a.position, b.position);
     }
 
     #endregion
 
-    #region Health
 
-    public void TakeDamage(float amount)
-    {
-        if (state == State.Die) return;
-
-        health -= amount;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        state = State.Die;
-        rb.linearVelocity = Vector2.zero;
-        animator?.SetTrigger("die");
-        // Optionally destroy after animation
-        Destroy(gameObject, 1f);
-    }
-
-    #endregion
 }
