@@ -24,10 +24,11 @@ public class EnemyController : MonoBehaviour
     [Header("Movement")]
     [SerializeField]
     private float moveSpeed = 2f;
-
-
+    [SerializeField]
+    private float idleTime = 2f;
     [SerializeField]
     private float detectionRange = 2f;
+    
 
     [Header("Attack")]
     [SerializeField]
@@ -40,8 +41,8 @@ public class EnemyController : MonoBehaviour
     [Header("Health")]
     [SerializeField]
     private float maxHealth = 50f;
-    [SerializeField]
-    private float health;
+
+    private DamageReceiver damageReceiver;
 
     [Header("FSM")]
     public State state = State.Idle;
@@ -55,14 +56,80 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = maxHealth;
+        damageReceiver = GetComponent<DamageReceiver>();
+        damageReceiver.maxHealth = maxHealth;
+        damageReceiver.faction = Faction.Enemy;
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void Update()
     {
+        // Handle FSM state
+        switch (state)
+        {
+            case State.Idle:
+                HandleIdleState();
+                break;
+            case State.Tracking:
+                HandleTrackingState();
+                break;
+            case State.PrepareAttack:
+                HandlePrepareAttackState();
+                break;
+            case State.Attack:
+                HandleAttackState();
+                break;
+            case State.Die:
+                HandleDieState();
+                break;
+        }
+    }
 
+    private void HandleIdleState()
+    {
+        // Check if player is in range
+        if (CalculateDistance(transform, player) < detectionRange)
+        {
+            state = State.Tracking;
+        }
+    }
+
+    private void HandleTrackingState()
+    {
+        // Move towards player
+        Vector2 direction = ((Vector2)player.position - rb.position).normalized;
+        rb.linearVelocity = direction * moveSpeed;
+
+        // Check if close enough to attack
+        if (CalculateDistance(transform, player) < stoppingDistance)
+        {
+            state = State.PrepareAttack;
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    private void HandlePrepareAttackState()
+    {
+        // Wait for attack delay, then attack
+        // You can implement a timer here
+    }
+
+    private void HandleAttackState()
+    {
+        // Apply attack force/damage
+        // This is handled by your attack prefab/DamageSender
+    }
+
+    private void HandleDieState()
+    {
+        // Play death animation, disable, etc.
+        Destroy(gameObject);
+    }
+
+    public void Die()
+    {
+        state = State.Die;
     }
 
     private void TrackBetweenPoints()

@@ -43,9 +43,10 @@ GameObject:
   - component: {fileID: 5692008092316725654}
   - component: {fileID: 1767707297615455996}
   - component: {fileID: 6585906302514900824}
-  - component: {fileID: 3241073229526553163}
-  - component: {fileID: 6760548973329821045}
   - component: {fileID: 8205298480685935201}
+  - component: {fileID: 3241073229526553163}
+  - component: {fileID: 2933448031286559947}
+  - component: {fileID: 6760548973329821045}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -191,6 +192,28 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.009072781}
   m_Size: {x: 0.44761705, y: 1.3163848}
   m_Direction: 0
+--- !u!95 &8205298480685935201
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16c06c13e7f931c48b108af43be5f0b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3241073229526553163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +420,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2933448031286559947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c101d496804944eb52012d4640098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::PlayerAttack
+  animator: {fileID: 8205298480685935201}
+  hitbox: {fileID: 6989485385145055724, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
+  lightDamage: 10
+  heavyDamage: 25
+  specialDamage: 40
+  lightKnockback: {x: 2, y: 0}
+  heavyKnockback: {x: 4, y: 0}
+  specialKnockback: {x: 6, y: 1}
+  lightCooldown: 0.2
+  heavyCooldown: 0.5
+  specialCooldown: 1
 --- !u!114 &6760548973329821045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,25 +489,3 @@ MonoBehaviour:
   dodgeDisplay: {fileID: 0}
   healthBar: {fileID: 0}
   indicatorRadius: 1.5
---- !u!95 &8205298480685935201
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5323280062238444879}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16c06c13e7f931c48b108af43be5f0b9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

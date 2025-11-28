@@ -628,6 +628,8 @@ public class PlayerController : MonoBehaviour
     #region Collisions
 
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("in Collision");
@@ -645,6 +647,11 @@ public class PlayerController : MonoBehaviour
             CooldownManager.Start("regenerate", regenerateCooldown);
             CooldownManager.Start("immunity", immunityCooldown);
         }
+    }
+
+    private void OStay2D(Collision2D collision)
+    {
+        OnCollisionEnter2D(collision);   
     }
 
 
