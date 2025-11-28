@@ -17,10 +17,6 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField]
     private float lightDamage = 10f;
-    [SerializeField]
-    private float heavyDamage = 25f;
-    [SerializeField]
-    private float specialDamage = 40f;
 
     [SerializeField]
     private Vector2 lightKnockback = new Vector2(2, 0);
@@ -81,20 +77,10 @@ public class PlayerAttack : MonoBehaviour
         hitbox.knockback = lightKnockback;
         hitbox.attackName = "attack";
 
-        Mouse mouse = Mouse.current;
-        // Get mouse position in world space
-        Vector3 mousePos = mouse.position.ReadValue();
-        float z = -Camera.main.transform.position.z;
-        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, z));
+        // Spawn prefab in front of the player
+        Vector2 spawnPos = (Vector2)transform.position + Vector2.right * spawnDistance;
+        float angle = 90f;
 
-        // Calculate direction from player to mouse
-        Vector2 direction = ((Vector2)worldMousePos - (Vector2)transform.position).normalized;
-
-        Vector2 spawnPos = (Vector2)transform.position + direction * spawnDistance;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
-
-        // Spawn prefab in the direction of the mouse
         Instantiate(attackPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
 
     }

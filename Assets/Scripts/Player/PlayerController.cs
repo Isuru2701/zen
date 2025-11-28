@@ -630,29 +630,24 @@ public class PlayerController : MonoBehaviour
 
     
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("in Collision");
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     Debug.Log("in Collision");
 
-        Debug.Log("tag is : " + collision.gameObject.tag.ToString());
+    //     Debug.Log("tag is : " + collision.gameObject.tag.ToString());
     
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("tag compared");
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         Debug.Log("tag compared");
 
-            if (!CooldownManager.Ready("immunity")) return;
-            Debug.Log("immunity passed");
-            TakeDamage(10); //TODO: make this serialized or better yet, make a health manager seperately
+    //         if (!CooldownManager.Ready("immunity")) return;
+    //         Debug.Log("immunity passed");
+    //         TakeDamage(10); //TODO: make this serialized or better yet, make a health manager seperately
 
-            CooldownManager.Start("regenerate", regenerateCooldown);
-            CooldownManager.Start("immunity", immunityCooldown);
-        }
-    }
-
-    private void OStay2D(Collision2D collision)
-    {
-        OnCollisionEnter2D(collision);   
-    }
+    //         CooldownManager.Start("regenerate", regenerateCooldown);
+    //         CooldownManager.Start("immunity", immunityCooldown);
+    //     }
+    // }
 
 
     // private void OnCollisionEnter(Collision2D other)

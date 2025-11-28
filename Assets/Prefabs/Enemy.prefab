@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4393476881799131538}
-  - component: {fileID: 844714532435332529}
   - component: {fileID: 4987905221945874471}
   - component: {fileID: 1353182794547712349}
+  - component: {fileID: 2844449447590624462}
+  - component: {fileID: 7118482686599961291}
+  - component: {fileID: 1543091519244371827}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -37,29 +39,6 @@ Transform:
   - {fileID: 3952816269029770931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &844714532435332529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506336445706602539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2a75584154bb749955735403543199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::EnemyController
-  animator: {fileID: 1483880164487575947}
-  normalSprite: {fileID: 4143667439114252308}
-  moveSpeed: 2
-  stoppingDistance: 1
-  detectionRange: 2
-  attackDelay: 0.5
-  attackForce: 10
-  attackDuration: 0.3
-  maxHealth: 50
-  health: 0
-  state: 0
 --- !u!50 &4987905221945874471
 Rigidbody2D:
   serializedVersion: 5
@@ -103,7 +82,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -124,6 +103,79 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015372753, y: -0.004695177}
   m_Size: {x: 0.8953676, y: 1.9795208}
   m_Direction: 0
+--- !u!114 &2844449447590624462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fff8dd056935d4083648ed9aeb20a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::DamageReceiver
+  faction: 0
+  maxHealth: 100
+--- !u!70 &7118482686599961291
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.015372753, y: -0.004695177}
+  m_Size: {x: 0.8953676, y: 1.9795208}
+  m_Direction: 0
+--- !u!114 &1543091519244371827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2a75584154bb749955735403543199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::EnemyController
+  idlePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  idleTime: 0
+  moveSpeed: 2
+  idlePointTolerance: 0.1
+  detectionRange: 10
+  attackRange: 1
+  prepareTime: 1
+  attackDuration: 0.3
 --- !u!1 &1883038347172431000
 GameObject:
   m_ObjectHideFlags: 0

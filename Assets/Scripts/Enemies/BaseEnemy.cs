@@ -12,156 +12,166 @@ public class EnemyController : MonoBehaviour
         Die
     }
 
+    [Header("References")]
+    [SerializeField] private Transform[] idlePoints;
+    [SerializeField] private float idleTime;
+
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float idlePointTolerance = 0.1f;
+
+    [Header("Detection Settings")]
+    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private float attackRange = 1f;
+
+    [Header("Attack Settings")]
+    [SerializeField] private float prepareTime = 1f;
+    [SerializeField] private float attackDuration = 0.3f;
+
+    private State currentState = State.Idle;
+    private int currentIdleIndex = 0;
+    private bool isPreparing = false;
+
     private Transform player;
-    private Rigidbody2D rb;
-
-    [SerializeField]
-    private Animator animator;
-
-    [SerializeField]
-    private SpriteRenderer normalSprite;
-
-    [Header("Movement")]
-    [SerializeField]
-    private float moveSpeed = 2f;
-    [SerializeField]
-    private float idleTime = 2f;
-    [SerializeField]
-    private float detectionRange = 2f;
-    
-
-    [Header("Attack")]
-    [SerializeField]
-    private float attackDelay = 0.5f; // time to prepare attack
-    [SerializeField]
-    private float attackForce = 5f;   // force applied during attack
-    [SerializeField]
-    private float attackDuration = 0.3f;
-
-    [Header("Health")]
-    [SerializeField]
-    private float maxHealth = 50f;
-
-    private DamageReceiver damageReceiver;
-
-    [Header("FSM")]
-    public State state = State.Idle;
-
-
-    [Header("Pathing")]
-    [SerializeField] Transform[] points;
-    [SerializeField] float lerpingSpeed = 0.2f;
-    [SerializeField]private float stoppingDistance = 2f; // distance to start attack
+    private SpriteRenderer sprite;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        damageReceiver = GetComponent<DamageReceiver>();
-        damageReceiver.maxHealth = maxHealth;
-        damageReceiver.faction = Faction.Enemy;
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (p != null)
+            player = p.transform;
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+
+        Debug.Log("PLAYER: " + player);
     }
 
     private void Update()
     {
-        // Handle FSM state
-        switch (state)
+        switch (currentState)
         {
-            case State.Idle:
-                HandleIdleState();
-                break;
-            case State.Tracking:
-                HandleTrackingState();
-                break;
-            case State.PrepareAttack:
-                HandlePrepareAttackState();
-                break;
-            case State.Attack:
-                HandleAttackState();
-                break;
-            case State.Die:
-                HandleDieState();
-                break;
+            case State.Idle: StateIdle(); break;
+            case State.Tracking: StateTracking(); break;
+            case State.PrepareAttack: StatePrepareAttack(); break;
+            case State.Attack: StateAttack(); break;
+            case State.Die: break;
         }
     }
 
-    private void HandleIdleState()
+    // --------------------------
+    //         STATES
+    // --------------------------
+
+    private void StateIdle()
     {
-        // Check if player is in range
-        if (CalculateDistance(transform, player) < detectionRange)
+        ;
+        if(!CooldownManager.Ready($"enemy{this.GetHashCode()}idletime")) return;
+        // move between idle points
+        Transform target = idlePoints[currentIdleIndex];
+
+        MoveTowards(target.position);
+
+        // check if reached the point
+        if (Vector2.Distance(transform.position, target.position) < idlePointTolerance)
         {
-            state = State.Tracking;
+            currentIdleIndex = (currentIdleIndex + 1) % idlePoints.Length;
+            CooldownManager.Start("enemyidletime", idleTime);
+        }
+
+        // check if player entered detection range
+        if (PlayerInRange(detectionRange))
+        {
+            currentState = State.Tracking;
         }
     }
 
-    private void HandleTrackingState()
-    {
-        // Move towards player
-        Vector2 direction = ((Vector2)player.position - rb.position).normalized;
-        rb.linearVelocity = direction * moveSpeed;
 
-        // Check if close enough to attack
-        if (CalculateDistance(transform, player) < stoppingDistance)
+    private void StateTracking()
+    {
+        // move toward player
+        MoveTowards(player.position);
+
+        // if close enough, start preparing attack
+        if (PlayerInRange(attackRange))
         {
-            state = State.PrepareAttack;
-            rb.linearVelocity = Vector2.zero;
+            currentState = State.PrepareAttack;
+            isPreparing = false;
+        }
+
+        // if player leaves detection range, return to idle
+        if (!PlayerInRange(detectionRange))
+        {
+            currentState = State.Idle;
         }
     }
 
-    private void HandlePrepareAttackState()
+
+    private void StatePrepareAttack()
     {
-        // Wait for attack delay, then attack
-        // You can implement a timer here
+        if (!isPreparing)
+        {
+            StartCoroutine(PrepareRoutine());
+        }
     }
 
-    private void HandleAttackState()
+    private IEnumerator PrepareRoutine()
     {
-        // Apply attack force/damage
-        // This is handled by your attack prefab/DamageSender
+        isPreparing = true;
+        // stop moving
+        yield return new WaitForSeconds(prepareTime);
+        currentState = State.Attack;
     }
 
-    private void HandleDieState()
+
+    private void StateAttack()
     {
-        // Play death animation, disable, etc.
-        Destroy(gameObject);
+        // perform attack logic
+        StartCoroutine(AttackRoutine());
     }
 
+    private IEnumerator AttackRoutine()
+    {
+        // Attack animation / hit detection could go here
+        yield return new WaitForSeconds(attackDuration);
+
+        // After attacking go back to tracking or idle depending on distance
+        if (PlayerInRange(detectionRange))
+            currentState = State.Tracking;
+        else
+            currentState = State.Idle;
+    }
+
+    // --------------------------
+    //     HELPER FUNCTIONS
+    // --------------------------
+
+    private bool PlayerInRange(float range)
+    {
+        return Vector2.Distance(transform.position, player.position) <= range;
+    }
+
+    private void MoveTowards(Vector2 target)
+    {
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            target,
+            moveSpeed * Time.deltaTime
+        );
+
+        // Flip sprite to face movement direction
+        if (target.x > transform.position.x)
+            sprite.flipX = false; // Moving right
+        else if (target.x < transform.position.x)
+            sprite.flipX = true;  // Moving left
+    }
+
+
+
+    // Optional: call this externally
     public void Die()
     {
-        state = State.Die;
+        currentState = State.Die;
     }
-
-    private void TrackBetweenPoints()
-    {
-
-    }
-
-    private IEnumerator MoveTowardsPoint(Transform b)
-    {
-        if (b == null) yield return null;
-
-
-        while (CalculateDistance(transform, b) > 0.01f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, b.position, lerpingSpeed * Time.deltaTime);
-        }
-
-
-
-        yield break;
-    }
-
-
-
-    #region Helpers
-
-    private float CalculateDistance(Transform a, Transform b)
-    {
-        return Vector2.Distance(a.position, b.position);
-    }
-
-    #endregion
-
-
 }
