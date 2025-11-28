@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float idleTime;
 
 
+    [Header("Health")]
+    [SerializeField] private float health = 50f;
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float idlePointTolerance = 0.1f;
@@ -38,9 +41,14 @@ public class EnemyController : MonoBehaviour
 
     private Transform player;
     private SpriteRenderer sprite;
+    private DamageReceiver damageReceiver;
 
     private void Start()
     {
+
+        damageReceiver = GetComponent<DamageReceiver>();
+
+        damageReceiver.onHurt += OnDamageReceived;
         GameObject p = GameObject.FindGameObjectWithTag("Player");
 
         if (p != null)
@@ -154,7 +162,7 @@ public class EnemyController : MonoBehaviour
         if (attackPrefab != null)
         {
             Vector2 spawnPos = (Vector2)transform.position + (Vector2.right * (sprite.flipX ? -1 : 1)) * 0.5f;
-            Instantiate(attackPrefab, spawnPos, Quaternion.identity);
+            Instantiate(attackPrefab, spawnPos, Quaternion.Euler(0f, 0f, 90f));
         }
 
         yield return new WaitForSeconds(attackDuration);
@@ -192,7 +200,16 @@ public class EnemyController : MonoBehaviour
             sprite.flipX = true;  // Moving left
     }
 
+    private void OnDamageReceived(float amount)
+    {
+        Debug.Log("damage taken" + amount);
 
+        if(health > 0)
+            health -=amount;
+        else
+            Die();
+
+    }
 
     // Optional: call this externally
     public void Die()

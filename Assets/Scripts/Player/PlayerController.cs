@@ -325,28 +325,28 @@ public class PlayerController : MonoBehaviour
     }
 
 
+//moved to playerAttack
+    // public void Attack(InputAction.CallbackContext context)
+    // {
+    //     if (!context.performed) return;
 
-    public void Attack(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
+    //     Mouse mouse = Mouse.current;
+    //     if (mouse == null || attackPrefab == null || Camera.main == null) return;
 
-        Mouse mouse = Mouse.current;
-        if (mouse == null || attackPrefab == null || Camera.main == null) return;
+    //     Vector2 mousePosition = mouse.position.ReadValue();
 
-        Vector2 mousePosition = mouse.position.ReadValue();
+    //     float z = -Camera.main.transform.position.z;
+    //     Vector3 worldMouse = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, z));
 
-        float z = -Camera.main.transform.position.z;
-        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, z));
+    //     Vector2 dir = ((Vector2)worldMouse - (Vector2)transform.position).normalized;
 
-        Vector2 dir = ((Vector2)worldMouse - (Vector2)transform.position).normalized;
+    //     Vector2 spawnPos = (Vector2)transform.position + dir * spawnDistance;
 
-        Vector2 spawnPos = (Vector2)transform.position + dir * spawnDistance;
+    //     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
 
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
-
-        Instantiate(attackPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
-        animator.SetBool("isAttacking", true);
-    }
+    //     Instantiate(attackPrefab, spawnPos, Quaternion.Euler(0f, 0f, angle));
+    //     animator.SetBool("isAttacking", true);
+    // }
 
 
 
