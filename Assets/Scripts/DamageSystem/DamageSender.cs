@@ -9,7 +9,8 @@ public class DamageSender : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<DamageReceiver>(out var receiver))
+        DamageReceiver receiver = other.GetComponent<DamageReceiver>();
+        if (receiver)
         {
             // Ignore if same faction
             if (receiver.faction == this.faction)
