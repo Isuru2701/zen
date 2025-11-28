@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
         Lily
     }
 
+    #region Fields
+
     [Header("Player Component References")]
     [SerializeField] Rigidbody2D rb;
 
@@ -124,6 +126,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIValueBar healthBar;
 
 
+    #endregion
 
 
 
