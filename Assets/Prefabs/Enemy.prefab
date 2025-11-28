@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2844449447590624462}
   - component: {fileID: 7118482686599961291}
   - component: {fileID: 1543091519244371827}
+  - component: {fileID: 81749171733874321}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -116,7 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::DamageReceiver
   faction: 0
-  maxHealth: 100
 --- !u!70 &7118482686599961291
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,6 +176,23 @@ MonoBehaviour:
   attackRange: 1
   prepareTime: 1
   attackDuration: 0.3
+  attackPrefab: {fileID: 0}
+  attackDamage: 15
+--- !u!114 &81749171733874321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44995781546af624f955968189db63a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::DamageSender
+  faction: 1
+  damage: 20
+  knockback: {x: 2, y: 0}
 --- !u!1 &1883038347172431000
 GameObject:
   m_ObjectHideFlags: 0

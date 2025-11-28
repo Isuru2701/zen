@@ -126,6 +126,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIValueBar healthBar;
 
 
+    private DamageReceiver damageReceiver;
+
     #endregion
 
 
@@ -134,6 +136,10 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        damageReceiver = GetComponent<DamageReceiver>();
+
+        damageReceiver.faction = Faction.Player;
+        damageReceiver.onHurt += OnDamageReceived;
 
         _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
 
@@ -594,11 +600,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-
     #endregion
 
     #region Health
+
+    public void OnDamageReceived(float amount)
+    {
+        // Respect temporary immunity
+        if (!CooldownManager.Ready("immunity")) return;
+
+        // Apply damage
+        TakeDamage(amount);
+
+        // Start regenerate and immunity cooldowns
+        CooldownManager.Start("immunity", immunityCooldown);
+    }
 
 
 
@@ -628,14 +644,14 @@ public class PlayerController : MonoBehaviour
     #region Collisions
 
 
-    
+
 
     // private void OnCollisionEnter2D(Collision2D collision)
     // {
     //     Debug.Log("in Collision");
 
     //     Debug.Log("tag is : " + collision.gameObject.tag.ToString());
-    
+
     //     if (collision.gameObject.CompareTag("Enemy"))
     //     {
     //         Debug.Log("tag compared");

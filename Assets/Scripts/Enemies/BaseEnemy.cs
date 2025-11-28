@@ -28,10 +28,13 @@ public class EnemyController : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private float prepareTime = 1f;
     [SerializeField] private float attackDuration = 0.3f;
+    [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private float attackDamage = 15f;
 
     private State currentState = State.Idle;
     private int currentIdleIndex = 0;
     private bool isPreparing = false;
+    private bool isAttacking = false;
 
     private Transform player;
     private SpriteRenderer sprite;
@@ -44,6 +47,17 @@ public class EnemyController : MonoBehaviour
             player = p.transform;
 
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        // Setup attack prefab
+        if (attackPrefab != null)
+        {
+            DamageSender attackSender = attackPrefab.GetComponent<DamageSender>();
+            if (attackSender != null)
+            {
+                attackSender.faction = Faction.Enemy;
+                attackSender.damage = attackDamage;
+            }
+        }
 
         Debug.Log("PLAYER: " + player);
     }
@@ -128,13 +142,24 @@ public class EnemyController : MonoBehaviour
     private void StateAttack()
     {
         // perform attack logic
-        StartCoroutine(AttackRoutine());
+        if (!isAttacking)
+            StartCoroutine(AttackRoutine());
     }
 
     private IEnumerator AttackRoutine()
     {
-        // Attack animation / hit detection could go here
+        isAttacking = true;
+
+        // Spawn attack prefab in front of enemy
+        if (attackPrefab != null)
+        {
+            Vector2 spawnPos = (Vector2)transform.position + (Vector2.right * (sprite.flipX ? -1 : 1)) * 0.5f;
+            Instantiate(attackPrefab, spawnPos, Quaternion.identity);
+        }
+
         yield return new WaitForSeconds(attackDuration);
+
+        isAttacking = false;
 
         // After attacking go back to tracking or idle depending on distance
         if (PlayerInRange(detectionRange))

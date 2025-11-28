@@ -6,7 +6,6 @@ public class DamageSender : MonoBehaviour
     public Faction faction;
     public float damage = 10f;
     public Vector2 knockback = new Vector2(2f, 0f);
-    public string attackName = "attack";
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +15,7 @@ public class DamageSender : MonoBehaviour
             if (receiver.faction == this.faction)
                 return;
 
-            receiver.TakeDamage(new DamageInfo(damage, knockback, attackName));
+            receiver.TakeDamage(new DamageInfo(damage, knockback));
         }
     }
 

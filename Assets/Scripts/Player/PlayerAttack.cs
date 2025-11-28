@@ -75,7 +75,6 @@ public class PlayerAttack : MonoBehaviour
         // Set damage and knockback on the hitbox
         hitbox.damage = lightDamage;
         hitbox.knockback = lightKnockback;
-        hitbox.attackName = "attack";
 
         // Spawn prefab in front of the player
         Vector2 spawnPos = (Vector2)transform.position + Vector2.right * spawnDistance;
