@@ -16,9 +16,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform[] idlePoints;
     [SerializeField] private float idleTime;
 
+    [SerializeField] Weakspot weakSpot;
+
 
     [Header("Health")]
     [SerializeField] private float health = 50f;
+    [SerializeField] private float damageTakenCooldown = 2f;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
@@ -44,6 +47,8 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer sprite;
     private DamageReceiver damageReceiver;
 
+
+
     private void Start()
     {
 
@@ -51,6 +56,9 @@ public class EnemyController : MonoBehaviour
 
         damageReceiver.onHurt += OnDamageReceived;
         GameObject p = GameObject.FindGameObjectWithTag("Player");
+
+        weakSpot.weakFlag += SetTakeDoubleDamage;
+
 
         if (p != null)
             player = p.transform;
@@ -90,7 +98,7 @@ public class EnemyController : MonoBehaviour
     private void StateIdle()
     {
         ;
-        if(!CooldownManager.Ready($"enemy{this.GetHashCode()}idletime")) return;
+        if (!CooldownManager.Ready($"enemy{this.GetHashCode()}idletime")) return;
         // move between idle points
         Transform target = idlePoints[currentIdleIndex];
 
@@ -203,13 +211,26 @@ public class EnemyController : MonoBehaviour
 
     private void OnDamageReceived(float amount)
     {
+
+        if (!CooldownManager.Ready($"enemy{GetHashCode()}DamgeCooldown")) return;
+
+
         Debug.Log("damage taken" + amount);
 
-        if(health > 0)
-            health -=amount;
+        if (health > 0)
+        {
+            health = weakflag ? health - (amount * 2) : health - amount;
+            CooldownManager.Start($"enemy{GetHashCode()}DamgeCooldown", damageTakenCooldown);
+        }
         else
             Die();
 
+    }
+
+    private bool weakflag = false;
+    private void SetTakeDoubleDamage(bool f)
+    {
+        weakflag = f;
     }
 
     // Optional: call this externally

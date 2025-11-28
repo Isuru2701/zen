@@ -7,10 +7,6 @@ public class DamageReceiver : MonoBehaviour
 
     public System.Action<float> onHurt;  // For UI, hit flashes, etc.
 
-    private void Awake()
-    {
-    }
-
     public void TakeDamage(DamageInfo info)
     {
         onHurt?.Invoke(info.damage);

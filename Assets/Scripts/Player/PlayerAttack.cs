@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private GameObject attackPrefab;   // assign your weapon/hitbox object
     [SerializeField]
+    private SpriteRenderer playerSprite;
+    [SerializeField]
     private float spawnDistance = 1f;
 
     [Header("Cooldowns (seconds)")]
@@ -54,8 +56,9 @@ public class PlayerAttack : MonoBehaviour
         if (!CooldownManager.Ready("attack")) return;
         if (!CooldownManager.Ready("finalAttack")) return;
 
+        Vector2 direction = new Vector2(playerSprite.flipX? -1: 1, 0);
         // Spawn prefab in front of the player
-        Vector2 spawnPos = (Vector2)transform.position + Vector2.right * spawnDistance;
+        Vector2 spawnPos = (Vector2)transform.position + direction  * spawnDistance;
 
         
 

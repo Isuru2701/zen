@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6989485385145055724}
   m_Layer: 0
   m_Name: Attack
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::DamageSender
   faction: 0
-  damage: 10
+  damage: 5
   knockback: {x: 2, y: 0}
