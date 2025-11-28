@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: a44a9f564e6fc334f9b48fd7ee964432, type: 3}
-  m_Color: {r: 0.9372549, g: 0.9372549, b: 0.8862745, a: 1}
+  m_Color: {r: 0.6754716, g: 0.6754716, b: 0.2536204, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,6 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44995781546af624f955968189db63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UserScripts::DamageSender
-  faction: 1
-  damage: 10
+  faction: 0
+  damage: 15
   knockback: {x: 2, y: 0}

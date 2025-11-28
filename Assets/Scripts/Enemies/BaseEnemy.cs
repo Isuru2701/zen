@@ -32,7 +32,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float prepareTime = 1f;
     [SerializeField] private float attackDuration = 0.3f;
     [SerializeField] private GameObject attackPrefab;
-    [SerializeField] private float attackDamage = 15f;
+    [SerializeField] private float lightAttackDamage = 15f;
+    [SerializeField] private float heavyAttackDamage = 15f; //TODO: add later
 
     private State currentState = State.Idle;
     private int currentIdleIndex = 0;
@@ -63,7 +64,7 @@ public class EnemyController : MonoBehaviour
             if (attackSender != null)
             {
                 attackSender.faction = Faction.Enemy;
-                attackSender.damage = attackDamage;
+                attackSender.damage = lightAttackDamage;
             }
         }
 

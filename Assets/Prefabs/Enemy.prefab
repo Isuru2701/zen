@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4393476881799131538}
   - component: {fileID: 4987905221945874471}
   - component: {fileID: 1353182794547712349}
-  - component: {fileID: 2844449447590624462}
   - component: {fileID: 7118482686599961291}
   - component: {fileID: 1543091519244371827}
+  - component: {fileID: 2844449447590624462}
   - component: {fileID: 81749171733874321}
   m_Layer: 0
   m_Name: Enemy
@@ -104,19 +104,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015372753, y: -0.004695177}
   m_Size: {x: 0.8953676, y: 1.9795208}
   m_Direction: 0
---- !u!114 &2844449447590624462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506336445706602539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fff8dd056935d4083648ed9aeb20a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::DamageReceiver
-  faction: 0
 --- !u!70 &7118482686599961291
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -169,15 +156,30 @@ MonoBehaviour:
   idlePoints:
   - {fileID: 0}
   - {fileID: 0}
-  idleTime: 0
+  idleTime: 0.5
+  health: 50
   moveSpeed: 2
   idlePointTolerance: 0.1
-  detectionRange: 10
+  detectionRange: 5
   attackRange: 1
   prepareTime: 1
   attackDuration: 0.3
-  attackPrefab: {fileID: 0}
-  attackDamage: 15
+  attackPrefab: {fileID: 4679690267188328770, guid: cde9788f441067942bdd6cf2ca1be834, type: 3}
+  lightAttackDamage: 15
+  heavyAttackDamage: 15
+--- !u!114 &2844449447590624462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fff8dd056935d4083648ed9aeb20a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::DamageReceiver
+  faction: 0
 --- !u!114 &81749171733874321
 MonoBehaviour:
   m_ObjectHideFlags: 0

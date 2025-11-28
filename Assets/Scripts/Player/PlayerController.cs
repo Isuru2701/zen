@@ -65,10 +65,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform groundCheck;
 
-    [Header("Attack")]
-    [SerializeField] GameObject attackPrefab;
-    [SerializeField] float spawnDistance = 1f;
-
     [Header("Dodge")]
     [SerializeField] float dodgeForce = 20f;
     private float maxDodges = 2;
@@ -109,15 +105,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Cooldowns")]
     [SerializeField] private float dodgeCooldown;
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private float finalAttackCooldown;
     [SerializeField] private float lilyCooldown;
     [SerializeField] private float immunityCooldown;
     [SerializeField] private float regenerateCooldown;
 
 
-
-    private bool finalAttackFlag = false;
 
 
     [Header("UI Handles")]
@@ -138,7 +130,6 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         damageReceiver = GetComponent<DamageReceiver>();
 
-        damageReceiver.faction = Faction.Player;
         damageReceiver.onHurt += OnDamageReceived;
 
         _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
