@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             case State.Dodging:
 
-                spriteDirection = horizontal == 0 ? -1 : horizontal;
+                spriteDirection = sprite.flipX? 1: -1;
                 rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
 
                 if (CooldownManager.Ready("dodge"))
