@@ -5117,6 +5117,10 @@ PrefabInstance:
       propertyPath: dodgeDisplay
       value: 
       objectReference: {fileID: 1078461856}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: dodgeResetTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09441

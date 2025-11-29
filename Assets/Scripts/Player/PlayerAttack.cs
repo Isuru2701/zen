@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Cooldowns (seconds)")]
     [SerializeField]
     private float attackCooldown = 0.2f;
+    private float resetTime = 0.2f;
     [SerializeField]
     private float finalAttackCooldown = 0.5f;
 
@@ -31,10 +32,16 @@ public class PlayerAttack : MonoBehaviour
 
         if (context.performed)
         {
-            if (counter < 2)
+
+            //if player hasnt attacked in a while, reset counter
+            if (CooldownManager.Ready("resetTime"))
+            {
+                counter = 0;
+            }
+            if (counter < 3)
             {
                 DoLightAttack();
-                CooldownManager.Start("attack", attackCooldown);
+                // CooldownManager.Start("attack", attackCooldown);
                 counter++;
             }
             else
@@ -44,16 +51,16 @@ public class PlayerAttack : MonoBehaviour
                 CooldownManager.Start("finalAttack", finalAttackCooldown);
 
             }
+            CooldownManager.Start("resetTime", resetTime);
 
 
         }
     }
 
-
     private void DoLightAttack()
     {
 
-        if (!CooldownManager.Ready("attack")) return;
+        // if (!CooldownManager.Ready("attack")) return;
         if (!CooldownManager.Ready("finalAttack")) return;
 
         Vector2 direction = new Vector2(playerSprite.flipX? -1: 1, 0);

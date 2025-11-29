@@ -47,11 +47,13 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer sprite;
     private DamageReceiver damageReceiver;
 
+    private Rigidbody2D rb;
 
 
     private void Start()
-    {
+    {   
 
+        rb = GetComponent<Rigidbody2D>();
         damageReceiver = GetComponent<DamageReceiver>();
 
         damageReceiver.onHurt += OnDamageReceived;
@@ -209,17 +211,20 @@ public class EnemyController : MonoBehaviour
             sprite.flipX = true;  // Moving left
     }
 
-    private void OnDamageReceived(float amount)
+    private void OnDamageReceived(DamageInfo info)
     {
 
         if (!CooldownManager.Ready($"enemy{GetHashCode()}DamgeCooldown")) return;
 
 
-        Debug.Log("damage taken" + amount);
+        Debug.Log("damage taken" + info);
 
         if (health > 0)
         {
-            health = weakflag ? health - (amount * 2) : health - amount;
+            health = weakflag ? health - (info.damage* 2) : health - info.damage;
+
+            rb.AddForce(info.knockback, ForceMode2D.Impulse);
+
             CooldownManager.Start($"enemy{GetHashCode()}DamgeCooldown", damageTakenCooldown);
         }
         else

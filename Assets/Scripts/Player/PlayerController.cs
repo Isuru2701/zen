@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Cooldowns")]
     [SerializeField] private float dodgeCooldown;
+    [SerializeField] private float dodgeResetTime;
     [SerializeField] private float lilyCooldown;
     [SerializeField] private float immunityCooldown;
     [SerializeField] private float regenerateCooldown;
@@ -160,6 +161,12 @@ public class PlayerController : MonoBehaviour
             resetLily();
         }
 
+        if(CooldownManager.Ready("dodgeResetTime"))
+        {
+            dodgeTimes = 0;
+            UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + (maxDodges - dodgeTimes));
+        }
+
         if (CooldownManager.Ready("dodge"))
         {
             UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + (maxDodges - dodgeTimes));
@@ -195,7 +202,7 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             case State.Dodging:
 
-                spriteDirection = sprite.flipX? 1: -1;
+                spriteDirection = sprite.flipX ? 1 : -1;
                 rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
 
                 if (CooldownManager.Ready("dodge"))
@@ -316,7 +323,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-//moved to playerAttack
+    //moved to playerAttack
     // public void Attack(InputAction.CallbackContext context)
     // {
     //     if (!context.performed) return;
@@ -347,6 +354,7 @@ public class PlayerController : MonoBehaviour
 
         if (context.performed)
         {
+
             state = State.Dodging;
             dodgeTimes += 1;
             animator.SetBool("isDodging", true);
@@ -364,6 +372,9 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        CooldownManager.Start("dodgeResetTime", dodgeResetTime);
+
+
     }
 
     public void DropDown(InputAction.CallbackContext context)
@@ -595,13 +606,16 @@ public class PlayerController : MonoBehaviour
 
     #region Health
 
-    public void OnDamageReceived(float amount)
+    public void OnDamageReceived(DamageInfo info)
     {
         // Respect temporary immunity
         if (!CooldownManager.Ready("immunity")) return;
 
         // Apply damage
-        TakeDamage(amount);
+        TakeDamage(info.damage);
+
+        rb.AddForce(info.knockback, ForceMode2D.Impulse);
+
 
         // Start regenerate and immunity cooldowns
         CooldownManager.Start("immunity", immunityCooldown);
