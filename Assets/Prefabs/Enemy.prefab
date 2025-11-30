@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7118482686599961291}
   - component: {fileID: 1543091519244371827}
   - component: {fileID: 2844449447590624462}
+  - component: {fileID: 301785750125325368}
   - component: {fileID: 81749171733874321}
   m_Layer: 0
   m_Name: Enemy
@@ -55,7 +56,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -159,6 +160,7 @@ MonoBehaviour:
   idleTime: 0.5
   weakSpot: {fileID: 2410332134724466491}
   health: 50
+  damageTakenCooldown: 2
   moveSpeed: 2
   idlePointTolerance: 0.1
   detectionRange: 5
@@ -181,6 +183,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::DamageReceiver
   faction: 1
+--- !u!114 &301785750125325368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506336445706602539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1287c5d13ee824e80a544a471759f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::Knockback
+  knockbackTime: 0.2
+  hitDirectionForce: 10
+  constForce: 5
 --- !u!114 &81749171733874321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: UserScripts::DamageSender
   faction: 1
   damage: 20
-  knockback: {x: 2, y: 0}
+  hitDirection: {x: -1, y: 0}
+  constantForceDirection: {x: -1, y: 0}
 --- !u!1 &1883038347172431000
 GameObject:
   m_ObjectHideFlags: 0

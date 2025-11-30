@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44995781546af624f955968189db63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UserScripts::DamageSender
-  faction: 0
+  faction: 1
   damage: 15
-  knockback: {x: 2, y: 0}
+  knockback: {x: 100, y: 0}
+  directionalKnockback: 1

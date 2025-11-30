@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
         Normal,
         Dodging,
         Jumping,
-        Lily
+        Lily,
+        Knockback
     }
 
     #region Fields
@@ -121,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
     private DamageReceiver damageReceiver;
 
+    private Knockback knockback;
+
     #endregion
 
 
@@ -130,12 +133,15 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         damageReceiver = GetComponent<DamageReceiver>();
+        knockback = GetComponent<Knockback>();
 
         damageReceiver.onHurt += OnDamageReceived;
 
         _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedDampingChangeThreshold;
 
         GameEvents.OnGameModeChanged += SpawnIndicatorSprite;
+
+        knockback.knockbackAction += handleKnockback;
 
         resetLily();
 
@@ -161,7 +167,7 @@ public class PlayerController : MonoBehaviour
             resetLily();
         }
 
-        if(CooldownManager.Ready("dodgeResetTime"))
+        if (CooldownManager.Ready("dodgeResetTime"))
         {
             dodgeTimes = 0;
             UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + (maxDodges - dodgeTimes));
@@ -184,8 +190,9 @@ public class PlayerController : MonoBehaviour
             // NORMAL STATE
             // -----------------------
             case State.Normal:
-                rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocityY);
-
+                Vector2 v = rb.linearVelocity;
+                v.x = horizontal * moveSpeed;
+                rb.linearVelocity = v;
                 // Apply jump gravity logic every frame
                 //TODO: is this whats causing issues in LILY?
                 ApplyJumpPhysics();
@@ -231,6 +238,9 @@ public class PlayerController : MonoBehaviour
                 state = State.Normal;
                 break;
 
+            case State.Knockback:
+
+                break;
 
         }
     }
@@ -586,6 +596,22 @@ public class PlayerController : MonoBehaviour
         return ((Vector2)worldMouse - (Vector2)transform.position).normalized;
     }
 
+
+    private void handleKnockback(bool f)
+    {
+
+        if(f)
+        {
+            Debug.Log("knockedback");
+            state = State.Knockback;
+        }
+        else
+        {
+            state = State.Normal;
+        }
+
+    }
+
     #endregion
 
 
@@ -613,8 +639,9 @@ public class PlayerController : MonoBehaviour
 
         // Apply damage
         TakeDamage(info.damage);
+        Debug.Log("Force on player: " + info.hitDirection + " " + info.constantForceDirection);
 
-        rb.AddForce(info.knockback, ForceMode2D.Impulse);
+        knockback.CallKnockback(info.hitDirection, info.constantForceDirection);
 
 
         // Start regenerate and immunity cooldowns

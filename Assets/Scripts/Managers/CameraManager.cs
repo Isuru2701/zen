@@ -115,7 +115,45 @@ public class CameraManager : MonoBehaviour
 
     public void OnLookInput(InputAction.CallbackContext context)
     {
-        //TODO
+        // Expect a screen-space pointer position (e.g. `Mouse/position` or `Pointer` binding).
+        // When the pointer is close to the screen edge, produce a limited offset in that direction.
+        Vector2 pointer = context.ReadValue<Vector2>();
+
+        // If we receive a zero vector (some bindings provide deltas), bail out early.
+        // We handle delta-style input by ignoring zero here; if needed, adapt bindings to provide absolute position.
+        if (pointer == Vector2.zero)
+        {
+            return;
+        }
+
+        Vector2 screenCenter = new Vector2(Screen.width, Screen.height) * 0.5f;
+        // dir ranges approximately -1..1 across each axis
+        Vector2 dir = (pointer - screenCenter) / screenCenter;
+
+        // When pointer is near edges only: edgeThreshold is the normalized distance from center
+        // before we start panning (0..1). 0.85 means the outer 15% of the screen triggers panning.
+        const float edgeThreshold = 0.85f;
+
+        Vector2 absDir = new Vector2(Mathf.Abs(dir.x), Mathf.Abs(dir.y));
+        Vector2 trigger = Vector2.zero;
+
+        trigger.x = Mathf.Max(0f, (absDir.x - edgeThreshold) / (1f - edgeThreshold));
+        trigger.y = Mathf.Max(0f, (absDir.y - edgeThreshold) / (1f - edgeThreshold));
+
+        // Restore sign so we know direction to pan
+        trigger.x *= Mathf.Sign(dir.x);
+        trigger.y *= Mathf.Sign(dir.y);
+
+        // Target offset limited by mouseLookStrength
+        Vector2 targetOffset = trigger * mouseLookStrength;
+
+        // Smooth the applied offset for less jitter
+        float smoothSpeed = 10f;
+        mouseLookOffset = Vector2.Lerp(mouseLookOffset, targetOffset, Mathf.Clamp01(smoothSpeed * Time.deltaTime));
+
+        // Clamp to maximum strength
+        if (mouseLookOffset.magnitude > mouseLookStrength)
+            mouseLookOffset = mouseLookOffset.normalized * mouseLookStrength;
     }
 
 

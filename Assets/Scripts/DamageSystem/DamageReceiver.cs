@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
@@ -5,7 +6,7 @@ public class DamageReceiver : MonoBehaviour
 
     public Faction faction;
 
-    public System.Action<DamageInfo> onHurt;  // For UI, hit flashes, etc.
+    public Action<DamageInfo> onHurt;  // For UI, hit flashes, etc.
 
     public void TakeDamage(DamageInfo info)
     {

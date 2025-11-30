@@ -9,7 +9,8 @@ public class EnemyController : MonoBehaviour
         Tracking,
         PrepareAttack,
         Attack,
-        Die
+        Die,
+        Knockback
     }
 
     [Header("References")]
@@ -49,12 +50,17 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Knockback knockback;
+
 
     private void Start()
-    {   
+    {
 
         rb = GetComponent<Rigidbody2D>();
         damageReceiver = GetComponent<DamageReceiver>();
+
+        knockback = GetComponent<Knockback>();
+        knockback.knockbackAction += handleKnockback;
 
         damageReceiver.onHurt += OnDamageReceived;
         GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -90,6 +96,7 @@ public class EnemyController : MonoBehaviour
             case State.PrepareAttack: StatePrepareAttack(); break;
             case State.Attack: StateAttack(); break;
             case State.Die: break;
+            case State.Knockback: break;
         }
     }
 
@@ -216,14 +223,17 @@ public class EnemyController : MonoBehaviour
 
         if (!CooldownManager.Ready($"enemy{GetHashCode()}DamgeCooldown")) return;
 
+        knockback.CallKnockback(info.hitDirection, info.constantForceDirection);
+
+
 
         Debug.Log("damage taken" + info);
 
         if (health > 0)
         {
-            health = weakflag ? health - (info.damage* 2) : health - info.damage;
+            health = weakflag ? health - (info.damage * 2) : health - info.damage;
 
-            rb.AddForce(info.knockback, ForceMode2D.Impulse);
+
 
             CooldownManager.Start($"enemy{GetHashCode()}DamgeCooldown", damageTakenCooldown);
         }
@@ -231,6 +241,22 @@ public class EnemyController : MonoBehaviour
             Die();
 
     }
+
+    private void handleKnockback(bool f)
+    {
+
+        if (f)
+        {
+            Debug.Log("knockedback");
+            currentState = State.Knockback;
+        }
+        else
+        {
+            currentState = State.Idle;
+        }
+
+    }
+
 
     private bool weakflag = false;
     private void SetTakeDoubleDamage(bool f)
