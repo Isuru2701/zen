@@ -166,5 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UserScripts::DamageSender
   faction: 0
   damage: 5
-  knockback: {x: 10, y: 0}
-  directionalKnockback: 1
+  hitDirection: {x: 0, y: 0}
+  constantForceDirection: {x: 0, y: 0}
+  knockbackForce: {x: 0, y: 0}

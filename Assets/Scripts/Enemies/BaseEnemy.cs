@@ -223,7 +223,7 @@ public class EnemyController : MonoBehaviour
 
         if (!CooldownManager.Ready($"enemy{GetHashCode()}DamgeCooldown")) return;
 
-        knockback.CallKnockback(info.hitDirection, info.constantForceDirection);
+        knockback.CallKnockback(info.hitDirection, info.constantForceDirection, info.knockbackForce);
 
 
 

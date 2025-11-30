@@ -641,7 +641,7 @@ public class PlayerController : MonoBehaviour
         TakeDamage(info.damage);
         Debug.Log("Force on player: " + info.hitDirection + " " + info.constantForceDirection);
 
-        knockback.CallKnockback(info.hitDirection, info.constantForceDirection);
+        knockback.CallKnockback(info.hitDirection, info.constantForceDirection, info.knockbackForce);
 
 
         // Start regenerate and immunity cooldowns

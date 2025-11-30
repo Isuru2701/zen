@@ -8,7 +8,6 @@ public class Knockback : MonoBehaviour
 {
 
     public float knockbackTime = 0.2f;
-    public float hitDirectionForce = 10f;
     public float constForce = 5f;
 
     public Action<bool> knockbackAction;
@@ -25,7 +24,7 @@ public class Knockback : MonoBehaviour
     }
 
 
-    public IEnumerator KnockbackAction(Vector2 hitDirection, Vector2 constantForceDirection)
+    public IEnumerator KnockbackAction(Vector2 hitDirection, Vector2 constantForceDirection, float knockbackForce)
     {
 
         Debug.Log("knockedback");
@@ -36,7 +35,7 @@ public class Knockback : MonoBehaviour
         Vector2 _constantForce;
         Vector2 _knockbackForce;
 
-        _hitforce = hitDirection * hitDirectionForce;
+        _hitforce = hitDirection * knockbackForce;
         _constantForce = constantForceDirection * constForce;
 
 
@@ -71,8 +70,8 @@ public class Knockback : MonoBehaviour
     }
 
 
-    public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection)
+    public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection, float knockbackForce)
     {
-        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection));
+        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection, knockbackForce));
     }
 }
