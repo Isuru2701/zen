@@ -2044,6 +2044,7 @@ MonoBehaviour:
   damage: 10
   hitDirection: {x: -1, y: 0}
   constantForceDirection: {x: -1, y: 0}
+  knockbackForce: 5
 --- !u!61 &771127761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2222,7 +2223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::Knockback
   knockbackTime: 0.2
-  hitDirectionForce: 10
   constForce: 5
 --- !u!1001 &805141754
 PrefabInstance:
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   _fallPanAmount: 0
   _fallPanTime: 0.5
   _fallSpeedDampingChangeThreshold: -15
-  mouseLookStrength: 0.5
+  mouseLookStrength: 4
 --- !u!1 &1057597414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,7 +3558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::Knockback
   knockbackTime: 0.2
-  hitDirectionForce: 10
   constForce: 5
 --- !u!1 &1544711562
 GameObject:
@@ -5151,10 +5150,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 301785750125325368, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
-      propertyPath: hitDirectionForce
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 506336445706602539, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -5233,6 +5228,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1529976663}
     - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 994833035}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1529976657}
@@ -5241,12 +5248,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1885299390}
     - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLookInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DoAttack
       objectReference: {fileID: 0}
     - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CameraManager, UserScripts
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerAttack, UserScripts
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241073229526553163, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5323280062238444879, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_Name
