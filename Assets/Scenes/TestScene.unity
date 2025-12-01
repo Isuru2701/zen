@@ -682,7 +682,7 @@ Transform:
   m_GameObject: {fileID: 207226581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.99441, y: -47.92, z: 0}
+  m_LocalPosition: {x: 15.77441, y: -47.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -983,15 +983,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 506336445706602539, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4393476881799131538, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.834797
+      value: 29.38
       objectReference: {fileID: 0}
     - target: {fileID: 4393476881799131538, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.938232
+      value: -50.65
       objectReference: {fileID: 0}
     - target: {fileID: 4393476881799131538, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1162,7 +1162,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.99441, y: -47.92, z: 0}
+  m_LocalPosition: {x: 15.77441, y: -47.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2434,7 +2434,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.7963, y: -50.962, z: 0}
-  m_LocalScale: {x: 0.9889136, y: 0.96029884, z: 1}
+  m_LocalScale: {x: 1.9283816, y: 1.0755347, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2451,11 +2451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dedd0302523eff4a8508ec255d14a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UserScripts::Water
-  NumOfXVertices: 61
-  Width: 5.1970654
-  Height: 1.7838669
+  NumOfXVertices: 70
+  Width: 5
+  Height: 1
   waterMaterial: {fileID: 2100000, guid: d16c632bc15085f47a8108ee753465d1, type: 2}
   GizmoColor: {r: 0.3283019, g: 0.11335706, b: 0.11335706, a: 1}
+  _SPRITECONSTANT: 1.4
+  _damping: 1.1
+  _wavePropogrationIterations: 7
+  _speedMult: 5.5
+  ForceMultiplier: 0.2
+  MaxForce: 5
+  _playerCollisionRadiusMult: 4.15
+  _spread: 0.01
 --- !u!114 &803213225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,6 +2476,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7660b63aee528045b00d09e37f4d0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UserScripts::WaterTriggerHandler
+  _waterMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _splashParticles: {fileID: 3332031499396510436, guid: 7be925f5c9f3be14f94e0ce8a0026911, type: 3}
 --- !u!68 &803213226
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2593,7 +2605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 506336445706602539, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4393476881799131538, guid: 7c5be051aee576840a37842629d22cc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5660,11 +5672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.9
+      value: 15.68
       objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50.6
+      value: -50.56
       objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.z

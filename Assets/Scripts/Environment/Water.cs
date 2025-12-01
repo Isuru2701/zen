@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(EdgeCollider2D))]
 [RequireComponent(typeof(WaterTriggerHandler))]
@@ -14,10 +15,26 @@ public class Water : MonoBehaviour
     [SerializeField] public float Height = 10f;
     [SerializeField] private Material waterMaterial;
 
-    private const int NUM_OF_Y_VERTICES = 2;
+    private const int NUM_OF_Y_VERTICES = 10;
 
     [Header("Gizmo")]
     [SerializeField] public Color GizmoColor = Color.white;
+
+    [Header("Springs")]
+    [SerializeField] private float _SPRITECONSTANT = 1.4f;
+    [SerializeField] private float _damping = 1.1f;
+    [SerializeField, Range(1,10)] private int _wavePropogrationIterations = 8;
+    [SerializeField, Range(0f, 20f)] private float _speedMult = 5.5f;
+
+    [Header("fore")]
+    public float ForceMultiplier = 0.2f;
+    [Range(1f, 50f)] public float MaxForce = 5f;
+
+    [Header("Collisions")]
+    [SerializeField, Range(1f, 10f)] private float _playerCollisionRadiusMult = 4.15f;
+
+
+    [SerializeField] private float _spread;
 
     private Mesh _mesh;
     private MeshRenderer _meshRenderer;
@@ -27,6 +44,23 @@ public class Water : MonoBehaviour
 
 
     private EdgeCollider2D _coll;
+
+    private class WaterPoint
+    {
+        public float velocity, pos, targetHeight;
+    }
+
+    private List<WaterPoint> _waterPoints = new List<WaterPoint>();
+
+    private void Start()
+    {
+        _coll = GetComponent<EdgeCollider2D>();
+
+        GenerateMesh();
+
+        CreateWaterPoints();
+    }
+
 
     private void Reset()
     {
@@ -133,6 +167,78 @@ public class Water : MonoBehaviour
 
 
 
+    }
+
+    private void FixedUpdate()
+    {
+        //update spring pos
+        for(int i = 1; i < _waterPoints.Count -1 ; i++)
+        {
+            WaterPoint point = _waterPoints[i];
+
+            float x = point.pos - point.targetHeight;
+            float acceleration = -_SPRITECONSTANT * x - _damping * point.velocity;
+            point.pos += point.velocity * _speedMult * Time.fixedDeltaTime;
+            _vertices[_topVerticesIndex[i]].y = point.pos;
+
+            point.velocity += acceleration * _speedMult * Time.fixedDeltaTime;
+
+        }
+
+        //wave propogate
+        for (int j =0; j <_wavePropogrationIterations; j++)
+        {
+            for(int i=1; i < _waterPoints.Count -1; i++)
+            {
+                float leftDelta = _spread * (_waterPoints[i].pos - _waterPoints[i-1].pos) * _speedMult * Time.fixedDeltaTime;
+                _waterPoints[i-1].velocity += leftDelta;
+
+                float rightDelta = _spread * (_waterPoints[i].pos - _waterPoints[i+1].pos) * _speedMult * Time.fixedDeltaTime;
+                _waterPoints[i+1].velocity += leftDelta;
+            }
+        }
+
+
+        //update mesh
+        _mesh.vertices = _vertices;
+    }
+
+
+    public void Splash(Collider2D collision, float force)
+    {
+        float radius = collision.bounds.extents.x * _playerCollisionRadiusMult;
+        Vector2 center = collision.transform.position;
+        for (int i =0; i < _waterPoints.Count; i++)
+        {
+            Vector2 vertexWorldPos = transform.TransformPoint(_vertices[_topVerticesIndex[i]]);
+
+            if(IsPointInsideCircle(vertexWorldPos, center, radius))
+            {
+                _waterPoints[i].velocity = force;
+
+            }
+        }
+    }
+
+    private bool IsPointInsideCircle(Vector2 point, Vector2 center, float radius)
+    {
+        float distanceSquared = (point-center).sqrMagnitude;
+        return distanceSquared < radius * radius;
+    }
+
+
+    private void CreateWaterPoints()
+    {
+        _waterPoints.Clear();
+        for (int i= 0; i < _topVerticesIndex.Length; i++)
+        {
+            _waterPoints.Add(new WaterPoint
+            {
+                pos = _vertices[_topVerticesIndex[i]].y,
+                targetHeight = _vertices[_topVerticesIndex[i]].y,
+
+            });
+        }
     }
 
 
