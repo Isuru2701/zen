@@ -26,7 +26,7 @@ public class Water : MonoBehaviour
     [SerializeField, Range(1,10)] private int _wavePropogrationIterations = 8;
     [SerializeField, Range(0f, 20f)] private float _speedMult = 5.5f;
 
-    [Header("fore")]
+    [Header("Force")]
     public float ForceMultiplier = 0.2f;
     [Range(1f, 50f)] public float MaxForce = 5f;
 

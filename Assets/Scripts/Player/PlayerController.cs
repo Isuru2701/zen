@@ -36,13 +36,14 @@ public static class Abilities
 public class PlayerController : MonoBehaviour
 {
 
-    enum State
+    public enum PlayerState
     {
         Normal,
         Dodging,
         Jumping,
         Lily,
-        Knockback
+        Knockback,
+        Swimming
     }
 
     #region Fields
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float spriteDirection = -1;
 
-    private State state = State.Normal;
+    public PlayerState state = PlayerState.Normal;
 
     private Animator animator;
     private SpriteRenderer sprite;
@@ -111,6 +112,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float immunityCooldown;
     [SerializeField] private float regenerateCooldown;
 
+
+    [Header("Buoyancy")]
+    [SerializeField] private float underWaterDrag = 3;
+    [SerializeField] private float underWaterAngularDrag = 1;
+    [SerializeField] private float floatingPower = 15f;
+    [SerializeField] private float buoyancyDamping = 5f; // velocity-based damping to reduce bounce
+    [SerializeField] private float swimSpeedMultiplier = 0.6f; // horizontal movement multiplier while swimming
+
+    [SerializeField] private float waterHeight = 0f;
+    private float airDrag = 0;
+    private float airAngularDrag = 0.05f;
 
 
 
@@ -146,6 +158,10 @@ public class PlayerController : MonoBehaviour
         resetLily();
 
         health = maxhHealth;
+
+
+        airDrag = rb.linearDamping;
+        airAngularDrag = rb.angularDamping;
     }
 
 
@@ -189,12 +205,12 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             // NORMAL STATE
             // -----------------------
-            case State.Normal:
+            case PlayerState.Normal:
                 Vector2 v = rb.linearVelocity;
                 v.x = horizontal * moveSpeed;
                 rb.linearVelocity = v;
                 // Apply jump gravity logic every frame
-                //TODO: is this whats causing issues in LILY?
+                // TODO: is this whats causing issues in LILY?
                 ApplyJumpPhysics();
 
                 // Camera fall damping
@@ -207,7 +223,7 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             // DODGE STATE
             // -----------------------
-            case State.Dodging:
+            case PlayerState.Dodging:
 
                 spriteDirection = sprite.flipX ? 1 : -1;
                 rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
@@ -217,7 +233,7 @@ public class PlayerController : MonoBehaviour
                     UpdateTextDisplay(dodgeDisplay, "Dodges Remaining: " + (maxDodges - dodgeTimes));
                 }
 
-                state = State.Normal;
+                state = PlayerState.Normal;
                 break;
 
 
@@ -225,7 +241,7 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             // JUMP REQUEST STATE
             // -----------------------
-            case State.Jumping:
+            case PlayerState.Jumping:
 
 
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
@@ -235,10 +251,23 @@ public class PlayerController : MonoBehaviour
                 coyoteCounter = 0;
 
 
-                state = State.Normal;
+                state = PlayerState.Normal;
                 break;
 
-            case State.Knockback:
+            case PlayerState.Knockback:
+
+                break;
+
+            case PlayerState.Swimming:
+                // Apply buoyancy forces
+                HandleBuoyancy();
+
+                // Allow horizontal movement while swimming (preserve vertical velocity from buoyancy)
+                Vector2 swimVel = rb.linearVelocity;
+                swimVel.x = horizontal * moveSpeed * swimSpeedMultiplier;
+                rb.linearVelocity = swimVel;
+
+                animator.SetBool("isSwimming", horizontal != 0);
 
                 break;
 
@@ -321,8 +350,18 @@ public class PlayerController : MonoBehaviour
         {
             jumpHeld = true;
 
-            if (IsGrounded() || IsOnPlatform() || coyoteCounter > 0f)
-                state = State.Jumping;
+            // Allow jumping from ground/platform/coyote time or while swimming
+            if (IsGrounded() || IsOnPlatform() || coyoteCounter > 0f || state == PlayerState.Swimming)
+            {
+                // If jumping from swimming, restore air drag so jump behaves normally
+                if (state == PlayerState.Swimming)
+                {
+                    underwater = false;
+                    SwitchState(false);
+                }
+
+                state = PlayerState.Jumping;
+            }
         }
 
         // JUMP RELEASED
@@ -365,7 +404,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
 
-            state = State.Dodging;
+            state = PlayerState.Dodging;
             dodgeTimes += 1;
             animator.SetBool("isDodging", true);
 
@@ -456,7 +495,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DoLilyDash(Vector2 dir)
     {
-        state = State.Lily;
+        state = PlayerState.Lily;
 
         // Lock input for dash duration
         float t = 0f;
@@ -482,7 +521,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.linearVelocity = Vector2.zero;
-        state = State.Normal;
+        state = PlayerState.Normal;
 
         lilyRoutine = null;
     }
@@ -600,17 +639,78 @@ public class PlayerController : MonoBehaviour
     private void handleKnockback(bool f)
     {
 
-        if(f)
+        if (f)
         {
             Debug.Log("knockedback");
-            state = State.Knockback;
+            state = PlayerState.Knockback;
         }
         else
         {
-            state = State.Normal;
+            state = PlayerState.Normal;
         }
 
     }
+
+
+    bool underwater;
+
+    void HandleBuoyancy()
+    {
+        float diff = transform.position.y - waterHeight;
+
+        // If player is below the water surface (diff < 0)
+        if (diff < 0f)
+        {
+            // Depth (positive value)
+            float depth = -diff;
+
+            // Buoyant force proportional to depth (spring) minus damping proportional to vertical velocity
+            float buoyantForce = floatingPower * depth;
+            float dampingForce = buoyancyDamping * rb.linearVelocityY;
+
+            float netForce = buoyantForce - dampingForce;
+
+            rb.AddForce(Vector2.up * netForce, ForceMode2D.Force);
+
+            if (!underwater)
+            {
+                underwater = true;
+                SwitchState(true);
+                // Only switch to swimming if player is in a neutral state
+                if (state == PlayerState.Normal)
+                    state = PlayerState.Swimming;
+            }
+        }
+        else if (underwater)
+        {
+            // Left the water: restore state and clear small vertical velocity to avoid re-entry jitter
+            underwater = false;
+            SwitchState(false);
+
+            // Return to normal movement if we were swimming
+            if (state == PlayerState.Swimming)
+                state = PlayerState.Normal;
+
+            if (Mathf.Abs(rb.linearVelocityY) < 0.25f)
+                rb.linearVelocity = new Vector2(rb.linearVelocityX, 0f);
+        }
+    }
+
+    void SwitchState(bool isUnderwater)
+    {
+        if (isUnderwater)
+        {
+            rb.linearDamping = underWaterDrag;
+            rb.angularDamping = underWaterAngularDrag;
+        }
+        else
+        {
+            rb.linearDamping = 0;
+            rb.angularDamping = 0;
+        }
+    }
+
+
 
     #endregion
 
