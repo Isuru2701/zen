@@ -2339,8 +2339,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -12.1764765, y: 1.1416516}
-  - {x: 11.986885, y: -0.6317208}
+  - {x: -12.017722, y: 29.814657}
+  - {x: 12.333613, y: 29.188858}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -5655,6 +5655,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1439001715}
@@ -5663,12 +5667,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1072752539}
     - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: waterHeight
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: dodgeDisplay
       value: 
       objectReference: {fileID: 1078461856}
     - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: floatingPower
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: dodgeResetTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: underWaterDrag
+      value: 7.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760548973329821045, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
+      propertyPath: buoyancyDamping
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7009014397421966530, guid: 9878af75091b7ec4dace53877be146e4, type: 3}
       propertyPath: m_LocalPosition.x
