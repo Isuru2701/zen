@@ -1,6 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MusicTrack
+{
+    FloatingLeaf,
+    Forest,
+    LiveByTheSword,
+    Rooftops,
+    Wounded
+}
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
@@ -9,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public class Sound
     {
         public string name;
+        public MusicTrack musicTrack;
         public AudioClip clip;
         [Range(0f, 1f)] public float volume = 1f;
         public bool loop = false;
@@ -61,6 +71,18 @@ public class AudioManager : MonoBehaviour
     }
 
     // Music controls
+    public void PlayMusic(MusicTrack track, bool restart = false)
+    {
+        var s = music.Find(m => m != null && m.musicTrack == track);
+        if (s == null || s.clip == null) return;
+        if (musicSource.clip == s.clip && musicSource.isPlaying && !restart) return;
+
+        musicSource.clip = s.clip;
+        musicSource.loop = s.loop;
+        musicSource.volume = mute ? 0f : s.volume * musicVolume;
+        musicSource.Play();
+    }
+
     public void PlayMusic(string name, bool restart = false)
     {
         var s = Find(music, name);

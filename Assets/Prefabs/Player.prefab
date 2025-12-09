@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1234398956541450282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7073893, w: 0.7068242}
-  m_LocalPosition: {x: -0.01, y: -0.678, z: 0}
+  m_LocalPosition: {x: -0.01, y: -0.873, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,6 +47,9 @@ GameObject:
   - component: {fileID: 3241073229526553163}
   - component: {fileID: 2933448031286559947}
   - component: {fileID: 6760548973329821045}
+  - component: {fileID: 4369542572918011837}
+  - component: {fileID: 1029670016710168028}
+  - component: {fileID: 2070833956244921399}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -64,8 +67,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.09441, y: -1.455, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6629871091455199569}
   m_Father: {fileID: 0}
@@ -116,8 +119,8 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 62f04051508281b4e9820abb495d1510, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -4209461767521648114, guid: 5805724a1da99b64a8d644e9191c0af4, type: 3}
   m_Color: {r: 0.9372549, g: 0.9372549, b: 0.8862745, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,8 +192,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.009072781}
-  m_Size: {x: 0.44761705, y: 1.3163848}
+  m_Offset: {x: 0.051139712, y: -0.011981964}
+  m_Size: {x: 0.5498965, y: 1.8157501}
   m_Direction: 0
 --- !u!95 &8205298480685935201
 Animator:
@@ -256,14 +259,26 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CameraManager, UserScripts
+        m_MethodName: OnLookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6760548973329821045}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Attack
+      - m_Target: {fileID: 2933448031286559947}
+        m_TargetAssemblyTypeName: PlayerAttack, UserScripts
+        m_MethodName: DoAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -432,17 +447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c101d496804944eb52012d4640098b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UserScripts::PlayerAttack
-  animator: {fileID: 8205298480685935201}
-  hitbox: {fileID: 6989485385145055724, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
-  lightDamage: 10
-  heavyDamage: 25
-  specialDamage: 40
-  lightKnockback: {x: 2, y: 0}
-  heavyKnockback: {x: 4, y: 0}
-  specialKnockback: {x: 6, y: 1}
-  lightCooldown: 0.2
-  heavyCooldown: 0.5
-  specialCooldown: 1
+  attackPrefab: {fileID: 4679690267188328770, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
+  playerSprite: {fileID: 5692008092316725654}
+  spawnDistance: 1
+  attackCooldown: 0.2
+  finalAttackCooldown: 0.5
 --- !u!114 &6760548973329821045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,8 +474,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 6629871091455199569}
-  attackPrefab: {fileID: 4679690267188328770, guid: b1809d60c96325749a0ad5fac7a10435, type: 3}
-  spawnDistance: 2
   dodgeForce: 100
   platformLayer:
     serializedVersion: 2
@@ -479,13 +486,83 @@ MonoBehaviour:
   lilyDuration: 0.25
   maxhHealth: 100
   recoveryRate: 1
+  state: 0
   dodgeCooldown: 2
-  attackCooldown: 0.2
-  finalAttackCooldown: 0.5
+  dodgeResetTime: 2
   lilyCooldown: 2
   immunityCooldown: 1
   regenerateCooldown: 2
+  underWaterDrag: 7.06
+  underWaterAngularDrag: 1
+  floatingPower: 1.35
+  buoyancyDamping: 5
+  swimSpeedMultiplier: 0.6
+  waterHeight: 0.12
   lilyDisplay: {fileID: 0}
   dodgeDisplay: {fileID: 0}
   healthBar: {fileID: 0}
   indicatorRadius: 1.5
+--- !u!114 &4369542572918011837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fff8dd056935d4083648ed9aeb20a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::DamageReceiver
+  faction: 0
+--- !u!70 &1029670016710168028
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.048129916, y: 0.12639463}
+  m_Size: {x: 0.5438769, y: 1.5510285}
+  m_Direction: 0
+--- !u!114 &2070833956244921399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323280062238444879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1287c5d13ee824e80a544a471759f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::Knockback
+  knockbackTime: 0.2
+  constForce: 5
