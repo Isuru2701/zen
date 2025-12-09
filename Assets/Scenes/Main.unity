@@ -1148,32 +1148,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UserScripts::AudioManager
   music:
-  - name: FloatingLeaf
-    musicTrack: 0
+  - track: 0
     clip: {fileID: 8300000, guid: 60e7bffaad6722c4cada18e57f70b140, type: 3}
     volume: 1
     loop: 1
-  - name: Forest
-    musicTrack: 1
+  - track: 0
     clip: {fileID: 8300000, guid: 7a78b563adc175742af7ee3626a7fc34, type: 3}
     volume: 1
     loop: 1
-  - name: LiveByTheSword
-    musicTrack: 2
+  - track: 0
     clip: {fileID: 8300000, guid: 7064152a664e06a4e8c8af29d4d645ea, type: 3}
     volume: 1
     loop: 0
-  - name: Rooftops
-    musicTrack: 3
+  - track: 0
     clip: {fileID: 8300000, guid: 8ad496a075f4ca240a3d2b0a6395b967, type: 3}
     volume: 1
     loop: 1
-  - name: Wounded
-    musicTrack: 4
+  - track: 0
     clip: {fileID: 8300000, guid: 0ea5d7390fb4af4418519593ae4087d9, type: 3}
     volume: 1
     loop: 1
-  sfx: []
+  playerSFX:
+  - sfx: 1
+    clip: {fileID: 8300000, guid: e754479e4508f584a9d57e781b420179, type: 3}
+    volume: 1
+  - sfx: 2
+    clip: {fileID: 8300000, guid: 1171f6d9bd2f8e344bb972c5bb4fe692, type: 3}
+    volume: 1
+  - sfx: 3
+    clip: {fileID: 8300000, guid: 2cb116f3e6f2302458820e0177f4d101, type: 3}
+    volume: 1
+  - sfx: 6
+    clip: {fileID: 8300000, guid: b3661e2d36065904f8a674726fcae1c2, type: 3}
+    volume: 1
+  - sfx: 4
+    clip: {fileID: 8300000, guid: 2dc72984212b4c4438a34343efca0594, type: 3}
+    volume: 1
+  - sfx: 5
+    clip: {fileID: 8300000, guid: a3308a4da1119a14583c9d79de60597b, type: 3}
+    volume: 1
+  - sfx: 8
+    clip: {fileID: 8300000, guid: f46552cb01274e04f9f3cd647fafdd25, type: 3}
+    volume: 1
+  - sfx: 9
+    clip: {fileID: 8300000, guid: 0070113a89fa7be4ea4f942a53f2525a, type: 3}
+    volume: 1
+  - sfx: 10
+    clip: {fileID: 8300000, guid: d36e87317868c884ea3f2fe58db9d566, type: 3}
+    volume: 1
+  - sfx: 11
+    clip: {fileID: 8300000, guid: 58dd9a463489e6846be106fd1158b599, type: 3}
+    volume: 1
+  baseEnemySFX:
+  - sfx: 1
+    clip: {fileID: 8300000, guid: 088ee486f9e9ffe4f9fb30dd724563a8, type: 3}
+    volume: 1
+  - sfx: 2
+    clip: {fileID: 8300000, guid: 23566da5529df7c46a6fd56a8bc6e06d, type: 3}
+    volume: 1
+  - sfx: 3
+    clip: {fileID: 8300000, guid: 68a188ffe63e4f54187581e848bc360b, type: 3}
+    volume: 1
+  - sfx: 4
+    clip: {fileID: 8300000, guid: 0d66d883b4169fa4285b39a0935c7e80, type: 3}
+    volume: 1
+  bossSFX: []
+  environmentSFX: []
   musicVolume: 1
   sfxVolume: 1
   mute: 0

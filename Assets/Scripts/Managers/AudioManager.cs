@@ -10,23 +10,107 @@ public enum MusicTrack
     Wounded
 }
 
+public enum PlayerSFX
+{
+    None,
+    FootstepsGround,
+    FootstepsWood,
+    FootstepsStone,
+    ClarityEnter,
+    ClarityExit,
+    Jump,
+    Land,
+    Dodge,
+    Attack,
+    AttackCombo,
+    DamageTaken,
+    Death
+}
+
+public enum BaseEnemySFX
+{
+    None,
+    Footsteps,
+
+    Attack,
+    Damaged,
+    Death
+}
+
+public enum BossSFX
+{
+    None,
+    Attack,
+    Charge,
+    Damaged,
+    Death,
+    Roar
+}
+
+public enum EnvironmentSFX
+{
+    None,
+    DoorOpen,
+    DoorClose,
+    ItemPickup,
+    Checkpoint,
+    Water,
+    Ambient
+}
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
     [System.Serializable]
-    public class Sound
+    public class MusicSound
     {
-        public string name;
-        public MusicTrack musicTrack;
+        public MusicTrack track;
         public AudioClip clip;
         [Range(0f, 1f)] public float volume = 1f;
-        public bool loop = false;
+        public bool loop = true;
     }
 
-    [Header("Library")]
-    public List<Sound> music = new List<Sound>();
-    public List<Sound> sfx = new List<Sound>();
+    [System.Serializable]
+    public class PlayerSFXSound
+    {
+        public PlayerSFX sfx;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
+    [System.Serializable]
+    public class BaseEnemySFXSound
+    {
+        public BaseEnemySFX sfx;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
+    [System.Serializable]
+    public class BossSFXSound
+    {
+        public BossSFX sfx;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
+    [System.Serializable]
+    public class EnvironmentSFXSound
+    {
+        public EnvironmentSFX sfx;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
+    [Header("Music Library")]
+    public List<MusicSound> music = new List<MusicSound>();
+
+    [Header("SFX Library")]
+    public List<PlayerSFXSound> playerSFX = new List<PlayerSFXSound>();
+    public List<BaseEnemySFXSound> baseEnemySFX = new List<BaseEnemySFXSound>();
+    public List<BossSFXSound> bossSFX = new List<BossSFXSound>();
+    public List<EnvironmentSFXSound> environmentSFX = new List<EnvironmentSFXSound>();
 
     [Header("Settings")]
     [Range(0f, 1f)] public float musicVolume = 1f;
@@ -65,27 +149,10 @@ public class AudioManager : MonoBehaviour
         sfxSource.volume = mute ? 0f : sfxVolume;
     }
 
-    Sound Find(List<Sound> list, string name)
-    {
-        return list.Find(s => s != null && s.name == name);
-    }
-
     // Music controls
     public void PlayMusic(MusicTrack track, bool restart = false)
     {
-        var s = music.Find(m => m != null && m.musicTrack == track);
-        if (s == null || s.clip == null) return;
-        if (musicSource.clip == s.clip && musicSource.isPlaying && !restart) return;
-
-        musicSource.clip = s.clip;
-        musicSource.loop = s.loop;
-        musicSource.volume = mute ? 0f : s.volume * musicVolume;
-        musicSource.Play();
-    }
-
-    public void PlayMusic(string name, bool restart = false)
-    {
-        var s = Find(music, name);
+        var s = music.Find(m => m != null && m.track == track);
         if (s == null || s.clip == null) return;
         if (musicSource.clip == s.clip && musicSource.isPlaying && !restart) return;
 
@@ -102,9 +169,30 @@ public class AudioManager : MonoBehaviour
     }
 
     // SFX controls
-    public void PlaySFX(string name)
+    public void PlaySFX(PlayerSFX sfx)
     {
-        var s = Find(sfx, name);
+        var s = playerSFX.Find(x => x != null && x.sfx == sfx);
+        if (s == null || s.clip == null) return;
+        sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
+    }
+
+    public void PlaySFX(BaseEnemySFX sfx)
+    {
+        var s = baseEnemySFX.Find(x => x != null && x.sfx == sfx);
+        if (s == null || s.clip == null) return;
+        sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
+    }
+
+    public void PlaySFX(BossSFX sfx)
+    {
+        var s = bossSFX.Find(x => x != null && x.sfx == sfx);
+        if (s == null || s.clip == null) return;
+        sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
+    }
+
+    public void PlaySFX(EnvironmentSFX sfx)
+    {
+        var s = environmentSFX.Find(x => x != null && x.sfx == sfx);
         if (s == null || s.clip == null) return;
         sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
     }
