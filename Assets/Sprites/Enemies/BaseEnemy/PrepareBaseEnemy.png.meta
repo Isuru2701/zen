@@ -1,0 +1,784 @@
+fileFormatVersion: 2
+guid: 57bcd2c4678e3f844a2306adfd654215
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4982369259674295344
+    second: base_enemy_prepare_attack_0
+  - first:
+      213: 8548189230402652770
+    second: base_enemy_prepare_attack_1
+  - first:
+      213: -1100179026730804239
+    second: base_enemy_prepare_attack_2
+  - first:
+      213: -8036320395915845980
+    second: base_enemy_prepare_attack_3
+  - first:
+      213: -8567233129172037489
+    second: base_enemy_prepare_attack_4
+  - first:
+      213: 5539924527392207367
+    second: base_enemy_prepare_attack_5
+  - first:
+      213: 8490143922902100704
+    second: base_enemy_prepare_attack_6
+  - first:
+      213: -7725364787922568216
+    second: base_enemy_prepare_attack_7
+  - first:
+      213: 5992028357179517865
+    second: base_enemy_prepare_attack_8
+  - first:
+      213: 2241391956152658889
+    second: base_enemy_prepare_attack_9
+  - first:
+      213: 5075464303442814052
+    second: base_enemy_prepare_attack_10
+  - first:
+      213: -5765867092344813765
+    second: base_enemy_prepare_attack_11
+  - first:
+      213: -3987091240153797823
+    second: base_enemy_prepare_attack_12
+  - first:
+      213: -8368140253971587065
+    second: base_enemy_prepare_attack_13
+  - first:
+      213: 3019599484336097456
+    second: base_enemy_prepare_attack_14
+  - first:
+      213: -6235777176406077016
+    second: base_enemy_prepare_attack_15
+  - first:
+      213: 1032767558564075877
+    second: base_enemy_prepare_attack_16
+  - first:
+      213: 8090460324989630979
+    second: base_enemy_prepare_attack_17
+  - first:
+      213: 2119670468904048392
+    second: base_enemy_prepare_attack_18
+  - first:
+      213: 7924604445657994017
+    second: base_enemy_prepare_attack_19
+  - first:
+      213: 8664519455404891074
+    second: base_enemy_prepare_attack_20
+  - first:
+      213: -6601184602916543670
+    second: base_enemy_prepare_attack_21
+  - first:
+      213: 3855195077874098609
+    second: base_enemy_prepare_attack_22
+  - first:
+      213: 6750210970157667542
+    second: base_enemy_prepare_attack_23
+  - first:
+      213: -6329896937121719096
+    second: base_enemy_prepare_attack_24
+  - first:
+      213: 8211898745132572857
+    second: base_enemy_prepare_attack_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1940
+        width: 343
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d3a9495e811bdab0800000000000000
+      internalID: -4982369259674295344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_1
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 1939
+        width: 351
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a48f690d441a670800000000000000
+      internalID: 8548189230402652770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_2
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 1939
+        width: 354
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fb106211016bb0f0800000000000000
+      internalID: -1100179026730804239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_3
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 1938
+        width: 360
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ae953c9d21497090800000000000000
+      internalID: -8036320395915845980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_4
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 1938
+        width: 366
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f801eb33cd21b1980800000000000000
+      internalID: -8567233129172037489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1458
+        width: 373
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702bfa18104c1ec40800000000000000
+      internalID: 5539924527392207367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_7
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1457
+        width: 386
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb7097f7adf9c490800000000000000
+      internalID: -7725364787922568216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_8
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 1457
+        width: 389
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aba0c13b06f72350800000000000000
+      internalID: 5992028357179517865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_9
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 1457
+        width: 394
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cba5e4db160b1f10800000000000000
+      internalID: 2241391956152658889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_10
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1456
+        width: 406
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46462ec94ebaf6640800000000000000
+      internalID: 5075464303442814052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 976
+        width: 401
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b374caaad668bffa0800000000000000
+      internalID: -5765867092344813765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_12
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 976
+        width: 413
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14baf8f34a10ba8c0800000000000000
+      internalID: -3987091240153797823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_13
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 976
+        width: 421
+        height: 397
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700606b76c46edb80800000000000000
+      internalID: -8368140253971587065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_14
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 976
+        width: 421
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b84ec38bb5c7e920800000000000000
+      internalID: 3019599484336097456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_15
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 976
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a1d3d552b11679a0800000000000000
+      internalID: -6235777176406077016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 496
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56952c76f90255e00800000000000000
+      internalID: 1032767558564075877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_17
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 496
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30af56cecc6174070800000000000000
+      internalID: 8090460324989630979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_18
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 496
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80759eb9f059a6d10800000000000000
+      internalID: 2119670468904048392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_19
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 496
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1231de8c1c9d9fd60800000000000000
+      internalID: 7924604445657994017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_20
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 496
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cb9ed0c98e8e3870800000000000000
+      internalID: 8664519455404891074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_21
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 16
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a43a1660491e364a0800000000000000
+      internalID: -6601184602916543670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_22
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 16
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b125846f77608530800000000000000
+      internalID: 3855195077874098609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_23
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 16
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d4513bfc119dad50800000000000000
+      internalID: 6750210970157667542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_24
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 16
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ccd60ed540b728a0800000000000000
+      internalID: -6329896937121719096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_prepare_attack_25
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 16
+        width: 420
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b06a13766686f170800000000000000
+      internalID: 8211898745132572857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 49feae30c73389c41ac7854eb0eb0a35
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      base_enemy_prepare_attack_0: -4982369259674295344
+      base_enemy_prepare_attack_1: 8548189230402652770
+      base_enemy_prepare_attack_10: 5075464303442814052
+      base_enemy_prepare_attack_11: -5765867092344813765
+      base_enemy_prepare_attack_12: -3987091240153797823
+      base_enemy_prepare_attack_13: -8368140253971587065
+      base_enemy_prepare_attack_14: 3019599484336097456
+      base_enemy_prepare_attack_15: -6235777176406077016
+      base_enemy_prepare_attack_16: 1032767558564075877
+      base_enemy_prepare_attack_17: 8090460324989630979
+      base_enemy_prepare_attack_18: 2119670468904048392
+      base_enemy_prepare_attack_19: 7924604445657994017
+      base_enemy_prepare_attack_2: -1100179026730804239
+      base_enemy_prepare_attack_20: 8664519455404891074
+      base_enemy_prepare_attack_21: -6601184602916543670
+      base_enemy_prepare_attack_22: 3855195077874098609
+      base_enemy_prepare_attack_23: 6750210970157667542
+      base_enemy_prepare_attack_24: -6329896937121719096
+      base_enemy_prepare_attack_25: 8211898745132572857
+      base_enemy_prepare_attack_3: -8036320395915845980
+      base_enemy_prepare_attack_4: -8567233129172037489
+      base_enemy_prepare_attack_5: 5539924527392207367
+      base_enemy_prepare_attack_6: 8490143922902100704
+      base_enemy_prepare_attack_7: -7725364787922568216
+      base_enemy_prepare_attack_8: 5992028357179517865
+      base_enemy_prepare_attack_9: 2241391956152658889
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

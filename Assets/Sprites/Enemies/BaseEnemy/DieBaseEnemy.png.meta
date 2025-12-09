@@ -1,0 +1,1245 @@
+fileFormatVersion: 2
+guid: c3af627394aa8b14bb8393a824544bab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 569648825946569288
+    second: base_enemy_die_0
+  - first:
+      213: 5473988935203815690
+    second: base_enemy_die_1
+  - first:
+      213: -849535422022006579
+    second: base_enemy_die_2
+  - first:
+      213: 6432823314738712446
+    second: base_enemy_die_3
+  - first:
+      213: 4311947070144289903
+    second: base_enemy_die_4
+  - first:
+      213: 4439370939363892123
+    second: base_enemy_die_5
+  - first:
+      213: 6720222744616442864
+    second: base_enemy_die_6
+  - first:
+      213: 6521218107365671043
+    second: base_enemy_die_7
+  - first:
+      213: -4233059637359470643
+    second: base_enemy_die_8
+  - first:
+      213: -3985431838340020853
+    second: base_enemy_die_9
+  - first:
+      213: 1847228926857341858
+    second: base_enemy_die_10
+  - first:
+      213: 5035412359305809557
+    second: base_enemy_die_11
+  - first:
+      213: -7774070337755470175
+    second: base_enemy_die_12
+  - first:
+      213: 8993669039725805539
+    second: base_enemy_die_13
+  - first:
+      213: 4756521427375675362
+    second: base_enemy_die_14
+  - first:
+      213: -8456621056183577491
+    second: base_enemy_die_15
+  - first:
+      213: 6462325788930164942
+    second: base_enemy_die_16
+  - first:
+      213: -6348482268630143485
+    second: base_enemy_die_17
+  - first:
+      213: 1915105249917851911
+    second: base_enemy_die_18
+  - first:
+      213: -8397685194392705424
+    second: base_enemy_die_19
+  - first:
+      213: -6361975775650133525
+    second: base_enemy_die_20
+  - first:
+      213: -4667451162650335141
+    second: base_enemy_die_21
+  - first:
+      213: 9218089235695171247
+    second: base_enemy_die_22
+  - first:
+      213: 4396363071875314455
+    second: base_enemy_die_23
+  - first:
+      213: 3737416144345146338
+    second: base_enemy_die_24
+  - first:
+      213: 3222365037207757565
+    second: base_enemy_die_25
+  - first:
+      213: -3620086751249981924
+    second: base_enemy_die_26
+  - first:
+      213: 7930728866018554164
+    second: base_enemy_die_27
+  - first:
+      213: -8325491624472122558
+    second: base_enemy_die_28
+  - first:
+      213: -3741701251965267464
+    second: base_enemy_die_29
+  - first:
+      213: 3369235298916804974
+    second: base_enemy_die_30
+  - first:
+      213: 2351026021043150517
+    second: base_enemy_die_31
+  - first:
+      213: 3455892719014567872
+    second: base_enemy_die_32
+  - first:
+      213: 4893028008135852793
+    second: base_enemy_die_33
+  - first:
+      213: 4066150585903357492
+    second: base_enemy_die_34
+  - first:
+      213: -6394235310391429517
+    second: base_enemy_die_35
+  - first:
+      213: 2282167858155623689
+    second: base_enemy_die_36
+  - first:
+      213: -2916233126413048621
+    second: base_enemy_die_37
+  - first:
+      213: -7621591554954452743
+    second: base_enemy_die_38
+  - first:
+      213: 4242421843523113139
+    second: base_enemy_die_39
+  - first:
+      213: 4164423464958525022
+    second: base_enemy_die_40
+  - first:
+      213: -591264038547360463
+    second: base_enemy_die_41
+  - first:
+      213: 7592809376134030827
+    second: base_enemy_die_42
+  - first:
+      213: 8758897637378957114
+    second: base_enemy_die_43
+  - first:
+      213: 248133013173208000
+    second: base_enemy_die_44
+  - first:
+      213: -3057125933255078046
+    second: base_enemy_die_45
+  - first:
+      213: 3062176383261006804
+    second: base_enemy_die_46
+  - first:
+      213: 7930624296640869952
+    second: base_enemy_die_47
+  - first:
+      213: 4680501534114357955
+    second: base_enemy_die_48
+  - first:
+      213: 3246929116483070404
+    second: base_enemy_die_49
+  - first:
+      213: -2890924268620848025
+    second: base_enemy_die_50
+  - first:
+      213: 1788543322099194558
+    second: base_enemy_die_51
+  - first:
+      213: 2355656033574546510
+    second: base_enemy_die_52
+  - first:
+      213: -6589877847082834822
+    second: base_enemy_die_53
+  - first:
+      213: -3424703605600879646
+    second: base_enemy_die_54
+  - first:
+      213: 6860585129265770105
+    second: base_enemy_die_55
+  - first:
+      213: -273416135193614207
+    second: base_enemy_die_56
+  - first:
+      213: -9127472260322402033
+    second: base_enemy_die_57
+  - first:
+      213: 2906727097478216787
+    second: base_enemy_die_58
+  - first:
+      213: 3703172491284102115
+    second: base_enemy_die_59
+  - first:
+      213: 5795657749065124453
+    second: base_enemy_die_60
+  - first:
+      213: 7723676901055061128
+    second: base_enemy_die_61
+  - first:
+      213: -1079356225207182907
+    second: base_enemy_die_62
+  - first:
+      213: 457815252475318898
+    second: base_enemy_die_63
+  - first:
+      213: 1175000959199916174
+    second: base_enemy_die_64
+  - first:
+      213: 2223095629599701324
+    second: base_enemy_die_65
+  - first:
+      213: 9132905907028097226
+    second: base_enemy_die_66
+  - first:
+      213: 5882147568951594374
+    second: base_enemy_die_67
+  - first:
+      213: -4557194130438836423
+    second: base_enemy_die_68
+  - first:
+      213: 7146763483805555897
+    second: base_enemy_die_69
+  - first:
+      213: -8962951529287438165
+    second: base_enemy_die_70
+  - first:
+      213: 8525657832249766901
+    second: base_enemy_die_71
+  - first:
+      213: -8599827550110775633
+    second: base_enemy_die_72
+  - first:
+      213: -2471507360895627002
+    second: base_enemy_die_73
+  - first:
+      213: 4694086683159909115
+    second: base_enemy_die_74
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: base_enemy_die_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 2410
+        width: 318
+        height: 434
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a734dc69cc7e700800000000000000
+      internalID: 569648825946569288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_1
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 2403
+        width: 316
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a010e332fe387fb40800000000000000
+      internalID: 5473988935203815690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_2
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 2399
+        width: 314
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc84442e808d534f0800000000000000
+      internalID: -849535422022006579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_4
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 2399
+        width: 323
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c9c3eb30d17db30800000000000000
+      internalID: 4311947070144289903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_5
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 2399
+        width: 327
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b1afa3950db9d30800000000000000
+      internalID: 4439370939363892123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_7
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 2399
+        width: 347
+        height: 417
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38040685155008a50800000000000000
+      internalID: 6521218107365671043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_8
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1919
+        width: 344
+        height: 412
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc7152200b62145c0800000000000000
+      internalID: -4233059637359470643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 1919
+        width: 356
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab68240ceca2a910800000000000000
+      internalID: 1847228926857341858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_11
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1919
+        width: 365
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ec80eacd061e540800000000000000
+      internalID: 5035412359305809557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_12
+      rect:
+        serializedVersion: 2
+        x: 1466
+        y: 1919
+        width: 379
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a62f237734fc1490800000000000000
+      internalID: -7774070337755470175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_13
+      rect:
+        serializedVersion: 2
+        x: 1938
+        y: 1919
+        width: 409
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eff844575eefcc70800000000000000
+      internalID: 8993669039725805539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_14
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 1919
+        width: 433
+        height: 392
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e7d24d790f820240800000000000000
+      internalID: 4756521427375675362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_15
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 1919
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64d61a54fb04aa80800000000000000
+      internalID: -8456621056183577491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_16
+      rect:
+        serializedVersion: 2
+        x: 2853
+        y: 1922
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec84700f01bcea950800000000000000
+      internalID: 6462325788930164942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_18
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1439
+        width: 449
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 709d6d00412d39a10800000000000000
+      internalID: 1915105249917851911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_20
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1442
+        width: 446
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be9cbbe3db8b5b7a0800000000000000
+      internalID: -6361975775650133525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_22
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1439
+        width: 452
+        height: 387
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa67671025b3def70800000000000000
+      internalID: 9218089235695171247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_23
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 1439
+        width: 437
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 713f5c2cbe4030d30800000000000000
+      internalID: 4396363071875314455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_24
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1439
+        width: 433
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3a08d7e28fdd330800000000000000
+      internalID: 3737416144345146338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_25
+      rect:
+        serializedVersion: 2
+        x: 2413
+        y: 1439
+        width: 429
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df22863bde328bc20800000000000000
+      internalID: 3222365037207757565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_32
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 959
+        width: 426
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cfd8ba2e1cc5ff20800000000000000
+      internalID: 3455892719014567872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_33
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 959
+        width: 426
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f289fc8c0787e340800000000000000
+      internalID: 4893028008135852793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_34
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 959
+        width: 429
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e140c1a6edd6830800000000000000
+      internalID: 4066150585903357492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_35
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 959
+        width: 432
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 376fbd10ddc1347a0800000000000000
+      internalID: -6394235310391429517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_36
+      rect:
+        serializedVersion: 2
+        x: 1931
+        y: 959
+        width: 437
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9051e275393ebaf10800000000000000
+      internalID: 2282167858155623689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_38
+      rect:
+        serializedVersion: 2
+        x: 2547
+        y: 959
+        width: 305
+        height: 372
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0a2d79cdaaa3690800000000000000
+      internalID: -7621591554954452743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_46
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 479
+        width: 447
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dbdcdb42390f7a20800000000000000
+      internalID: 3062176383261006804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_48
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 479
+        width: 449
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2ae8fc85b74f040800000000000000
+      internalID: 4680501534114357955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_50
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 479
+        width: 449
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7646c48c1bf51e7d0800000000000000
+      internalID: -2890924268620848025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_52
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 479
+        width: 445
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c67368ea8f0b020800000000000000
+      internalID: 2355656033574546510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_54
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 479
+        width: 461
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebf82f27320970d0800000000000000
+      internalID: -3424703605600879646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_56
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 479
+        width: 450
+        height: 308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 188ace14971a43cf0800000000000000
+      internalID: -273416135193614207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_64
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 449
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80badf95217e4010800000000000000
+      internalID: 1175000959199916174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_67
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 0
+        width: 449
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d89cb8c0691a150800000000000000
+      internalID: 5882147568951594374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_69
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 0
+        width: 447
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc96f9f5876e2360800000000000000
+      internalID: 7146763483805555897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_71
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 0
+        width: 458
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f336c7a0a8315670800000000000000
+      internalID: 8525657832249766901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: base_enemy_die_73
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 0
+        width: 458
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6019d0e562173bdd0800000000000000
+      internalID: -2471507360895627002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e2e159a777b819419e94f53402ea0e5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DieBaseEnemy_0: 1218524556
+      base_enemy_die_0: 569648825946569288
+      base_enemy_die_1: 5473988935203815690
+      base_enemy_die_10: 1847228926857341858
+      base_enemy_die_11: 5035412359305809557
+      base_enemy_die_12: -7774070337755470175
+      base_enemy_die_13: 8993669039725805539
+      base_enemy_die_14: 4756521427375675362
+      base_enemy_die_15: -8456621056183577491
+      base_enemy_die_16: 6462325788930164942
+      base_enemy_die_17: -6348482268630143485
+      base_enemy_die_18: 1915105249917851911
+      base_enemy_die_19: -8397685194392705424
+      base_enemy_die_2: -849535422022006579
+      base_enemy_die_20: -6361975775650133525
+      base_enemy_die_21: -4667451162650335141
+      base_enemy_die_22: 9218089235695171247
+      base_enemy_die_23: 4396363071875314455
+      base_enemy_die_24: 3737416144345146338
+      base_enemy_die_25: 3222365037207757565
+      base_enemy_die_26: -3620086751249981924
+      base_enemy_die_27: 7930728866018554164
+      base_enemy_die_28: -8325491624472122558
+      base_enemy_die_29: -3741701251965267464
+      base_enemy_die_3: 6432823314738712446
+      base_enemy_die_30: 3369235298916804974
+      base_enemy_die_31: 2351026021043150517
+      base_enemy_die_32: 3455892719014567872
+      base_enemy_die_33: 4893028008135852793
+      base_enemy_die_34: 4066150585903357492
+      base_enemy_die_35: -6394235310391429517
+      base_enemy_die_36: 2282167858155623689
+      base_enemy_die_37: -2916233126413048621
+      base_enemy_die_38: -7621591554954452743
+      base_enemy_die_39: 4242421843523113139
+      base_enemy_die_4: 4311947070144289903
+      base_enemy_die_40: 4164423464958525022
+      base_enemy_die_41: -591264038547360463
+      base_enemy_die_42: 7592809376134030827
+      base_enemy_die_43: 8758897637378957114
+      base_enemy_die_44: 248133013173208000
+      base_enemy_die_45: -3057125933255078046
+      base_enemy_die_46: 3062176383261006804
+      base_enemy_die_47: 7930624296640869952
+      base_enemy_die_48: 4680501534114357955
+      base_enemy_die_49: 3246929116483070404
+      base_enemy_die_5: 4439370939363892123
+      base_enemy_die_50: -2890924268620848025
+      base_enemy_die_51: 1788543322099194558
+      base_enemy_die_52: 2355656033574546510
+      base_enemy_die_53: -6589877847082834822
+      base_enemy_die_54: -3424703605600879646
+      base_enemy_die_55: 6860585129265770105
+      base_enemy_die_56: -273416135193614207
+      base_enemy_die_57: -9127472260322402033
+      base_enemy_die_58: 2906727097478216787
+      base_enemy_die_59: 3703172491284102115
+      base_enemy_die_6: 6720222744616442864
+      base_enemy_die_60: 5795657749065124453
+      base_enemy_die_61: 7723676901055061128
+      base_enemy_die_62: -1079356225207182907
+      base_enemy_die_63: 457815252475318898
+      base_enemy_die_64: 1175000959199916174
+      base_enemy_die_65: 2223095629599701324
+      base_enemy_die_66: 9132905907028097226
+      base_enemy_die_67: 5882147568951594374
+      base_enemy_die_68: -4557194130438836423
+      base_enemy_die_69: 7146763483805555897
+      base_enemy_die_7: 6521218107365671043
+      base_enemy_die_70: -8962951529287438165
+      base_enemy_die_71: 8525657832249766901
+      base_enemy_die_72: -8599827550110775633
+      base_enemy_die_73: -2471507360895627002
+      base_enemy_die_74: 4694086683159909115
+      base_enemy_die_8: -4233059637359470643
+      base_enemy_die_9: -3985431838340020853
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
