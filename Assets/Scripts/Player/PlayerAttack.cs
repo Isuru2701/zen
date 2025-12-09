@@ -40,12 +40,14 @@ public class PlayerAttack : MonoBehaviour
             }
             if (counter < 3)
             {
+                AudioManager.Instance.PlaySFX(PlayerSFX.Attack);
                 DoLightAttack();
                 // CooldownManager.Start("attack", attackCooldown);
                 counter++;
             }
             else
             {
+                AudioManager.Instance.PlaySFX(PlayerSFX.AttackCombo);
                 DoLightAttack();
                 counter = 0;
                 CooldownManager.Start("finalAttack", finalAttackCooldown);

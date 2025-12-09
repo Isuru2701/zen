@@ -14,8 +14,8 @@ public class PhaseThrough : MonoBehaviour
 
     void TurnOffCollider(GameManager.GameMode mode)
     {
-        Debug.Log("orchid: " + Abilities.Orchid);
-        if(mode == GameManager.GameMode.Clarity && Abilities.Orchid)
+        Debug.Log("orchid: " + Items.Orchid);
+        if(mode == GameManager.GameMode.Clarity && Items.Orchid)
             colliderHandle.enabled = false;
         else
             colliderHandle.enabled = true;

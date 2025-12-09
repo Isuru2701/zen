@@ -12,11 +12,15 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Record for Tracking Abilities Obtained
 /// </summary>
-public static class Abilities
+public static class Items
 
 {
     public static bool Lily { get; set; }
     public static bool Orchid { get; set; }
+
+    public static bool Talisman { get; set; }
+    public static bool Key { get; set; }
+
 
     /// <summary>
     /// Set all ability flags to false
@@ -26,6 +30,10 @@ public static class Abilities
         //TODO: change afterwards
         Lily = true;
         Orchid = true;
+
+        Talisman = true;
+        Key = true;
+
     }
 
 }
@@ -130,6 +138,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TMP_Text lilyDisplay;
     [SerializeField] private TMP_Text dodgeDisplay;
     [SerializeField] private UIValueBar healthBar;
+    
+    [Header("Audio")]
+    [SerializeField] private float footstepInterval = 0.4f;
+    private float _footstepTimer = 0f;
+    private bool _wasGrounded = false;
+    private PlayerSFX _currentFootstepSurface = PlayerSFX.FootstepsGround;
+    private PlayerSFX _lastPlayedFootstepSurface = PlayerSFX.None;
 
 
     private DamageReceiver damageReceiver;
@@ -162,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         airDrag = rb.linearDamping;
         airAngularDrag = rb.angularDamping;
+        _wasGrounded = IsGrounded();
     }
 
 
@@ -272,6 +288,42 @@ public class PlayerController : MonoBehaviour
                 break;
 
         }
+
+        // Landing detection & footsteps
+        bool grounded = IsGrounded();
+
+        // Landing
+        if (!_wasGrounded && grounded)
+        {
+            AudioManager.Instance.PlaySFX(PlayerSFX.Land);
+        }
+
+        // Update current surface when grounded
+        if (grounded)
+        {
+            Collider2D col = Physics2D.OverlapPoint(groundCheck.position, layerMask);
+            _currentFootstepSurface = DetermineSurfaceFromCollider(col);
+        }
+
+        // Footsteps while walking on ground (use surface-specific SFX)
+        if (animator != null && animator.GetBool("isWalking") && grounded && !underwater)
+        {
+            _footstepTimer += Time.fixedDeltaTime;
+            if (_footstepTimer >= footstepInterval)
+            {
+                // Play the surface-specific footstep if available
+                var toPlay = _currentFootstepSurface != PlayerSFX.None ? _currentFootstepSurface : PlayerSFX.FootstepsGround;
+                AudioManager.Instance.PlaySFX(toPlay);
+                _lastPlayedFootstepSurface = toPlay;
+                _footstepTimer = 0f;
+            }
+        }
+        else
+        {
+            _footstepTimer = footstepInterval;
+        }
+
+        _wasGrounded = grounded;
     }
 
     #endregion
@@ -339,6 +391,8 @@ public class PlayerController : MonoBehaviour
         sprite.flipX = lastHorizontal < 0;
 
         animator.SetBool("isWalking", horizontal != 0);
+        
+        
     }
 
 
@@ -360,6 +414,7 @@ public class PlayerController : MonoBehaviour
                     SwitchState(false);
                 }
 
+                AudioManager.Instance.PlaySFX(PlayerSFX.Jump);
                 state = PlayerState.Jumping;
             }
         }
@@ -403,7 +458,7 @@ public class PlayerController : MonoBehaviour
 
         if (context.performed)
         {
-
+            AudioManager.Instance.PlaySFX(PlayerSFX.Dodge);
             state = PlayerState.Dodging;
             dodgeTimes += 1;
             animator.SetBool("isDodging", true);
@@ -473,7 +528,7 @@ public class PlayerController : MonoBehaviour
     public void WaterLily(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (!Abilities.Lily) return;
+        if (!Items.Lily) return;
         if (!CooldownManager.Ready("lily")) return;
         if (GameManager.CurrentGameMode != GameManager.GameMode.Clarity) return;
 
@@ -495,6 +550,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DoLilyDash(Vector2 dir)
     {
+        AudioManager.Instance.PlaySFX(PlayerSFX.Jump);
         state = PlayerState.Lily;
 
         // Lock input for dash duration
@@ -549,6 +605,20 @@ public class PlayerController : MonoBehaviour
         return v;
     }
 
+    private PlayerSFX DetermineSurfaceFromCollider(Collider2D col)
+    {
+        if (col == null) return PlayerSFX.FootstepsGround;
+
+
+        if (col.CompareTag("Wood"))
+            return PlayerSFX.FootstepsWood;
+        if (col.CompareTag("Stone"))
+            return PlayerSFX.FootstepsStone;
+
+        // Default fallback
+        return PlayerSFX.FootstepsGround;
+    }
+
 
 
     private void OnDrawGizmosSelected()
@@ -572,10 +642,14 @@ public class PlayerController : MonoBehaviour
     {
         // Remove previous indicator if any
         if (indicatorInstance != null)
+        {
+            if (mode != GameManager.GameMode.Clarity)
+                AudioManager.Instance.PlaySFX(PlayerSFX.ClarityExit);
             Destroy(indicatorInstance);
+        }
 
         // Only show in Clarity mode + Lily unlocked
-        if (mode != GameManager.GameMode.Clarity || !Abilities.Lily)
+        if (mode != GameManager.GameMode.Clarity || !Items.Lily)
             return;
 
         // Instantiate child object to follow player
@@ -593,6 +667,7 @@ public class PlayerController : MonoBehaviour
 
         // Start updating it
         StartCoroutine(UpdateIndicator());
+        AudioManager.Instance.PlaySFX(PlayerSFX.ClarityEnter);
     }
 
     private IEnumerator UpdateIndicator()
@@ -676,6 +751,7 @@ public class PlayerController : MonoBehaviour
             {
                 underwater = true;
                 SwitchState(true);
+                AudioManager.Instance.PlaySFX(EnvironmentSFX.Water);
                 // Only switch to swimming if player is in a neutral state
                 if (state == PlayerState.Normal)
                     state = PlayerState.Swimming;
@@ -737,6 +813,7 @@ public class PlayerController : MonoBehaviour
         // Respect temporary immunity
         if (!CooldownManager.Ready("immunity")) return;
 
+        AudioManager.Instance.PlaySFX(PlayerSFX.DamageTaken);
         // Apply damage
         TakeDamage(info.damage);
         Debug.Log("Force on player: " + info.hitDirection + " " + info.constantForceDirection);
@@ -753,7 +830,30 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage(float amount)
     {
         if (!IsDead())
+        {
             health -= amount;
+            if (health <= 0f)
+            {
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
+        // Play death SFX and set animator state if available
+        AudioManager.Instance.PlaySFX(PlayerSFX.Death);
+        if (animator != null)
+        {
+            // Try common death triggers/bools; harmless if not present
+            animator.SetTrigger("Die");
+            animator.SetBool("isDead", true);
+        }
+
+        // Optionally disable controller to stop player input/physics
+        this.enabled = false;
+        if (rb != null)
+            rb.simulated = false;
     }
 
     private bool IsDead()

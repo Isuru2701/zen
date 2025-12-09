@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float recoveryRate;
     private float clarityAmount;
 
-
-
     public enum GameMode
     {
         Normal,
@@ -39,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         GameEvents.OnGameModeChanged += StopSlowMotion;
 
-        Abilities.Initialize();
+        Items.Initialize();
 
     }
 
