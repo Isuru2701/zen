@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &143461976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 170297249}
         m_TargetAssemblyTypeName: SceneChanger, UserScripts
-        m_MethodName: LoadNextScene
+        m_MethodName: LoadDefaultSceneFromList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -515,9 +515,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Warring states era, Lord Higanbana orders the torching of the Hana Village,
-    a warrior clan that opposed his rule. Your home. \nYour friend is captured and
-    taken prisoner. It is up to you to infiltrate the castle and rescue her."
+  m_text: 'Programming, Art, Level Design
+
+    Ruru
+
+
+    Composer
+
+    Benelios
+
+
+    Sound
+    Design
+
+    Samantha Van Der Sluis'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e2346c942442f64e9db38740fdf4cf0, type: 2}
   m_sharedMaterial: {fileID: 4493266338702859612, guid: 6e2346c942442f64e9db38740fdf4cf0, type: 2}
@@ -610,13 +621,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: UserScripts::TypewriterTMP
   tmp: {fileID: 0}
   charactersPerSecond: 30
+  skipKey: 32
   playOnStart: 1
   onFinished:
     m_PersistentCalls:
       m_Calls: []
   nextButton: {fileID: 143461975}
-  skipAction: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  runtimeBinding: 
 --- !u!1 &1198773072
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Proceed
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e2346c942442f64e9db38740fdf4cf0, type: 2}
   m_sharedMaterial: {fileID: 4493266338702859612, guid: 6e2346c942442f64e9db38740fdf4cf0, type: 2}
