@@ -28,11 +28,11 @@ public static class Items
     public static void Initialize()
     {
         //TODO: change afterwards
-        Lily = true;
-        Orchid = true;
+        Lily = false;
+        Orchid = false;
 
-        Talisman = true;
-        Key = true;
+        Talisman = false;
+        Key = false;
 
     }
 
