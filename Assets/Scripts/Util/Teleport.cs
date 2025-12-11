@@ -1,4 +1,3 @@
-using PlasticPipe.PlasticProtocol.Messages;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +13,8 @@ public class Teleport : MonoBehaviour
     public InputActionReference teleportAction;
 
     private GameObject player;
+
+    public bool automatic = false;
 
 
     void OnEnable()
@@ -32,9 +33,8 @@ public class Teleport : MonoBehaviour
     public void TeleportToTarget(InputAction.CallbackContext context)
     {
         if (!teleportPossible) return;
-        if (context.performed == false) return;
 
-        if (targetTransform != null && player!=null)
+        if (targetTransform != null && player != null)
         {
             player.transform.position = targetTransform.position;
             if (matchRotation)
@@ -45,6 +45,11 @@ public class Teleport : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("fired");
+
+        if (automatic)
+        {
+            TeleportToTarget(new InputAction.CallbackContext());
+        }
 
         if (collision.CompareTag("Player"))
         {
