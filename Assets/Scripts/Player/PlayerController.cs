@@ -27,7 +27,6 @@ public static class Items
     /// </summary>
     public static void Initialize()
     {
-        //TODO: change afterwards
         Lily = false;
         Orchid = false;
 
@@ -241,8 +240,14 @@ public class PlayerController : MonoBehaviour
             // -----------------------
             case PlayerState.Dodging:
 
-                spriteDirection = sprite.flipX ? 1 : -1;
-                rb.AddForce(new Vector2(rb.linearVelocityX + dodgeForce * spriteDirection, rb.linearVelocityY), ForceMode2D.Impulse);
+                // Determine facing direction from sprite flip: flipX == true => facing left (-1)
+                float facingDir = sprite.flipX ? -1f : 1f;
+
+                // If player is moving (horizontal != 0) dodge in movement direction.
+                // Otherwise dodge backwards relative to facing direction.
+                float moveDir = Mathf.Abs(horizontal) > 0.01f ? Mathf.Sign(horizontal) : -facingDir;
+
+                rb.AddForce(new Vector2(dodgeForce * moveDir, 0f), ForceMode2D.Impulse);
 
                 if (CooldownManager.Ready("dodge"))
                 {

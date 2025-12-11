@@ -466,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rb: {fileID: 1767707297615455996}
   moveSpeed: 10
-  jumpForce: 23
+  jumpForce: 25
   fallMultiplier: 1.5
   lowJumpMultiplier: 15
   coyoteTime: 2
@@ -501,6 +501,7 @@ MonoBehaviour:
   lilyDisplay: {fileID: 0}
   dodgeDisplay: {fileID: 0}
   healthBar: {fileID: 0}
+  footstepInterval: 0.4
   indicatorRadius: 1.5
 --- !u!114 &4369542572918011837
 MonoBehaviour:
