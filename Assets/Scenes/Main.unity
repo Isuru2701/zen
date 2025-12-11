@@ -1054,6 +1054,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 1312412828}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 66.31146
@@ -1481,6 +1485,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 649346096}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 59.928116
@@ -2996,6 +3004,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 738628114}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 80.05705
@@ -5361,6 +5373,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 994642396}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 62.310043
@@ -5566,6 +5582,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 125572659}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 50.10141
@@ -27563,16 +27583,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321619984}
     - target: {fileID: 7097892505451184226, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
+      propertyPath: m_Size.y
+      value: 14.63678
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097892505451184226, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.4132843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097892505451184226, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8769887302966629129, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.92
+      value: -50.61
       objectReference: {fileID: 0}
     - target: {fileID: 8769887302966629129, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -101.34
+      value: -99.29
       objectReference: {fileID: 0}
     - target: {fileID: 8769887302966629129, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27627,6 +27655,10 @@ PrefabInstance:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 977753353}
+    - target: {fileID: 3995157170713058140, guid: 183199096122867458feed57c86353ce, type: 3}
+      propertyPath: roomMusic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5478816510045616812, guid: 183199096122867458feed57c86353ce, type: 3}
       propertyPath: m_Size.x
       value: 41.949562

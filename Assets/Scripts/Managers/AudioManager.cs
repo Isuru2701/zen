@@ -121,12 +121,15 @@ public class AudioManager : MonoBehaviour
     AudioSource musicSource;
     AudioSource sfxSource;
 
+    private MusicTrack nowPlayingMusic = MusicTrack.None;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("AudioManager: initialized and persistent");
         }
         else
         {
@@ -153,6 +156,9 @@ public class AudioManager : MonoBehaviour
     // Music controls
     public void PlayMusic(MusicTrack track, bool restart = false)
     {
+
+        
+
         var s = music.Find(m => m != null && m.track == track);
         if (s == null || s.clip == null) return;
         if (musicSource.clip == s.clip && musicSource.isPlaying && !restart) return;
