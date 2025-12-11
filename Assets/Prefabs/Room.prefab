@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6070624492474165001
+--- !u!1 &1848133202645026786
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5361996597247002297}
-  - component: {fileID: 6307729828451627266}
-  - component: {fileID: 3194801486479921322}
+  - component: {fileID: 8406732287428276760}
+  - component: {fileID: 3995157170713058140}
+  - component: {fileID: 5478816510045616812}
   m_Layer: 0
-  m_Name: TeleportPoint
+  m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5361996597247002297
+--- !u!4 &8406732287428276760
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070624492474165001}
+  m_GameObject: {fileID: 1848133202645026786}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.3, y: -21.099998, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -76.1, y: -95.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6307729828451627266
+--- !u!114 &3995157170713058140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848133202645026786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cf904daf4e4204c928254a7bc75f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::RoomHandler
+  roomCam: {fileID: 0}
+  roomMusic: 5
+--- !u!61 &5478816510045616812
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070624492474165001}
+  m_GameObject: {fileID: 1848133202645026786}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -67,7 +81,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.2566586, y: -1.2161999}
+  m_Offset: {x: 1.2926598, y: -0.03916931}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,21 +91,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.053646, y: 3.9188805}
+  m_Size: {x: 20.664131, y: 11.419647}
   m_EdgeRadius: 0
---- !u!114 &3194801486479921322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070624492474165001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3baafaac375a4cf4ab4d08b8976feb6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::Teleport
-  targetTransform: {fileID: 0}
-  matchRotation: 0
-  teleportAction: {fileID: -240828326839343214, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  automatic: 1

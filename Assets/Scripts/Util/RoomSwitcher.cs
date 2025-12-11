@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Teleport : MonoBehaviour
+public class RoomSwitcher : MonoBehaviour
 {
     [Tooltip("If set, teleport will move this object to the target transform's position.")]
     public Transform targetTransform;
@@ -32,19 +32,26 @@ public class Teleport : MonoBehaviour
     /// </summary>
     public void TeleportToTarget(InputAction.CallbackContext context)
     {
+        TeleportToTarget();
+    }
+
+    
+    public void TeleportToTarget()
+    {
         if (!teleportPossible) return;
 
         if (targetTransform != null && player != null)
         {
+            
             player.transform.position = targetTransform.position;
             if (matchRotation)
                 player.transform.rotation = targetTransform.rotation;
+
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("fired");
 
         if (automatic)
         {
@@ -60,7 +67,6 @@ public class Teleport : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("fired");
         teleportPossible = false;
         player = null;
     }

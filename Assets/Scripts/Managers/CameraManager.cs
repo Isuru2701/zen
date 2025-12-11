@@ -9,9 +9,6 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    [Header("Cameras")]
-    [SerializeField] private CinemachineCamera[] _allVirtualCameras;
-
     [Header("LERP")]
     [SerializeField] private float _fallPanAmount = 0f;
     [SerializeField] private float _fallPanTime = 0.25f;
@@ -19,7 +16,7 @@ public class CameraManager : MonoBehaviour
 
     private Coroutine _lerpYPanCorountine;
 
-    private CinemachineCamera _currentCamera;
+   [SerializeField]private CinemachineCamera CurrentCamera;
     private CinemachinePositionComposer _transposer;
 
     public bool IsLerpingYDamping { get; private set; }
@@ -33,16 +30,16 @@ public class CameraManager : MonoBehaviour
     private Vector2 mouseLookOffset;
 
     private void LateUpdate()
-{
-    if (_transposer == null) return;
+    {
+        if (_transposer == null) return;
 
-    // Apply mouse offset
-    _transposer.TargetOffset = new Vector3(
-        mouseLookOffset.x,
-        mouseLookOffset.y,
-        0
-    );
-}
+        // Apply mouse offset
+        _transposer.TargetOffset = new Vector3(
+            mouseLookOffset.x,
+            mouseLookOffset.y,
+            0
+        );
+    }
 
 
 
@@ -52,20 +49,25 @@ public class CameraManager : MonoBehaviour
             instance = this;
 
 
-        for (int i = 0; i < _allVirtualCameras.Length; i++)
-        {
-            if (_allVirtualCameras[i].enabled)
-            {
-                _currentCamera = _allVirtualCameras[i];
 
-                _transposer = _currentCamera.GetComponent<CinemachinePositionComposer>();
+        _transposer = CurrentCamera.GetComponent<CinemachinePositionComposer>();
 
 
-            }
-
-        }
 
         _normYPanAmount = _transposer.Damping.y;
+    }
+
+
+    public void SetCamera(CinemachineCamera newCam)
+    {
+        CurrentCamera = newCam;
+        _transposer = CurrentCamera.GetComponent<CinemachinePositionComposer>();
+    }
+
+
+    public string GetCurrentCamera()
+    {
+        return CurrentCamera.name;
     }
 
     #region Lerp the Y Damping

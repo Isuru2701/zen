@@ -47,7 +47,6 @@ public class GameTimer
 
     private IEnumerator TimerRoutine(float step)
     {
-        Debug.Log("TimerRoutine");
         while (timeRemaining > 0f)
         {
             timeRemaining -= Time.deltaTime * step;

@@ -7,7 +7,8 @@ public enum MusicTrack
     Forest,
     LiveByTheSword,
     Rooftops,
-    Wounded
+    Wounded,
+    None
 }
 
 public enum PlayerSFX
@@ -175,7 +176,6 @@ public class AudioManager : MonoBehaviour
         var s = playerSFX.Find(x => x != null && x.sfx == sfx);
         if (s == null || s.clip == null) return;
         sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
-        Debug.Log("Playing SFX: " + sfx);
     }
 
     public void PlaySFX(BaseEnemySFX sfx)
@@ -183,7 +183,6 @@ public class AudioManager : MonoBehaviour
         var s = baseEnemySFX.Find(x => x != null && x.sfx == sfx);
         if (s == null || s.clip == null) return;
         sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
-        Debug.Log("Playing SFX: " + sfx);
     }
 
     public void PlaySFX(BossSFX sfx)
@@ -191,7 +190,6 @@ public class AudioManager : MonoBehaviour
         var s = bossSFX.Find(x => x != null && x.sfx == sfx);
         if (s == null || s.clip == null) return;
         sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
-        Debug.Log("Playing SFX: " + sfx);
     }
 
     public void PlaySFX(EnvironmentSFX sfx)
@@ -199,7 +197,6 @@ public class AudioManager : MonoBehaviour
         var s = environmentSFX.Find(x => x != null && x.sfx == sfx);
         if (s == null || s.clip == null) return;
         sfxSource.PlayOneShot(s.clip, mute ? 0f : s.volume * sfxVolume);
-        Debug.Log("Playing SFX: " + sfx);
     }
 
     // Volume & mute

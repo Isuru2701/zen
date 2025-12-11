@@ -139,8 +139,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.015372753, y: -0.004695177}
-  m_Size: {x: 0.8953676, y: 1.9795208}
+  m_Offset: {x: -0.50074196, y: -0.01817751}
+  m_Size: {x: 1.866106, y: 4.352437}
   m_Direction: 0
 --- !u!114 &1543091519244371827
 MonoBehaviour:
@@ -241,8 +241,8 @@ Transform:
   m_GameObject: {fileID: 1883038347172431000}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.23654413, z: 0}
-  m_LocalScale: {x: 0.66425866, y: 1.1702644, z: 0.66425866}
+  m_LocalPosition: {x: -0.47, y: -0.71, z: 0}
+  m_LocalScale: {x: 1.1621206, y: 2.3954318, z: 1.1621206}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393476881799131538}
@@ -348,8 +348,8 @@ Transform:
   m_GameObject: {fileID: 2102023566614262186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.84, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.51395684, y: 0.50706244, z: 0.51395684}
+  m_LocalPosition: {x: -0.44, y: 1.18, z: 0}
+  m_LocalScale: {x: 0.9936842, y: 0.98035455, z: 0.9936842}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393476881799131538}
@@ -471,7 +471,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.047540724, y: -0.016061604}
+  m_Offset: {x: 0.013620347, y: 0.004567325}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -481,7 +481,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5387899, y: 1.5461186}
+  m_Size: {x: 1.1995862, y: 1.1472915}
   m_EdgeRadius: 0
 --- !u!114 &8828130273941303890
 MonoBehaviour:
@@ -524,7 +524,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.792, y: 1.792, z: 1.792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393476881799131538}
@@ -576,7 +576,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 3883be6d1308523438ec597bf7f4b758, type: 3}
+  m_Sprite: {fileID: 8925017846960267215, guid: 90300e97970e9d941acdf63f750e7909, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

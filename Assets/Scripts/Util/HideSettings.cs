@@ -13,7 +13,6 @@ public class HideSettings : MonoBehaviour
     {
 
         GameEvents.OnGameModeChanged += OnGameModeChanged;
-        Debug.Log(hideNormally);
         if(hideNormally)
         ToggleVisibility(); 
     }
