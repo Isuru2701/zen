@@ -52,6 +52,12 @@ public class EnemyController : MonoBehaviour
 
     private Knockback knockback;
 
+    // Stored initial state for respawn
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private float initialHealth;
+    private State initialState = State.Idle;
+
 
     private void Start()
     {
@@ -85,6 +91,11 @@ public class EnemyController : MonoBehaviour
         }
 
         Debug.Log("PLAYER: " + player);
+
+        // capture initial state for respawn
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+        initialHealth = health;
     }
 
     private void Update()
@@ -220,25 +231,28 @@ public class EnemyController : MonoBehaviour
 
     private void OnDamageReceived(DamageInfo info)
     {
-
         if (!CooldownManager.Ready($"enemy{GetHashCode()}DamgeCooldown")) return;
 
-        knockback.CallKnockback(info.hitDirection, info.constantForceDirection, info.knockbackForce);
+        // Apply damage first
+        float damageAmount = weakflag ? info.damage * 2f : info.damage;
+        health -= damageAmount;
 
+        Debug.Log("damage taken " + info + " remaining health: " + health);
 
+        CooldownManager.Start($"enemy{GetHashCode()}DamgeCooldown", damageTakenCooldown);
 
-        Debug.Log("damage taken" + info);
-
-        if (health > 0)
+        // If enemy died from this hit, handle death and skip knockback
+        if (health <= 0f)
         {
-            health = weakflag ? health - (info.damage * 2) : health - info.damage;
-
-
-
-            CooldownManager.Start($"enemy{GetHashCode()}DamgeCooldown", damageTakenCooldown);
-        }
-        else
             Die();
+            return;
+        }
+
+        // Only perform knockback if the enemy is still active
+        if (knockback != null && gameObject.activeInHierarchy)
+        {
+            knockback.CallKnockback(info.hitDirection, info.constantForceDirection, info.knockbackForce);
+        }
 
     }
 
@@ -269,6 +283,50 @@ public class EnemyController : MonoBehaviour
     {
         currentState = State.Die;
         Debug.Log("destroyed " + gameObject.name);
-        Destroy(this.gameObject);
+        // Deactivate instead of destroying so spawner can respawn/reset this enemy
+        Deactivate();
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
+    // Reset enemy to its initial state and optionally move to a spawn position
+    public void Respawn(Vector3? spawnPosition = null)
+    {
+        // Reactivate object
+        gameObject.SetActive(true);
+
+        // Reset transform
+        if (spawnPosition.HasValue)
+            transform.position = spawnPosition.Value;
+        else
+        {
+            transform.position = initialPosition;
+            transform.rotation = initialRotation;
+        }
+
+        // Reset physics
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        // Reset state
+        health = initialHealth;
+        isPreparing = false;
+        isAttacking = false;
+        currentState = initialState;
+
+        // Reset animator flags if present
+        var animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = true;
+            animator.SetBool("isDead", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isDodging", false);
+        }
     }
 }

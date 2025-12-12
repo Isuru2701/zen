@@ -6,8 +6,8 @@ using System.Linq;
 public class EnemySpawner : MonoBehaviour
 {
     private Collider2D roomCollider;
-    private List<GameObject> spawnMarkers = new List<GameObject>();
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private List<EnemyController> spawnMarkers = new List<EnemyController>();
+    private List<EnemyController> spawnedEnemies = new List<EnemyController>();
 
     private void Awake()
     {
@@ -18,9 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private void CollectMarkers()
     {
 
-        spawnMarkers = this.GetComponentsInChildren<Transform>(true)
+        spawnMarkers = this.GetComponentsInChildren<EnemyController>(true)
             .Where(t => t.CompareTag("Enemy"))
-            .Select(t => t.gameObject)
             .ToList();
 
         Debug.Log("Collected " + spawnMarkers.Count + " spawn markers in " + gameObject.name);
@@ -31,7 +30,8 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var marker in spawnMarkers)
         {
-            GameObject enemy = Instantiate(marker, marker.transform.position, marker.transform.rotation);
+            var enemy = marker.GetComponent<EnemyController>();
+            enemy.Respawn();
             spawnedEnemies.Add(enemy);
         }
 
@@ -43,7 +43,10 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in spawnedEnemies)
         {
-            
+            if (enemy != null)
+            {
+                enemy.Deactivate();
+            }
         }
 
         spawnedEnemies.Clear();

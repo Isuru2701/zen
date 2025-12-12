@@ -25,6 +25,8 @@ public class RoomHandler : MonoBehaviour
         roomCam.Priority = 20;
         CameraManager.instance.SetCamera(roomCam);
 
+        spawner.SpawnEnemies();
+
         Debug.Log("Camera switched to room camera " + CameraManager.instance.GetCurrentCamera());
 
         if (roomMusic != MusicTrack.None)
@@ -40,6 +42,8 @@ public class RoomHandler : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             roomCam.Priority = 10;
+
+            spawner.DespawnEnemies();
 
             if (customCheckpoint)
             {

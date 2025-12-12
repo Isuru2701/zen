@@ -72,6 +72,9 @@ public class Knockback : MonoBehaviour
 
     public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection, float knockbackForce)
     {
+        if (!gameObject.activeInHierarchy || !enabled)
+            return;
+
         knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection, knockbackForce));
     }
 }
