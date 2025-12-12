@@ -9,6 +9,23 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public static GameManager Instance { get; private set; }
+
+    [System.Serializable]
+    public class CheckpointData
+    {
+        public Vector3 playerPosition;
+        public float playerHealth;
+        public bool lily;
+        public bool orchid;
+        public bool talisman;
+        public bool key;
+        public GameMode gameMode;
+    }
+
+    private CheckpointData savedCheckpointData;
+
+    [SerializeField] Transform[] checkpoints;
 
     [SerializeField] private UIValueBar clarityBar;
 
@@ -29,6 +46,16 @@ public class GameManager : MonoBehaviour
 
     private GameTimer timer;
 
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
@@ -173,6 +200,71 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+
+    #region Checkpoints
+
+
+    public void SetCheckpoint(Checkpoint checkpoint)
+    {
+        currentCheckpoint = checkpoint;
+        SaveCheckpoint(checkpoint);
+    }
+
+    public void SaveCheckpoint(Checkpoint checkpoint)
+    {
+        if (checkpoint == null) return;
+
+        var player = FindObjectOfType<PlayerController>();
+
+        savedCheckpointData = new CheckpointData();
+        savedCheckpointData.playerPosition = checkpoint.transform.position;
+        savedCheckpointData.playerHealth = player != null ? player.GetHealth() : 0f;
+        savedCheckpointData.lily = Items.Lily;
+        savedCheckpointData.orchid = Items.Orchid;
+        savedCheckpointData.talisman = Items.Talisman;
+        savedCheckpointData.key = Items.Key;
+        savedCheckpointData.gameMode = CurrentGameMode;
+        Debug.Log("Checkpoint saved at " + savedCheckpointData.playerPosition);
+    }
+
+    public void RespawnPlayer(PlayerController player)
+    {
+        if (savedCheckpointData == null)
+        {
+            Debug.LogWarning("No checkpoint saved; cannot respawn.");
+            return;
+        }
+
+        // Restore Items state
+        Items.Lily = savedCheckpointData.lily;
+        Items.Orchid = savedCheckpointData.orchid;
+        Items.Talisman = savedCheckpointData.talisman;
+        Items.Key = savedCheckpointData.key;
+
+        // Reset cooldowns to avoid odd timers after respawn
+        CooldownManager.ClearAll();
+
+        // Ensure normal game mode and time scale
+        CurrentGameMode = GameMode.Normal;
+        returnToNormalTime();
+
+        // Find player if not provided
+        if (player == null)
+            player = FindObjectOfType<PlayerController>();
+
+        if (player != null)
+        {
+            player.RestoreFromCheckpoint(savedCheckpointData);
+        }
+
+        // Notify listeners that mode changed (ensures UI updates)
+        GameEvents.OnGameModeChanged?.Invoke(CurrentGameMode);
+
+        Debug.Log("Player respawned to checkpoint.");
+    }
+
+
+    #endregion
 
 
 

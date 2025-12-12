@@ -1,10 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
-    {
-        PlayerController playerState;
+{
+    [Header("Checkpoint")]
+    [Tooltip("Optional friendly name for this checkpoint")]
+    public string checkpointName;
 
-        // [SerializeField]Transform location;
-        
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SetCheckpoint(this);
+            }
+        }
     }
+}

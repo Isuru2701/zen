@@ -179,6 +179,50 @@ public class PlayerController : MonoBehaviour
         _wasGrounded = IsGrounded();
     }
 
+    // Expose health to GameManager when saving checkpoints
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    // Restore player state from checkpoint data
+    public void RestoreFromCheckpoint(GameManager.CheckpointData data)
+    {
+        // Restore Items (GameManager should have already set Items)
+
+        // Position & physics
+        transform.position = data.playerPosition;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.simulated = true;
+        }
+
+        // Health
+        health = data.playerHealth;
+
+        // Reset state and animator flags
+        state = PlayerState.Normal;
+        if (animator != null)
+        {
+            animator.SetBool("isDead", false);
+            animator.ResetTrigger("Die");
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isDodging", false);
+            animator.SetBool("isSwimming", false);
+            animator.SetBool("isWalking", false);
+        }
+
+        // Re-enable controller
+        this.enabled = true;
+
+        // Refresh UI
+        UpdateHealthBar();
+        resetLily();
+        UpdateTextDisplay(dodgeDisplay, "Dodges remaining: " + maxDodges);
+    }
+
 
 
     private void FixedUpdate()
@@ -850,15 +894,15 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.PlaySFX(PlayerSFX.Death);
         if (animator != null)
         {
-            // Try common death triggers/bools; harmless if not present
             animator.SetTrigger("Die");
             animator.SetBool("isDead", true);
         }
 
-        // Optionally disable controller to stop player input/physics
-        this.enabled = false;
-        if (rb != null)
-            rb.simulated = false;
+        // Ask GameManager to respawn us at the last checkpoint
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RespawnPlayer(this);
+        }
     }
 
     private bool IsDead()
