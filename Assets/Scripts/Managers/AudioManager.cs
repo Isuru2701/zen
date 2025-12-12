@@ -243,4 +243,36 @@ public class AudioManager : MonoBehaviour
         mute = shouldMute;
         ApplySettings();
     }
+
+    
+    //stop all sfx
+    public void pauseSFX()
+    {
+        sfxSource.Pause();
+    }
+
+    public void resumeSFX()
+    {
+        sfxSource.UnPause();
+    }
+
+    // Pause both music and sfx (used when the game is paused)
+    public void PauseAudio()
+    {
+        if (musicSource != null && musicSource.isPlaying)
+            musicSource.Pause();
+
+        if (sfxSource != null && sfxSource.isPlaying)
+            sfxSource.Pause();
+    }
+
+    // Resume both music and sfx
+    public void ResumeAudio()
+    {
+        if (musicSource != null && musicSource.clip != null)
+            musicSource.UnPause();
+
+        if (sfxSource != null)
+            sfxSource.UnPause();
+    }
 }
