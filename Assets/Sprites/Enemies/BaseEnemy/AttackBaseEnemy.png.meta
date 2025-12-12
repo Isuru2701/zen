@@ -185,419 +185,419 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: base_enemy_attack_0
+      name: AttackBaseEnemy_0
       rect:
         serializedVersion: 2
-        x: 117
-        y: 1458
-        width: 418
-        height: 392
+        x: 0
+        y: 1440
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b0a6a9e67d823f640800000000000000
-      internalID: 5112474907734338059
+      spriteID: fec3c03cd8f57cd4c8780861b8c17ebd
+      internalID: -1598999143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_1
+      name: AttackBaseEnemy_1
       rect:
         serializedVersion: 2
-        x: 674
-        y: 1458
-        width: 418
-        height: 393
+        x: 550
+        y: 1440
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5fe75509a65923a70800000000000000
-      internalID: 8805264506383335157
+      spriteID: 139ba0387f00e654e93ee361ef5fe793
+      internalID: -1791499630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_2
+      name: AttackBaseEnemy_2
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 1457
-        width: 418
-        height: 393
+        x: 1100
+        y: 1440
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f62d364659d3aab40800000000000000
-      internalID: 5452238010729091695
+      spriteID: c0e7cb63b6f048e468eb5547ae7050dc
+      internalID: -1337525949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_3
+      name: AttackBaseEnemy_3
       rect:
         serializedVersion: 2
-        x: 1782
-        y: 1457
-        width: 419
-        height: 394
+        x: 1650
+        y: 1440
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3c40145fbc9fb2700800000000000000
-      internalID: 516781236652410051
+      spriteID: 8a7e59505a0877e49836bb07ac118440
+      internalID: -1913498742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_4
+      name: AttackBaseEnemy_4
       rect:
         serializedVersion: 2
-        x: 2332
-        y: 1457
-        width: 418
-        height: 394
+        x: 2200
+        y: 1440
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6d31d0547546e67c0800000000000000
-      internalID: -4076210286740302890
+      spriteID: bff4a5f49acfb284dae0da424b2a21b5
+      internalID: -1213133917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_5
+      name: AttackBaseEnemy_5
       rect:
         serializedVersion: 2
-        x: 131
-        y: 977
-        width: 420
-        height: 394
+        x: 0
+        y: 960
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 03e1c5642bad0f2f0800000000000000
-      internalID: -941011862900957648
+      spriteID: 2b80a237fbd3d4949a23fcbf26eaa4d1
+      internalID: -875086246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_6
+      name: AttackBaseEnemy_6
       rect:
         serializedVersion: 2
-        x: 680
-        y: 976
-        width: 421
-        height: 395
+        x: 550
+        y: 960
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d7e41845f9b225800800000000000000
-      internalID: 599589663711252093
+      spriteID: a2d6007a69de0c14d9acbbb73353ad6d
+      internalID: -107994154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_7
+      name: AttackBaseEnemy_7
       rect:
         serializedVersion: 2
-        x: 1229
-        y: 976
-        width: 421
-        height: 395
+        x: 1100
+        y: 960
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eee474ba15fb78a40800000000000000
-      internalID: 5370471438149439214
+      spriteID: 251eb1c2fd7025c40a8ad87164289b11
+      internalID: 1789187547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_8
+      name: AttackBaseEnemy_8
       rect:
         serializedVersion: 2
-        x: 1776
-        y: 976
-        width: 422
-        height: 395
+        x: 1650
+        y: 960
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 981f060aea9b15fb0800000000000000
-      internalID: -4660739979685596791
+      spriteID: f80836c5714c1f84cb1923afd0387c26
+      internalID: 476357909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_9
+      name: AttackBaseEnemy_9
       rect:
         serializedVersion: 2
-        x: 2323
-        y: 975
-        width: 422
-        height: 396
+        x: 2200
+        y: 960
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 523119a23cc9e76a0800000000000000
-      internalID: -6449545254301265115
+      spriteID: 45ab06b066708a34785dc007f16b2466
+      internalID: 1875055238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_10
+      name: AttackBaseEnemy_10
       rect:
         serializedVersion: 2
-        x: 117
-        y: 495
-        width: 423
-        height: 396
+        x: 0
+        y: 480
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d03f3a4625e5055a0800000000000000
-      internalID: -6534619351345794291
+      spriteID: 65eba10d4e31cb64bbf89d2c1f01acb6
+      internalID: 1535955524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_11
+      name: AttackBaseEnemy_11
       rect:
         serializedVersion: 2
-        x: 661
-        y: 495
-        width: 423
-        height: 396
+        x: 550
+        y: 480
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0698969b1203ee5c0800000000000000
-      internalID: -4184354082377856672
+      spriteID: cb6781ebec54d754996d4838d2100780
+      internalID: -1665406134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_12
+      name: AttackBaseEnemy_12
       rect:
         serializedVersion: 2
-        x: 1202
-        y: 495
-        width: 424
-        height: 397
+        x: 1100
+        y: 480
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7849c62613cae3f00800000000000000
-      internalID: 1098504687229637767
+      spriteID: 887eea3c2b1db3944a12472690e5d6b0
+      internalID: 708751287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_14
+      name: AttackBaseEnemy_13
       rect:
         serializedVersion: 2
-        x: 1746
-        y: 494
-        width: 419
-        height: 397
+        x: 1650
+        y: 480
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a07ced2d6c584e2e0800000000000000
-      internalID: -2097404437459974390
+      spriteID: 4ea1efd225c17784cb799084ba2a2365
+      internalID: -1961032799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_16
+      name: AttackBaseEnemy_14
       rect:
         serializedVersion: 2
-        x: 2278
-        y: 494
-        width: 425
-        height: 398
+        x: 2200
+        y: 480
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d00eeeb0d1cd89240800000000000000
-      internalID: 4798827420275630093
+      spriteID: 5c71adc3e5861db45881e934f309d17c
+      internalID: -90458527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_18
+      name: AttackBaseEnemy_15
       rect:
         serializedVersion: 2
-        x: 64
-        y: 15
-        width: 424
-        height: 397
+        x: 0
+        y: 0
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9c8cd4bb5f5660360800000000000000
-      internalID: 7135502765698959561
+      spriteID: f9675b082c88a7044b844233689be3ae
+      internalID: -1396640493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_20
+      name: AttackBaseEnemy_16
       rect:
         serializedVersion: 2
-        x: 597
-        y: 14
-        width: 425
-        height: 397
+        x: 550
+        y: 0
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fe11cd2f8911b5900800000000000000
-      internalID: 674151917829231087
+      spriteID: f4db3a272366716478005724ee857c0c
+      internalID: -1803783588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_22
+      name: AttackBaseEnemy_17
       rect:
         serializedVersion: 2
-        x: 1124
-        y: 14
-        width: 424
-        height: 398
+        x: 1100
+        y: 0
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2b7ede422701132a0800000000000000
-      internalID: -6759603483274516558
+      spriteID: 780a68c68293bae49a615221f41a0443
+      internalID: 869221545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base_enemy_attack_24
+      name: AttackBaseEnemy_18
       rect:
         serializedVersion: 2
-        x: 1645
-        y: 14
-        width: 452
-        height: 398
+        x: 1650
+        y: 0
+        width: 550
+        height: 480
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4cb6f404ef6411f10800000000000000
-      internalID: 2238648547594431428
+      spriteID: a606164116414c04c85099e8434ea9a2
+      internalID: 1257978779
       vertices: []
       indices: 
       edges: []
@@ -614,33 +614,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":550.0,"y":480.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      base_enemy_attack_0: 5112474907734338059
-      base_enemy_attack_1: 8805264506383335157
-      base_enemy_attack_10: -6534619351345794291
-      base_enemy_attack_11: -4184354082377856672
-      base_enemy_attack_12: 1098504687229637767
-      base_enemy_attack_13: -514194034731680366
-      base_enemy_attack_14: -2097404437459974390
-      base_enemy_attack_15: -9099549282080396782
-      base_enemy_attack_16: 4798827420275630093
-      base_enemy_attack_17: 743908841549215761
-      base_enemy_attack_18: 7135502765698959561
-      base_enemy_attack_19: 1281892056321384630
-      base_enemy_attack_2: 5452238010729091695
-      base_enemy_attack_20: 674151917829231087
-      base_enemy_attack_21: -2739549461963378158
-      base_enemy_attack_22: -6759603483274516558
-      base_enemy_attack_23: -9130805200386306943
-      base_enemy_attack_24: 2238648547594431428
-      base_enemy_attack_3: 516781236652410051
-      base_enemy_attack_4: -4076210286740302890
-      base_enemy_attack_5: -941011862900957648
-      base_enemy_attack_6: 599589663711252093
-      base_enemy_attack_7: 5370471438149439214
-      base_enemy_attack_8: -4660739979685596791
-      base_enemy_attack_9: -6449545254301265115
+      AttackBaseEnemy_0: -1598999143
+      AttackBaseEnemy_1: -1791499630
+      AttackBaseEnemy_10: 1535955524
+      AttackBaseEnemy_11: -1665406134
+      AttackBaseEnemy_12: 708751287
+      AttackBaseEnemy_13: -1961032799
+      AttackBaseEnemy_14: -90458527
+      AttackBaseEnemy_15: -1396640493
+      AttackBaseEnemy_16: -1803783588
+      AttackBaseEnemy_17: 869221545
+      AttackBaseEnemy_18: 1257978779
+      AttackBaseEnemy_2: -1337525949
+      AttackBaseEnemy_3: -1913498742
+      AttackBaseEnemy_4: -1213133917
+      AttackBaseEnemy_5: -875086246
+      AttackBaseEnemy_6: -107994154
+      AttackBaseEnemy_7: 1789187547
+      AttackBaseEnemy_8: 476357909
+      AttackBaseEnemy_9: 1875055238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
