@@ -154,10 +154,8 @@ public class AudioManager : MonoBehaviour
     }
 
     // Music controls
-    public void PlayMusic(MusicTrack track, bool restart = false)
+    public void PlayMusic(MusicTrack track)
     {
-        if(nowPlayingMusic == track && !restart) return;
-
         var m = music.Find(x => x != null && x.track == track);
         if (m == null || m.clip == null)
         {
@@ -165,13 +163,29 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        musicSource.clip = m.clip;
-        musicSource.volume = mute ? 0f : m.volume * musicVolume;
-        musicSource.loop = m.loop;
-        musicSource.Play();
+        if (nowPlayingMusic == track && musicSource.clip == m.clip && musicSource.isPlaying)
+            return;
+
+        // If same clip but restart requested, stop and restart from beginning
+        if (musicSource.clip == m.clip)
+        {
+            musicSource.volume = mute ? 0f : m.volume * musicVolume;
+            musicSource.loop = m.loop;
+
+                musicSource.Stop();
+                musicSource.time = 0f;
+                musicSource.Play();
+        }
+        else
+        {
+            musicSource.clip = m.clip;
+            musicSource.volume = mute ? 0f : m.volume * musicVolume;
+            musicSource.loop = m.loop;
+            musicSource.Play();
+        }
+
         nowPlayingMusic = track;
         Debug.Log("AudioManager: Playing music track " + track);
-        
     }
 
     public void StopMusic()
