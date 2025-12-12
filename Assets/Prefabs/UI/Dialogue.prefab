@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 6740713123699799198}
   - component: {fileID: 9134456807966732580}
   - component: {fileID: 297033280044684904}
-  - component: {fileID: 2450924565415462218}
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -505,27 +504,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2450924565415462218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2817325580936013309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6554cdede209147bfd3f91ecb8e4cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::DialogueBox
-  textHeader: {fileID: 0}
-  textParagraph: {fileID: 0}
-  leftPortraitImage: {fileID: 0}
-  rightPortraitImage: {fileID: 0}
-  leftProfileSprite: {fileID: 0}
-  rightProfileSprite: {fileID: 0}
-  dialogueJson: {fileID: 0}
-  advanceAction: {fileID: 0}
-  textSpeed: 0.03
 --- !u!1 &6367479313671927755
 GameObject:
   m_ObjectHideFlags: 0

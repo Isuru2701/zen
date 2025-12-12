@@ -24,9 +24,7 @@ public class DialogueBox : MonoBehaviour
     [Tooltip("TextAsset containing JSON (like Assets/Dialogues/BossFight.json)")]
     [SerializeField] private TextAsset dialogueJson;
 
-    [Header("Input")]
-    [Tooltip("Optional InputActionReference to advance dialogue (Submit/Interact). If empty, keyboard fallback used.)")]
-    [SerializeField] private InputActionReference advanceAction;
+    private InputActionReference advanceAction;
 
     [Header("Typing")]
     [SerializeField] private float textSpeed = 0.03f;
@@ -55,6 +53,14 @@ public class DialogueBox : MonoBehaviour
     {
         if (advanceAction != null && advanceAction.action != null)
             advanceAction.action.Disable();
+    }
+
+    private void PrintAllDialogue()
+    {
+        foreach (var line in lines)
+        {
+            Debug.Log($"{line.speaker}: {line.text}");
+        }
     }
 
     private void Update()
@@ -93,6 +99,8 @@ public class DialogueBox : MonoBehaviour
             Debug.LogWarning("No dialogue JSON assigned to DialogueBox.");
             return;
         }
+
+        Debug.Log("DialogueBox: Playing assigned dialogue JSON." + dialogueJson.text);
         ParseJson(dialogueJson.text);
         StartDialogue();
     }
@@ -140,18 +148,7 @@ public class DialogueBox : MonoBehaviour
             return;
         }
 
-        // Fallback: if the JSON is just an array of lines ("lines": [...] missing), try wrapping
-        try
-        {
-            var wrapped = JsonUtility.FromJson<DialogueArrayWrapper>("{\"lines\":" + json + "}");
-            if (wrapped != null && wrapped.lines != null && wrapped.lines.Length > 0)
-            {
-                foreach (var l in wrapped.lines)
-                    lines.Add(new Line { speaker = l.speaker, text = l.text });
-                return;
-            }
-        }
-        catch { }
+        PrintAllDialogue();
 
         Debug.LogWarning("DialogueBox: Failed to parse JSON. Update your JSON to the expected shape for JsonUtility. Example:\n{\n  \"conversation\":\"boss_cutscene\",\n  \"lines\":[{\"speaker\":\"Player\",\"text\":\"Hello\"}]\n}");
     }
@@ -199,11 +196,20 @@ public class DialogueBox : MonoBehaviour
     private IEnumerator TypeText(string text)
     {
         isTyping = true;
-        if (textParagraph != null) textParagraph.text = "";
+
+        if (textParagraph == null)
+        {
+            Debug.LogWarning("DialogueBox: textParagraph is not assigned. Dialogue text will be logged to Console.");
+            Debug.Log(text);
+            isTyping = false;
+            yield break;
+        }
+
+        textParagraph.text = "";
 
         foreach (char c in text)
         {
-            if (textParagraph != null) textParagraph.text += c;
+            textParagraph.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
 
@@ -215,8 +221,13 @@ public class DialogueBox : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        if (textParagraph != null && index >= 0 && index < lines.Count)
-            textParagraph.text = lines[index].text;
+        if (index >= 0 && index < lines.Count)
+        {
+            if (textParagraph != null)
+                textParagraph.text = lines[index].text;
+            else
+                Debug.Log(lines[index].text);
+        }
 
         isTyping = false;
     }
@@ -237,7 +248,11 @@ public class DialogueBox : MonoBehaviour
     {
         IsPlaying = false;
         gameObject.SetActive(false);
+        OnDialogueEnd?.Invoke();
     }
+
+    // Invoked when the dialogue finishes
+    public System.Action OnDialogueEnd;
 
     [System.Serializable]
     private class Line
