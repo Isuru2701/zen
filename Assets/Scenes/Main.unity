@@ -3523,19 +3523,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 60e7bffaad6722c4cada18e57f70b140, type: 3}
     volume: 1
     loop: 1
-  - track: 0
+  - track: 1
     clip: {fileID: 8300000, guid: 7a78b563adc175742af7ee3626a7fc34, type: 3}
     volume: 1
     loop: 1
-  - track: 0
+  - track: 2
     clip: {fileID: 8300000, guid: 7064152a664e06a4e8c8af29d4d645ea, type: 3}
     volume: 1
     loop: 0
-  - track: 0
+  - track: 3
     clip: {fileID: 8300000, guid: 8ad496a075f4ca240a3d2b0a6395b967, type: 3}
     volume: 1
     loop: 1
-  - track: 0
+  - track: 4
     clip: {fileID: 8300000, guid: 0ea5d7390fb4af4418519593ae4087d9, type: 3}
     volume: 1
     loop: 1

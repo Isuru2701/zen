@@ -156,24 +156,30 @@ public class AudioManager : MonoBehaviour
     // Music controls
     public void PlayMusic(MusicTrack track, bool restart = false)
     {
+        if(nowPlayingMusic == track && !restart) return;
 
-        
+        var m = music.Find(x => x != null && x.track == track);
+        if (m == null || m.clip == null)
+        {
+            Debug.LogWarning("AudioManager: Music track " + track + " not found!");
+            return;
+        }
 
-        var s = music.Find(m => m != null && m.track == track);
-        if (s == null || s.clip == null) return;
-        if (musicSource.clip == s.clip && musicSource.isPlaying && !restart) return;
-
-        musicSource.clip = s.clip;
-        musicSource.loop = s.loop;
-        musicSource.volume = mute ? 0f : s.volume * musicVolume;
+        musicSource.clip = m.clip;
+        musicSource.volume = mute ? 0f : m.volume * musicVolume;
+        musicSource.loop = m.loop;
         musicSource.Play();
-        Debug.Log("Playing Music: " + track);
+        nowPlayingMusic = track;
+        Debug.Log("AudioManager: Playing music track " + track);
+        
     }
 
     public void StopMusic()
     {
+        if (musicSource == null) return;
         musicSource.Stop();
         musicSource.clip = null;
+        nowPlayingMusic = MusicTrack.None;
     }
 
     // SFX controls
