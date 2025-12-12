@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Health
-        health = data.playerHealth;
+        health = maxhHealth;
 
         // Reset state and animator flags
         state = PlayerState.Normal;

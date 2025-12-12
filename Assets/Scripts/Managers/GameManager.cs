@@ -20,12 +20,10 @@ public class GameManager : MonoBehaviour
         public bool orchid;
         public bool talisman;
         public bool key;
-        public GameMode gameMode;
+        // public GameMode gameMode;
     }
 
     private CheckpointData savedCheckpointData;
-
-    [SerializeField] Transform[] checkpoints;
 
     [SerializeField] private UIValueBar clarityBar;
 
@@ -42,7 +40,15 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameMode CurrentGameMode { get; set; }
-    private Checkpoint currentCheckpoint;
+
+
+    [SerializeField] Transform initialCheckpoint;
+    [SerializeField] Transform defaultCheckpoint;
+
+    private Transform currentCheckpoint;
+
+
+
 
     private GameTimer timer;
 
@@ -65,6 +71,8 @@ public class GameManager : MonoBehaviour
         GameEvents.OnGameModeChanged += StopSlowMotion;
 
         Items.Initialize();
+
+        SetCheckpoint(initialCheckpoint);
 
     }
 
@@ -203,28 +211,31 @@ public class GameManager : MonoBehaviour
 
     #region Checkpoints
 
+    public void ResetToDefaultCheckpoint()
+    {
+        SetCheckpoint(defaultCheckpoint);
+    }
 
-    public void SetCheckpoint(Checkpoint checkpoint)
+    public void SetCheckpoint(Transform checkpoint)
     {
         currentCheckpoint = checkpoint;
         SaveCheckpoint(checkpoint);
     }
 
-    public void SaveCheckpoint(Checkpoint checkpoint)
+    public void SaveCheckpoint(Transform checkpoint)
     {
         if (checkpoint == null) return;
 
-        var player = FindObjectOfType<PlayerController>();
+        var player = FindFirstObjectByType<PlayerController>();
 
         savedCheckpointData = new CheckpointData();
-        savedCheckpointData.playerPosition = checkpoint.transform.position;
+        savedCheckpointData.playerPosition = checkpoint.position;
         savedCheckpointData.playerHealth = player != null ? player.GetHealth() : 0f;
         savedCheckpointData.lily = Items.Lily;
         savedCheckpointData.orchid = Items.Orchid;
         savedCheckpointData.talisman = Items.Talisman;
         savedCheckpointData.key = Items.Key;
-        savedCheckpointData.gameMode = CurrentGameMode;
-        Debug.Log("Checkpoint saved at " + savedCheckpointData.playerPosition);
+        Debug.Log("Checkpoint saved at " + savedCheckpointData.playerPosition +  " " + savedCheckpointData);
     }
 
     public void RespawnPlayer(PlayerController player)
@@ -250,7 +261,7 @@ public class GameManager : MonoBehaviour
 
         // Find player if not provided
         if (player == null)
-            player = FindObjectOfType<PlayerController>();
+            player = FindFirstObjectByType<PlayerController>();
 
         if (player != null)
         {

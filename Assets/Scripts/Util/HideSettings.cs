@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HideSettings : MonoBehaviour
@@ -13,20 +14,45 @@ public class HideSettings : MonoBehaviour
     {
 
         GameEvents.OnGameModeChanged += OnGameModeChanged;
-        if(hideNormally)
-        ToggleVisibility(); 
+        if (hideNormally)
+            gameObject.SetActive(false);
     }
 
     private void OnGameModeChanged(GameManager.GameMode mode)
     {
-        ToggleVisibility();
+        if (hideNormally)
+        {
+            if (mode == GameManager.GameMode.Clarity)
+            {
+                gameObject.SetActive(true);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        else
+        {
+            if (mode == GameManager.GameMode.Clarity)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+            }
+        }
+
     }
 
+
+    [Obsolete]
     private void ToggleVisibility()
     {
-        
+
         gameObject.SetActive(flag);
         flag = !flag;
-        
+
     }
 }

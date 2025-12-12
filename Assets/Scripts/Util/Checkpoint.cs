@@ -12,7 +12,7 @@ public class Checkpoint : MonoBehaviour
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.SetCheckpoint(this);
+                GameManager.Instance.SetCheckpoint(this.transform);
             }
         }
     }
