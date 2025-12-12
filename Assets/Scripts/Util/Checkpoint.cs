@@ -15,5 +15,7 @@ public class Checkpoint : MonoBehaviour
                 GameManager.Instance.SetCheckpoint(this.transform);
             }
         }
+
+        Debug.Log("Player reached checkpoint: " + checkpointName);
     }
 }

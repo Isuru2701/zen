@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform initialCheckpoint;
     [SerializeField] Transform defaultCheckpoint;
 
-    private Transform currentCheckpoint;
-
 
 
 
@@ -72,7 +70,9 @@ public class GameManager : MonoBehaviour
 
         Items.Initialize();
 
+
         SetCheckpoint(initialCheckpoint);
+
 
     }
 
@@ -201,7 +201,8 @@ public class GameManager : MonoBehaviour
 
         if (mode == GameMode.Normal)
         {
-            StopCoroutine(slowMotionCoroutineHandler);
+            if (slowMotionCoroutineHandler != null)
+                StopCoroutine(slowMotionCoroutineHandler);
             returnToNormalTime();
         }
     }
@@ -211,15 +212,42 @@ public class GameManager : MonoBehaviour
 
     #region Checkpoints
 
-    public void ResetToDefaultCheckpoint()
+    private Transform previousCheckpoint;
+
+    public void ResetToPreviousCheckpoint()
     {
-        SetCheckpoint(defaultCheckpoint);
+        SetCheckpoint(previousCheckpoint);
     }
 
     public void SetCheckpoint(Transform checkpoint)
     {
-        currentCheckpoint = checkpoint;
-        SaveCheckpoint(checkpoint);
+
+        if (previousCheckpoint != null)
+        {
+            if (previousCheckpoint.position != checkpoint.position)
+            {
+                previousCheckpoint = checkpoint;
+
+                SaveCheckpoint(checkpoint);
+                Debug.Log("Checkpoint set to " + checkpoint.position + " from " + previousCheckpoint?.position);
+
+            }
+            else
+            {
+                return; //means we are setting to the same checkpoint again
+            }
+        }
+        else
+        {
+            previousCheckpoint = initialCheckpoint;
+            SaveCheckpoint(initialCheckpoint);
+        }
+
+
+
+
+
+
     }
 
     public void SaveCheckpoint(Transform checkpoint)
@@ -235,7 +263,6 @@ public class GameManager : MonoBehaviour
         savedCheckpointData.orchid = Items.Orchid;
         savedCheckpointData.talisman = Items.Talisman;
         savedCheckpointData.key = Items.Key;
-        Debug.Log("Checkpoint saved at " + savedCheckpointData.playerPosition +  " " + savedCheckpointData);
     }
 
     public void RespawnPlayer(PlayerController player)

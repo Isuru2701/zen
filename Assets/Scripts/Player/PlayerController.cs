@@ -857,6 +857,12 @@ public class PlayerController : MonoBehaviour
 
     #region Health
 
+    public void instantDeath()
+    {
+        health = 0;
+        Die();
+    }
+
     public void OnDamageReceived(DamageInfo info)
     {
         // Respect temporary immunity
