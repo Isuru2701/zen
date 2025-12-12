@@ -8,9 +8,15 @@ public class RoomHandler : MonoBehaviour
 
     [SerializeField] private MusicTrack roomMusic;
 
-    [SerializeField] private EnemySpawner spawner;
 
     [SerializeField] private bool customCheckpoint = false;
+
+    private EnemySpawner spawner;
+    
+    private void Awake()
+    {
+        spawner = GetComponent<EnemySpawner>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,7 +25,7 @@ public class RoomHandler : MonoBehaviour
             roomCam.Priority = 20;
             CameraManager.instance.SetCamera(roomCam);
 
-            Debug.Log("Camera switched to room camera " +  CameraManager.instance.GetCurrentCamera());
+            Debug.Log("Camera switched to room camera " + CameraManager.instance.GetCurrentCamera());
 
             // spawner.SpawnEnemies();
         }
@@ -35,9 +41,9 @@ public class RoomHandler : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             roomCam.Priority = 10;
-            // spawner.DespawnEnemies();
+            spawner.DespawnEnemies();
 
-            if(customCheckpoint)
+            if (customCheckpoint)
             {
                 GameManager.Instance.ResetToPreviousCheckpoint();
             }

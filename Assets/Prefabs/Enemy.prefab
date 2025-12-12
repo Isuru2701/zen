@@ -159,7 +159,7 @@ MonoBehaviour:
   - {fileID: 0}
   idleTime: 0.5
   weakSpot: {fileID: 2410332134724466491}
-  health: 500
+  health: 1
   damageTakenCooldown: 0.1
   moveSpeed: 2
   idlePointTolerance: 0.1

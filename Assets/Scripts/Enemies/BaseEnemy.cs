@@ -268,5 +268,7 @@ public class EnemyController : MonoBehaviour
     public void Die()
     {
         currentState = State.Die;
+        Debug.Log("destroyed " + gameObject.name);
+        Destroy(this.gameObject);
     }
 }
