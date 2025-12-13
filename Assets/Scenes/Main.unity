@@ -1683,7 +1683,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -52.61407, y: -88.84014, z: 0}
+  m_LocalPosition: {x: -52.613064, y: -88.84014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5404,106 +5404,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8769887302966629129, guid: 5503af8980e531c4eaee65fbe5acd172, type: 3}
   m_PrefabInstance: {fileID: 1423069201}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1435471098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1435471100}
-  - component: {fileID: 1435471099}
-  - component: {fileID: 1435471101}
-  m_Layer: 0
-  m_Name: BossCutsceneTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &1435471099
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435471098}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 4.969925, y: 7.4091806}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 3.882904, y: 16.884472}
-  m_EdgeRadius: 0
---- !u!4 &1435471100
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435471098}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 178.68, y: -22.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1435471101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435471098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a87eba090c4fa4d9aba134d506d0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::CutsceneTrigger
-  dialogueBox: {fileID: 763523550}
-  dialogueJson: {fileID: 4900000, guid: 02d6bd69a78406c4a9355b6c8068ae7a, type: 3}
-  leftProfileSprite: {fileID: 7132093474517489512, guid: 0f0b24f35b41bee4d8662f0c7d66c4ee, type: 3}
-  rightProfileSprite: {fileID: 1935991720994394289, guid: d300ac2959ebea346bab2e41341a9c83, type: 3}
-  textSpeed: 0.05
-  delayBetweenLines: 1
-  triggerOnce: 1
-  autoAdvance: 0
-  advanceAction: {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1001 &1437377663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6186,6 +6086,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1571828055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 412985022049549351, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.3536835
+      objectReference: {fileID: 0}
+    - target: {fileID: 412985022049549351, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Size.y
+      value: 8.334747
+      objectReference: {fileID: 0}
+    - target: {fileID: 412985022049549351, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.189598
+      objectReference: {fileID: 0}
+    - target: {fileID: 412985022049549351, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.97950745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034103711101502226, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: dialogueJson
+      value: 
+      objectReference: {fileID: 4900000, guid: 71f8b696bdab83b42ad2428aa760e047, type: 3}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 223.24251
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -129.50287
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687667802754716820, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Name
+      value: KikyoCutsceneTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
 --- !u!1 &1593844553
 GameObject:
   m_ObjectHideFlags: 0
@@ -28686,6 +28663,67 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.08, y: 3.41}
   m_EdgeRadius: 0
+--- !u!1001 &6091206054081755771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1034103711101502226, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 763523550}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 178.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451807258101652860, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687667802754716820, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
+      propertyPath: m_Name
+      value: BossCutsceneTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a98181b78ccddcb408dc0d54a946afc3, type: 3}
 --- !u!1001 &6376920865302219210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29060,7 +29098,8 @@ SceneRoots:
   - {fileID: 1626030543}
   - {fileID: 1979067322}
   - {fileID: 1936835151}
-  - {fileID: 1435471100}
+  - {fileID: 6091206054081755771}
+  - {fileID: 1571828055}
   - {fileID: 874923763}
   - {fileID: 1596214580}
   - {fileID: 1759113386}

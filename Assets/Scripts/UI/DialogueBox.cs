@@ -45,7 +45,7 @@ public class DialogueBox : MonoBehaviour
     {
         if (textHeader != null) textHeader.text = "";
         if (textParagraph != null) textParagraph.text = "";
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
 
 
     }
@@ -70,13 +70,6 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    private void PrintAllDialogue()
-    {
-        foreach (var line in lines)
-        {
-            Debug.Log($"{line.speaker}: {line.text}");
-        }
-    }
 
     private void Update()
     {
@@ -171,7 +164,6 @@ public class DialogueBox : MonoBehaviour
             return;
         }
 
-        PrintAllDialogue();
 
         Debug.LogWarning("DialogueBox: Failed to parse JSON. Update your JSON to the expected shape for JsonUtility. Example:\n{\n  \"conversation\":\"boss_cutscene\",\n  \"lines\":[{\"speaker\":\"Player\",\"text\":\"Hello\"}]\n}");
     }

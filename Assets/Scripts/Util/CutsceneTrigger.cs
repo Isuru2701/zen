@@ -29,13 +29,24 @@ public class CutsceneTrigger : MonoBehaviour
 
     private bool isPlayingCutscene = false;
     private bool hasTriggered = false;
+    private DialogueBox currentDialogueBox = null; // Track the DialogueBox we subscribed to
 
     private void Start()
     {
         // Make sure dialogue box is hidden at start
-        if (dialogueBox != null)
+        // if (dialogueBox != null)
+        // {
+        //     dialogueBox.gameObject.SetActive(false);
+        // }
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from DialogueBox to prevent memory leaks and duplicate subscriptions
+        if (currentDialogueBox != null)
         {
-            dialogueBox.gameObject.SetActive(false);
+            currentDialogueBox.OnDialogueEnd -= OnDialogueFinished;
+            currentDialogueBox = null;
         }
     }
 
@@ -80,6 +91,19 @@ public class CutsceneTrigger : MonoBehaviour
             var db = dialogueBox.GetComponent<DialogueBox>();
             if (db != null)
             {
+                // If DialogueBox is already playing (another trigger is using it), skip
+                if (db.IsPlaying)
+                {
+                    Debug.LogWarning("CutsceneTrigger: DialogueBox is already playing. Cannot start new dialogue.");
+                    return;
+                }
+
+                // Unsubscribe previous connection if any (defensive)
+                if (currentDialogueBox != null)
+                {
+                    currentDialogueBox.OnDialogueEnd -= OnDialogueFinished;
+                }
+
                 // Configure the DialogueBox with this trigger's JSON and sprites (if assigned), then play
                 Debug.Log("CutsceneTrigger: Found DialogueBox component, setting up dialogue.");
                 db.Setup(dialogueJson, leftProfileSprite, rightProfileSprite, advanceAction, autoAdvance, textSpeed, delayBetweenLines);
@@ -92,6 +116,7 @@ public class CutsceneTrigger : MonoBehaviour
 
                 // Subscribe to dialogue end so we can resume the game
                 db.OnDialogueEnd += OnDialogueFinished;
+                currentDialogueBox = db;
 
                 db.PlayAssigned();
             }
@@ -105,19 +130,14 @@ public class CutsceneTrigger : MonoBehaviour
         if (PauseManager.Instance != null)
             PauseManager.Instance.ResumeGame();
 
-        // Hide dialogue UI
-        if (dialogueBox != null)
-            dialogueBox.gameObject.SetActive(false);
-
         // Clear playing flag
         isPlayingCutscene = false;
 
-        // Unsubscribe from any DialogueBox (defensive)
-        if (dialogueBox != null)
+        // Unsubscribe from the DialogueBox we subscribed to
+        if (currentDialogueBox != null)
         {
-            var db = dialogueBox.GetComponent<DialogueBox>();
-            if (db != null)
-                db.OnDialogueEnd -= OnDialogueFinished;
+            currentDialogueBox.OnDialogueEnd -= OnDialogueFinished;
+            currentDialogueBox = null;
         }
     }
 
