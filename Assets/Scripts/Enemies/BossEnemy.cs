@@ -49,7 +49,12 @@ public class BossEnemy : MonoBehaviour
 
 
     [Header("UI")]
-    [SerializeField] public UIValueBar HealthBar {get; set;}
+    [SerializeField] private UIValueBar HealthBar;
+
+
+    [Header("Spawn info")]
+    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private Collider2D checkIfPlayerPresentArea;
 
     private State currentState = State.Idle;
     private Transform player;
@@ -99,6 +104,8 @@ public class BossEnemy : MonoBehaviour
         CooldownManager.Reset($"boss{GetHashCode()}Charge");
         CooldownManager.Reset($"boss{GetHashCode()}Charging");
         CooldownManager.Reset($"boss{GetHashCode()}Damage");
+
+        HealthBar.gameObject.SetActive(false);
     }
 
     private bool isActionInProgress = false;
@@ -122,10 +129,21 @@ public class BossEnemy : MonoBehaviour
         health = maxHealth;
         // Initialize health bar UI and validate reference
         UpdateHealthBar();
+
     }
 
     private void Update()
     {
+
+        //check if player is still in area
+        if (player != null && !checkIfPlayerPresentArea.OverlapPoint(player.position))
+        {
+            Reset();
+            return;
+        }
+
+        HealthBar.gameObject.SetActive(true);
+
         if (currentState == State.Die) return;
 
         switch (currentState)
