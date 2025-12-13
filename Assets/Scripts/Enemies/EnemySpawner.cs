@@ -5,17 +5,17 @@ using System.Linq;
 //attach this script to the room object
 public class EnemySpawner : MonoBehaviour
 {
-    private Collider2D roomCollider;
-    private List<EnemyController> spawnMarkers = new List<EnemyController>();
-    private List<EnemyController> spawnedEnemies = new List<EnemyController>();
+    Collider2D roomCollider;
+    List<EnemyController> spawnMarkers = new List<EnemyController>();
+    List<EnemyController> spawnedEnemies = new List<EnemyController>();
 
-    private void Awake()
+    void Awake()
     {
         if (roomCollider == null) roomCollider = GetComponent<Collider2D>();
         CollectMarkers();
     }
 
-    private void CollectMarkers()
+    void CollectMarkers()
     {
 
         spawnMarkers = this.GetComponentsInChildren<EnemyController>(true)

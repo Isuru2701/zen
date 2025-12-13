@@ -49,7 +49,7 @@ public class BossEnemy : MonoBehaviour
 
 
     [Header("UI")]
-    [SerializeField] private UIValueBar healthBar;
+    [SerializeField] public UIValueBar HealthBar {get; set;}
 
     private State currentState = State.Idle;
     private Transform player;
@@ -72,6 +72,33 @@ public class BossEnemy : MonoBehaviour
     public void Unlock()
     {
         locked = false;
+    }
+
+    public void Reset()
+    {
+        // Reset health
+        health = maxHealth;
+        UpdateHealthBar();
+
+        // Reset state
+        currentState = State.Idle;
+        isActionInProgress = false;
+        chargeDirection = Vector2.zero;
+        locked = false;
+
+        // Stop all ongoing actions
+        StopAllCoroutines();
+
+        // Reset movement
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+
+        // Clear all cooldowns
+        CooldownManager.Reset($"boss{GetHashCode()}Idle");
+        CooldownManager.Reset($"boss{GetHashCode()}Sword");
+        CooldownManager.Reset($"boss{GetHashCode()}Charge");
+        CooldownManager.Reset($"boss{GetHashCode()}Charging");
+        CooldownManager.Reset($"boss{GetHashCode()}Damage");
     }
 
     private bool isActionInProgress = false;
@@ -130,9 +157,9 @@ public class BossEnemy : MonoBehaviour
     private void UpdateHealthBar()
     {
         Debug.Log($"Health: {health}/{maxHealth}");
-        if (healthBar != null)
+        if (HealthBar != null)
         {
-            healthBar.UpdateBar(health, maxHealth);
+            HealthBar.UpdateBar(health, maxHealth);
         }
         else
         {
@@ -300,6 +327,7 @@ public class BossEnemy : MonoBehaviour
         currentState = State.Die;
         Destroy(gameObject);
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
