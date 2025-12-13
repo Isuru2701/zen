@@ -16,7 +16,8 @@ public class BossEnemy : MonoBehaviour
     }
 
     [Header("Health")]
-    [SerializeField] private float health = 200f;
+    [SerializeField] private float maxHealth = 200f;
+    [SerializeField] private float health;
     [SerializeField] private float damageTakenCooldown = 0.5f;
 
     [Header("Movement")]
@@ -45,6 +46,10 @@ public class BossEnemy : MonoBehaviour
     [Header("Idle Settings")]
     [SerializeField] private float idleDuration = 2f;
     [SerializeField] private float idleChanceAfterAttack = 0.5f;
+
+
+    [Header("UI")]
+    [SerializeField] private UIValueBar healthBar;
 
     private State currentState = State.Idle;
     private Transform player;
@@ -79,15 +84,17 @@ public class BossEnemy : MonoBehaviour
         damageReceiver = GetComponent<DamageReceiver>();
         knockback = GetComponent<Knockback>();
 
-        if (damageReceiver != null)
-            damageReceiver.onHurt += OnDamageReceived;
+        damageReceiver.onHurt += OnDamageReceived;
 
-        if (knockback != null)
-            knockback.knockbackAction += HandleKnockback;
+        knockback.knockbackAction += HandleKnockback;
 
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null)
             player = p.transform;
+
+        health = maxHealth;
+        // Initialize health bar UI and validate reference
+        UpdateHealthBar();
     }
 
     private void Update()
@@ -119,6 +126,21 @@ public class BossEnemy : MonoBehaviour
                 break;
         }
     }
+
+    private void UpdateHealthBar()
+    {
+        Debug.Log($"Health: {health}/{maxHealth}");
+        if (healthBar != null)
+        {
+            healthBar.UpdateBar(health, maxHealth);
+        }
+        else
+        {
+            Debug.LogWarning($"BossEnemy: healthBar not assigned on {name}. Assign a UIValueBar in the inspector.");
+        }
+    }
+
+
 
     private void StateIdle()
     {
@@ -154,7 +176,7 @@ public class BossEnemy : MonoBehaviour
     {
         currentState = State.PrepareSword;
         isActionInProgress = true;
-        
+
         // Stop moving
         rb.linearVelocity = Vector2.zero;
 
@@ -198,10 +220,10 @@ public class BossEnemy : MonoBehaviour
         yield return new WaitForSeconds(chargePrepareTime);
 
         currentState = State.ChargeAttack;
-        
+
         // Start charge timer
         CooldownManager.Start($"boss{GetHashCode()}Charging", chargeDuration);
-        
+
         yield return new WaitForSeconds(chargeDuration);
 
         // Stop charge
@@ -250,6 +272,7 @@ public class BossEnemy : MonoBehaviour
 
         health -= info.damage;
         CooldownManager.Start($"boss{GetHashCode()}Damage", damageTakenCooldown);
+        UpdateHealthBar();
 
         if (health <= 0)
         {

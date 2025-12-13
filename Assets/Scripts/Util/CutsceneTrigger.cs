@@ -27,6 +27,10 @@ public class CutsceneTrigger : MonoBehaviour
     [Tooltip("Assign an InputActionReference for advancing dialogue (e.g. a 'Submit' or 'Interact' action).")]
     [SerializeField] private InputActionReference advanceAction;
 
+    [Header("Do after")]
+    [SerializeField] GameObject hiddenElement;
+
+
     private bool isPlayingCutscene = false;
     private bool hasTriggered = false;
     private DialogueBox currentDialogueBox = null; // Track the DialogueBox we subscribed to
@@ -38,6 +42,8 @@ public class CutsceneTrigger : MonoBehaviour
         // {
         //     dialogueBox.gameObject.SetActive(false);
         // }
+
+        hiddenElement.SetActive(false);
     }
 
     private void OnDisable()
@@ -138,6 +144,11 @@ public class CutsceneTrigger : MonoBehaviour
         {
             currentDialogueBox.OnDialogueEnd -= OnDialogueFinished;
             currentDialogueBox = null;
+        }
+
+        if(hiddenElement != null)
+        {
+            hiddenElement.SetActive(true);
         }
     }
 
