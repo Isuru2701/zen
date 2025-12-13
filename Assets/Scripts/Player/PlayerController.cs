@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour
                 ApplyJumpPhysics();
 
                 // Camera fall damping
-                HandleCameraDamping();
+                // HandleCameraDamping();
 
                 break;
 
@@ -429,23 +429,23 @@ public class PlayerController : MonoBehaviour
     // -----------------------
     // CAMERA FALL HANDLING
     // -----------------------
-    private void HandleCameraDamping()
-    {
-        if (rb.linearVelocityY < _fallSpeedYDampingChangeThreshold &&
-            !CameraManager.instance.IsLerpingYDamping &&
-            !CameraManager.instance.LerpedFromPlayerFalling)
-        {
-            CameraManager.instance.LerpYDamping(true);
-        }
+    // private void HandleCameraDamping()
+    // {
+    //     if (rb.linearVelocityY < _fallSpeedYDampingChangeThreshold &&
+    //         !CameraManager.instance.IsLerpingYDamping &&
+    //         !CameraManager.instance.LerpedFromPlayerFalling)
+    //     {
+    //         CameraManager.instance.LerpYDamping(true);
+    //     }
 
-        if (rb.linearVelocityY >= 0f &&
-            !CameraManager.instance.IsLerpingYDamping &&
-            CameraManager.instance.LerpedFromPlayerFalling)
-        {
-            CameraManager.instance.LerpedFromPlayerFalling = false;
-            CameraManager.instance.LerpYDamping(false);
-        }
-    }
+    //     if (rb.linearVelocityY >= 0f &&
+    //         !CameraManager.instance.IsLerpingYDamping &&
+    //         CameraManager.instance.LerpedFromPlayerFalling)
+    //     {
+    //         CameraManager.instance.LerpedFromPlayerFalling = false;
+    //         CameraManager.instance.LerpYDamping(false);
+    //     }
+    // }
 
 
     #region Input Handling

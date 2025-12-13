@@ -72,43 +72,43 @@ public class CameraManager : MonoBehaviour
 
     #region Lerp the Y Damping
 
-    public void LerpYDamping(bool isPlayerFalling)
-    {
-        _lerpYPanCorountine = StartCoroutine(LerpYAction(isPlayerFalling));
-    }
+    // public void LerpYDamping(bool isPlayerFalling)
+    // {
+    //     _lerpYPanCorountine = StartCoroutine(LerpYAction(isPlayerFalling));
+    // }
 
 
-    private IEnumerator LerpYAction(bool isPlayerFalling)
-    {
-        IsLerpingYDamping = true;
+    // private IEnumerator LerpYAction(bool isPlayerFalling)
+    // {
+    //     IsLerpingYDamping = true;
 
-        float startDampAmount = _transposer.Damping.y;
-        Debug.Log("damping on Y " + startDampAmount);
-        float endDampAmount = 0f;
+    //     float startDampAmount = _transposer.Damping.y;
+    //     Debug.Log("damping on Y " + startDampAmount);
+    //     float endDampAmount = 0f;
 
-        if (isPlayerFalling)
-        {
-            endDampAmount = _fallPanAmount;
-            LerpedFromPlayerFalling = true;
-        }
+    //     if (isPlayerFalling)
+    //     {
+    //         endDampAmount = _fallPanAmount;
+    //         LerpedFromPlayerFalling = true;
+    //     }
 
-        else
-        {
-            endDampAmount = _normYPanAmount;
-        }
+    //     else
+    //     {
+    //         endDampAmount = _normYPanAmount;
+    //     }
 
-        float elapsedTime = 0f;
-        while (elapsedTime < _fallPanTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float lerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, ((elapsedTime / _fallPanTime)));
-            _transposer.Damping.y = lerpedPanAmount;
+    //     float elapsedTime = 0f;
+    //     while (elapsedTime < _fallPanTime)
+    //     {
+    //         elapsedTime += Time.deltaTime;
+    //         float lerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, ((elapsedTime / _fallPanTime)));
+    //         _transposer.Damping.y = lerpedPanAmount;
 
-            yield return null;
-        }
+    //         yield return null;
+    //     }
 
-        IsLerpingYDamping = false;
-    }
+    //     IsLerpingYDamping = false;
+    // }
 
     #endregion
 
