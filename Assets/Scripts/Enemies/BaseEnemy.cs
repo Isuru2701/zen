@@ -52,6 +52,21 @@ public class EnemyController : MonoBehaviour
 
     private Knockback knockback;
 
+    // Locking during cutscenes: when locked, enemy should only perform idle behavior
+    private bool locked = false;
+
+    public void Lock()
+    {
+        locked = true;
+        StopAllCoroutines();
+        currentState = State.Idle;
+    }
+
+    public void Unlock()
+    {
+        locked = false;
+    }
+
     // Stored initial state for respawn
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -131,8 +146,8 @@ public class EnemyController : MonoBehaviour
             CooldownManager.Start("enemyidletime", idleTime);
         }
 
-        // check if player entered detection range
-        if (PlayerInRange(detectionRange))
+        // check if player entered detection range (skip while locked)
+        if (!locked && PlayerInRange(detectionRange))
         {
             currentState = State.Tracking;
         }

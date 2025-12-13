@@ -2,40 +2,52 @@
     "conversation": "boss_cutscene",
     "lines": [
         {
-            "Player": "HIGANBANAAAA"
+            "speaker": "Player",
+            "text": "HIGANBANAAAA"
         },
         {
-            "Lieutenant": "Silence peasant."
+            "speaker": "Lieutenant",
+            "text": "Silence peasant."
         },
         {
-            "Player": "Who are you, bring forth your lord at once."
+            "speaker": "Player",
+            "text": "Who are you, bring forth your lord at once."
         },
         {
-            "Lieutenant": "I take no orders from the likes of you."
+            "speaker": "Lieutenant",
+            "text": "I take no orders from the likes of you."
         },
         {
-            "Player": "Soyour just one of his dogs."
+            "speaker": "Player",
+            "text": "So you're just one of his dogs."
         },
         {
-            "Player": "Why did you burn my village? We had nothing to do with your wars..."
+            "speaker": "Player",
+            "text": "Why did you burn my village? We had nothing to do with your wars..."
         },
         {
-            "Player": "Why did you kill my... friend"
+            "speaker": "Player",
+            "text": "Why did you kill my... friend"
         },
         {
-            "Lieutenant": "..."
+            "speaker": "Lieutenant",
+            "text": "..."
         },
         {
-            "Lieutenant": "To think our prize would work right in to our hands"
+            "speaker": "Lieutenant",
+            "text": "To think our prize would walk right into our hands."
         },
         {
-            "Lieutenant": "Such is Lord Higanbana's genius."
+            "speaker": "Lieutenant",
+            "text": "Such is Lord Higanbana's genius."
         },
         {
-            "Lieutenant": "Prepare yourself peasant. My lord wouldn't like it if I killed you."
+            "speaker": "Lieutenant",
+            "text": "Prepare yourself, peasant. My lord wouldn't like it if I killed you."
         },
         {
-            "Lieutenant": "But you won't be needing all those limbs."
+            "speaker": "Lieutenant",
+            "text": "But you won't be needing all those limbs."
         }
     ]
 }

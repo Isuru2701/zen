@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 7639135242897283514}
   - component: {fileID: 3287922312607105315}
   - component: {fileID: 6936098850277939837}
-  - component: {fileID: 3222779611877008280}
   m_Layer: 0
   m_Name: BoxPanel
   m_TagString: Untagged
@@ -306,27 +305,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &3222779611877008280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371393992864152566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6554cdede209147bfd3f91ecb8e4cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UserScripts::DialogueBox
-  textHeader: {fileID: 6347845453179442698}
-  textParagraph: {fileID: 6305116756410392085}
-  leftPortraitImage: {fileID: 1298565731971359736}
-  rightPortraitImage: {fileID: 5827278309200251627}
-  leftProfileSprite: {fileID: 7132093474517489512, guid: 0f0b24f35b41bee4d8662f0c7d66c4ee, type: 3}
-  rightProfileSprite: {fileID: 1935991720994394289, guid: d300ac2959ebea346bab2e41341a9c83, type: 3}
-  dialogueJson: {fileID: 4900000, guid: 02d6bd69a78406c4a9355b6c8068ae7a, type: 3}
-  advanceAction: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  textSpeed: 0.03
 --- !u!1 &2503067690392610611
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +392,7 @@ GameObject:
   - component: {fileID: 6740713123699799198}
   - component: {fileID: 9134456807966732580}
   - component: {fileID: 297033280044684904}
+  - component: {fileID: 2015268830071846698}
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -504,6 +483,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2015268830071846698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817325580936013309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6554cdede209147bfd3f91ecb8e4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UserScripts::DialogueBox
+  textHeader: {fileID: 6347845453179442698}
+  textParagraph: {fileID: 6305116756410392085}
+  leftPortraitImage: {fileID: 1298565731971359736}
+  rightPortraitImage: {fileID: 5827278309200251627}
+  leftProfileSprite: {fileID: 7132093474517489512, guid: 0f0b24f35b41bee4d8662f0c7d66c4ee, type: 3}
+  rightProfileSprite: {fileID: 1935991720994394289, guid: d300ac2959ebea346bab2e41341a9c83, type: 3}
+  dialogueJson: {fileID: 4900000, guid: 02d6bd69a78406c4a9355b6c8068ae7a, type: 3}
+  textSpeed: 0.03
 --- !u!1 &6367479313671927755
 GameObject:
   m_ObjectHideFlags: 0

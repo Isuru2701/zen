@@ -20,11 +20,16 @@ public class DialogueBox : MonoBehaviour
     [Tooltip("Sprite shown for the right speaker (e.g. NPC)")]
     [SerializeField] private Sprite rightProfileSprite;
 
-    [Header("Dialogue Source")]
-    [Tooltip("TextAsset containing JSON (like Assets/Dialogues/BossFight.json)")]
-    [SerializeField] private TextAsset dialogueJson;
+
+
+    private TextAsset dialogueJson;
 
     private InputActionReference advanceAction;
+    private bool advanceActionSubscribed = false;
+    [Header("Auto-Advance")]
+    [SerializeField] private bool autoAdvance = false;
+    [SerializeField] private float delayBetweenLines = 1f;
+    private float autoAdvanceTimer = 0f;
 
     [Header("Typing")]
     [SerializeField] private float textSpeed = 0.03f;
@@ -41,18 +46,28 @@ public class DialogueBox : MonoBehaviour
         if (textHeader != null) textHeader.text = "";
         if (textParagraph != null) textParagraph.text = "";
         gameObject.SetActive(false);
+
+
     }
 
     private void OnEnable()
     {
-        if (advanceAction != null && advanceAction.action != null)
-            advanceAction.action.Enable();
+        if (!advanceActionSubscribed && advanceAction != null && advanceAction.action != null)
+        {
+            advanceAction.action.performed += CompleteLine;
+            advanceActionSubscribed = true;
+            if (advanceAction.action.enabled == false)
+                advanceAction.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        if (advanceAction != null && advanceAction.action != null)
-            advanceAction.action.Disable();
+        if (advanceActionSubscribed && advanceAction != null && advanceAction.action != null)
+        {
+            advanceAction.action.performed -= CompleteLine;
+            advanceActionSubscribed = false;
+        }
     }
 
     private void PrintAllDialogue()
@@ -67,29 +82,21 @@ public class DialogueBox : MonoBehaviour
     {
         if (!IsPlaying) return;
 
-        if (IsAdvancePressed())
+        // If currently typing, don't advance.
+        if (isTyping) return;
+
+        // Auto-advance handling
+        if (autoAdvance)
         {
-            if (isTyping)
-            {
-                CompleteLine();
-            }
-            else
+            autoAdvanceTimer -= Time.deltaTime;
+            if (autoAdvanceTimer <= 0f)
             {
                 NextLine();
             }
         }
+
     }
 
-    private bool IsAdvancePressed()
-    {
-        if (advanceAction != null && advanceAction.action != null)
-            return advanceAction.action.triggered;
-
-        if (Keyboard.current != null)
-            return Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame;
-
-        return false;
-    }
 
     // Public: start playing the assigned TextAsset. If not assigned, does nothing.
     public void PlayAssigned()
@@ -106,20 +113,35 @@ public class DialogueBox : MonoBehaviour
     }
 
     // Public: allow external wiring of the JSON and portrait sprites before playing
-    public void Setup(TextAsset json, Sprite leftSprite, Sprite rightSprite, InputActionReference inputAction = null)
+    public void Setup(TextAsset json, Sprite leftSprite, Sprite rightSprite, InputActionReference inputAction = null, bool autoAdvanceParam = false, float textSpeedParam = -1f, float delayBetweenLinesParam = -1f)
     {
+        Debug.Log("DialogueBox: Setup called.");
         if (json != null) dialogueJson = json;
         if (leftSprite != null) leftProfileSprite = leftSprite;
         if (rightSprite != null) rightProfileSprite = rightSprite;
         if (inputAction != null) advanceAction = inputAction;
+
+        // Apply optional control params
+        autoAdvance = autoAdvanceParam;
+        if (textSpeedParam > 0f)
+            textSpeed = textSpeedParam;
+        if (delayBetweenLinesParam > 0f)
+            delayBetweenLines = delayBetweenLinesParam;
+
+        // If auto-advance is enabled and not currently typing, prepare timer
+        if (!isTyping && autoAdvance)
+            autoAdvanceTimer = delayBetweenLines;
+
+        // Subscribe to input action if object is already enabled (OnEnable may have run earlier)
+        if (!advanceActionSubscribed && advanceAction != null && advanceAction.action != null && gameObject.activeInHierarchy)
+        {
+            advanceAction.action.performed += CompleteLine;
+            advanceActionSubscribed = true;
+            if (advanceAction.action.enabled == false)
+                advanceAction.action.Enable();
+        }
     }
 
-    // Public: start playing from raw JSON string
-    public void PlayFromJson(string json)
-    {
-        ParseJson(json);
-        StartDialogue();
-    }
 
     private void ParseJson(string json)
     {
@@ -136,6 +158,7 @@ public class DialogueBox : MonoBehaviour
         }
         catch
         {
+            Debug.Log("DialogueBox: Failed to parse JSON as DialogueData, trying array wrapper.");
             data = null;
         }
 
@@ -214,22 +237,39 @@ public class DialogueBox : MonoBehaviour
         }
 
         isTyping = false;
+
+        // Reset auto-advance timer when a line finishes typing
+        if (autoAdvance)
+            autoAdvanceTimer = delayBetweenLines;
     }
 
-    private void CompleteLine()
+    private void CompleteLine(InputAction.CallbackContext ctx)
     {
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
+        if (!ctx.performed) return;
 
-        if (index >= 0 && index < lines.Count)
+        // If we're typing, finish the current line immediately
+        if (isTyping)
         {
-            if (textParagraph != null)
-                textParagraph.text = lines[index].text;
-            else
-                Debug.Log(lines[index].text);
+            if (typingCoroutine != null)
+                StopCoroutine(typingCoroutine);
+
+            if (index >= 0 && index < lines.Count)
+            {
+                if (textParagraph != null)
+                    textParagraph.text = lines[index].text;
+                else
+                    Debug.Log(lines[index].text);
+            }
+
+            isTyping = false;
+            if (autoAdvance)
+                autoAdvanceTimer = delayBetweenLines;
+
+            return;
         }
 
-        isTyping = false;
+        // Not typing -> advance to next line
+        NextLine();
     }
 
     private void NextLine()

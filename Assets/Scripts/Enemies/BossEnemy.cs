@@ -53,6 +53,22 @@ public class BossEnemy : MonoBehaviour
     private DamageReceiver damageReceiver;
     private Knockback knockback;
 
+    // Locking during cutscenes: prevent tracking/attacks while allowing idle
+    private bool locked = false;
+
+    public void Lock()
+    {
+        locked = true;
+        StopAllCoroutines();
+        if (rb != null) rb.linearVelocity = Vector2.zero;
+        currentState = State.Idle;
+    }
+
+    public void Unlock()
+    {
+        locked = false;
+    }
+
     private bool isActionInProgress = false;
     private Vector2 chargeDirection;
 
@@ -106,6 +122,8 @@ public class BossEnemy : MonoBehaviour
 
     private void StateIdle()
     {
+        if (locked) return;
+
         if (CooldownManager.Ready($"boss{GetHashCode()}Idle"))
         {
             currentState = State.Tracking;

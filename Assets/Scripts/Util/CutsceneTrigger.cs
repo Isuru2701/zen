@@ -61,6 +61,7 @@ public class CutsceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasTriggered)
         {
+            Debug.Log("CutsceneTrigger: Player entered trigger, starting cutscene.");
             StartCutscene();
         }
     }
@@ -74,12 +75,14 @@ public class CutsceneTrigger : MonoBehaviour
         // Show dialogue box and try to start the DialogueBox component if present.
         if (dialogueBox != null)
         {
+            Debug.Log("CutsceneTrigger: Activating DialogueBox for cutscene.");
             dialogueBox.gameObject.SetActive(true);
-            var db = dialogueBox.GetComponentInChildren<DialogueBox>();
+            var db = dialogueBox.GetComponent<DialogueBox>();
             if (db != null)
             {
                 // Configure the DialogueBox with this trigger's JSON and sprites (if assigned), then play
-                db.Setup(dialogueJson, leftProfileSprite, rightProfileSprite, advanceAction);
+                Debug.Log("CutsceneTrigger: Found DialogueBox component, setting up dialogue.");
+                db.Setup(dialogueJson, leftProfileSprite, rightProfileSprite, advanceAction, autoAdvance, textSpeed, delayBetweenLines);
                 db.PlayAssigned();
             }
         }

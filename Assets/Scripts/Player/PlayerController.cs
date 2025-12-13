@@ -150,6 +150,25 @@ public class PlayerController : MonoBehaviour
 
     private Knockback knockback;
 
+    // Locking: used to freeze player during cutscenes
+    private bool locked = false;
+
+    // Freeze player input and motion
+    public void Lock()
+    {
+        locked = true;
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+        if (animator != null)
+            animator.SetBool("isWalking", false);
+    }
+
+    // Restore control
+    public void Unlock()
+    {
+        locked = false;
+    }
+
     #endregion
 
 
@@ -227,6 +246,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // If locked (e.g. during a cutscene), prevent movement and physics-driven updates
+        if (locked)
+        {
+            if (rb != null)
+                rb.linearVelocity = Vector2.zero;
+            return;
+        }
         // -----------------------
         // COYOTE TIME UPDATE
         // -----------------------
@@ -432,6 +458,12 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (locked)
+        {
+            if (animator != null) animator.SetBool("isWalking", false);
+            return;
+        }
+
         horizontal = context.ReadValue<Vector2>().x;
 
         if (lastHorizontal != horizontal && horizontal != 0)
@@ -448,6 +480,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (locked) return;
         // JUMP PRESSED
         if (context.performed)
         {
@@ -503,6 +536,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dodge(InputAction.CallbackContext context)
     {
+        if (locked) return;
         if (!CooldownManager.Ready("dodge")) return;
 
         if (context.performed)
@@ -532,6 +566,7 @@ public class PlayerController : MonoBehaviour
 
     public void DropDown(InputAction.CallbackContext context)
     {
+        if (locked) return;
         Collider2D platform = Physics2D.OverlapCapsule(
     groundCheck.position, new Vector2(0.1f, 0.1f),
     CapsuleDirection2D.Horizontal,
@@ -576,6 +611,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lilyDirection;
     public void WaterLily(InputAction.CallbackContext context)
     {
+        if (locked) return;
         if (!context.performed) return;
         if (!Items.Lily) return;
         if (!CooldownManager.Ready("lily")) return;
