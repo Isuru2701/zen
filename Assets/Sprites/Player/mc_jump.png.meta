@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 91c9cd0c3a594354e985e9b9204f2081
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8699944011648538778
+    second: mc_jump_0
+  - first:
+      213: 9179588381862383305
+    second: mc_jump_1
+  - first:
+      213: 3879212922617249770
+    second: mc_jump_2
+  - first:
+      213: -3272130797792082972
+    second: mc_jump_3
+  - first:
+      213: -2309181656925650240
+    second: mc_jump_4
+  - first:
+      213: 6581524553759451633
+    second: mc_jump_5
+  - first:
+      213: -687547016012536423
+    second: mc_jump_6
+  - first:
+      213: 7170692971170064489
+    second: mc_jump_7
+  - first:
+      213: -1749283191470693
+    second: mc_jump_8
+  - first:
+      213: -903743192823843793
+    second: mc_jump_9
+  - first:
+      213: 842041606356785376
+    second: mc_jump_10
+  - first:
+      213: 2926827317621580367
+    second: mc_jump_11
+  - first:
+      213: -9149231077472621619
+    second: mc_jump_12
+  - first:
+      213: -3397111858011265600
+    second: mc_jump_13
+  - first:
+      213: 6410918056471909860
+    second: mc_jump_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mc_jump_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1449
+        width: 291
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667e6e30407934780800000000000000
+      internalID: -8699944011648538778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_1
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1446
+        width: 292
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cec53d6ff2746f70800000000000000
+      internalID: 9179588381862383305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_2
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 1447
+        width: 293
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aefb4b4a99bb5d530800000000000000
+      internalID: 3879212922617249770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_3
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 1445
+        width: 297
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e3ccfa306e0792d0800000000000000
+      internalID: -3272130797792082972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 961
+        width: 302
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c24911848324ffd0800000000000000
+      internalID: -2309181656925650240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_5
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 963
+        width: 303
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9e75316b5465b50800000000000000
+      internalID: 6581524553759451633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_6
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 965
+        width: 303
+        height: 403
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9956138b1a75576f0800000000000000
+      internalID: -687547016012536423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_7
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 965
+        width: 306
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9686bfbe34b638360800000000000000
+      internalID: 7170692971170064489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_8
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 485
+        width: 307
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b95c2c44909c9fff0800000000000000
+      internalID: -1749283191470693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_9
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 485
+        width: 309
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f24be87ba524573f0800000000000000
+      internalID: -903743192823843793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_10
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 485
+        width: 306
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e8def031688fab00800000000000000
+      internalID: 842041606356785376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_11
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 485
+        width: 302
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f426eb930fd2e9820800000000000000
+      internalID: 2926827317621580367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_12
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 5
+        width: 299
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcba74b4fc6670180800000000000000
+      internalID: -9149231077472621619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_13
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 5
+        width: 295
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5a8f883c80bd0d0800000000000000
+      internalID: -3397111858011265600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_jump_14
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 5
+        width: 291
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e55520810828f850800000000000000
+      internalID: 6410918056471909860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mc_jump_0: -8699944011648538778
+      mc_jump_1: 9179588381862383305
+      mc_jump_10: 842041606356785376
+      mc_jump_11: 2926827317621580367
+      mc_jump_12: -9149231077472621619
+      mc_jump_13: -3397111858011265600
+      mc_jump_14: 6410918056471909860
+      mc_jump_2: 3879212922617249770
+      mc_jump_3: -3272130797792082972
+      mc_jump_4: -2309181656925650240
+      mc_jump_5: 6581524553759451633
+      mc_jump_6: -687547016012536423
+      mc_jump_7: 7170692971170064489
+      mc_jump_8: -1749283191470693
+      mc_jump_9: -903743192823843793
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

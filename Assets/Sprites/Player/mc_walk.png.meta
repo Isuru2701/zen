@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: cd1b0f7c37e8108459cd52a7ebe8c6b0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2798144726662399114
+    second: mc_walk_0
+  - first:
+      213: -3837582853712953086
+    second: mc_walk_1
+  - first:
+      213: 3150635339295495288
+    second: mc_walk_2
+  - first:
+      213: -5788010959552156688
+    second: mc_walk_3
+  - first:
+      213: 6159941773452193127
+    second: mc_walk_4
+  - first:
+      213: 6439632024814704852
+    second: mc_walk_5
+  - first:
+      213: 8379220741934356452
+    second: mc_walk_6
+  - first:
+      213: 8334792656492258779
+    second: mc_walk_7
+  - first:
+      213: -5426940061719726309
+    second: mc_walk_8
+  - first:
+      213: 6394760717986171996
+    second: mc_walk_9
+  - first:
+      213: 3190678121865440981
+    second: mc_walk_10
+  - first:
+      213: -4961090035261891688
+    second: mc_walk_11
+  - first:
+      213: -5620819120664068359
+    second: mc_walk_12
+  - first:
+      213: -1552928621809412326
+    second: mc_walk_13
+  - first:
+      213: -5433345219936448686
+    second: mc_walk_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mc_walk_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1449
+        width: 291
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67bb721423efa29d0800000000000000
+      internalID: -2798144726662399114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_1
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 1449
+        width: 287
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2014f481aba2ebac0800000000000000
+      internalID: -3837582853712953086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_2
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1451
+        width: 287
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8741087f52e49bb20800000000000000
+      internalID: 3150635339295495288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_3
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 1452
+        width: 283
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb63dfc2badcafa0800000000000000
+      internalID: -5788010959552156688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_4
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 967
+        width: 279
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d25bbf7628c7550800000000000000
+      internalID: 6159941773452193127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 962
+        width: 282
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d85f4b353b2e5950800000000000000
+      internalID: 6439632024814704852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_6
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 961
+        width: 284
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e71599aed8f84470800000000000000
+      internalID: 8379220741934356452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_7
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 970
+        width: 285
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd561cee2c12ba370800000000000000
+      internalID: 8334792656492258779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 489
+        width: 286
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17fbdb54c2afa4b0800000000000000
+      internalID: -5426940061719726309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 491
+        width: 286
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c003bfdf0ceb850800000000000000
+      internalID: 6394760717986171996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_10
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 492
+        width: 287
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5de666ec8d0974c20800000000000000
+      internalID: 3190678121865440981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_11
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 487
+        width: 288
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b1c7dd5eaa62bb0800000000000000
+      internalID: -4961090035261891688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_12
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 2
+        width: 289
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe38164ac6def1b0800000000000000
+      internalID: -5620819120664068359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_13
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 2
+        width: 289
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17538f65a3e27ae0800000000000000
+      internalID: -1552928621809412326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk_14
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 10
+        width: 291
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f0f9f3f41e894b0800000000000000
+      internalID: -5433345219936448686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mc_walk_0: -2798144726662399114
+      mc_walk_1: -3837582853712953086
+      mc_walk_10: 3190678121865440981
+      mc_walk_11: -4961090035261891688
+      mc_walk_12: -5620819120664068359
+      mc_walk_13: -1552928621809412326
+      mc_walk_14: -5433345219936448686
+      mc_walk_2: 3150635339295495288
+      mc_walk_3: -5788010959552156688
+      mc_walk_4: 6159941773452193127
+      mc_walk_5: 6439632024814704852
+      mc_walk_6: 8379220741934356452
+      mc_walk_7: 8334792656492258779
+      mc_walk_8: -5426940061719726309
+      mc_walk_9: 6394760717986171996
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
