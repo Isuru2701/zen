@@ -2,7 +2,7 @@
     "conversation": "boss_cutscene",
     "lines": [
         {
-            "speaker": "Player",
+            "speaker": "Yuri",
             "text": "HIGANBANAAAA"
         },
         {
@@ -10,7 +10,7 @@
             "text": "Silence peasant."
         },
         {
-            "speaker": "Player",
+            "speaker": "Yuri",
             "text": "Who are you, bring forth your lord at once."
         },
         {
@@ -18,15 +18,15 @@
             "text": "I take no orders from the likes of you."
         },
         {
-            "speaker": "Player",
+            "speaker": "Yuri",
             "text": "So you're just one of his dogs."
         },
         {
-            "speaker": "Player",
+            "speaker": "Yuri",
             "text": "Why did you burn my village? We had nothing to do with your wars..."
         },
         {
-            "speaker": "Player",
+            "speaker": "Yuri",
             "text": "Why did you kill my... friend"
         },
         {
@@ -35,7 +35,7 @@
         },
         {
             "speaker": "Lieutenant",
-            "text": "To think our prize would walk right into our hands."
+            "text": "To think you would walk right into our hands."
         },
         {
             "speaker": "Lieutenant",

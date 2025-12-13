@@ -88,7 +88,7 @@ public class DialogueBox : MonoBehaviour
         // Auto-advance handling
         if (autoAdvance)
         {
-            autoAdvanceTimer -= Time.deltaTime;
+            autoAdvanceTimer -= Time.unscaledDeltaTime;
             if (autoAdvanceTimer <= 0f)
             {
                 NextLine();
@@ -213,7 +213,7 @@ public class DialogueBox : MonoBehaviour
     private bool IsLeftSpeaker(string speaker)
     {
         if (string.IsNullOrEmpty(speaker)) return false;
-        return speaker.Trim().ToLower() == "player";
+        return speaker.Trim().ToLower() == "yuri";
     }
 
     private IEnumerator TypeText(string text)
@@ -233,7 +233,7 @@ public class DialogueBox : MonoBehaviour
         foreach (char c in text)
         {
             textParagraph.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
 
         isTyping = false;

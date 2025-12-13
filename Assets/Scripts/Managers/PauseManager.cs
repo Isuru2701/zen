@@ -17,6 +17,8 @@ public class PauseManager : MonoBehaviour
     [Tooltip("Optional Input Action for pause (performed will toggle pause). If not set, Escape key is used.)")]
     public InputActionReference pauseActionReference;
 
+    [SerializeField] private PlayerController playerController;
+
     private bool createdRuntimeCanvas = false;
     private bool isPaused = false;
 
@@ -65,7 +67,7 @@ public class PauseManager : MonoBehaviour
         else PauseGame();
     }
 
-    public void PauseGame()
+    public void PauseGame(bool showUI = true)
     {
         if (isPaused) return;
 
@@ -75,7 +77,9 @@ public class PauseManager : MonoBehaviour
 
         AudioManager.Instance?.pauseSFX();
 
-        if (pauseCanvas != null)
+        SetInputMapsForPause(true);
+
+        if (showUI && pauseCanvas != null)
             pauseCanvas.gameObject.SetActive(true);
     }
 
@@ -88,9 +92,43 @@ public class PauseManager : MonoBehaviour
         Time.fixedDeltaTime = 0.02f;
 
         AudioManager.Instance?.resumeSFX();
+        SetInputMapsForPause(false);
 
         if (pauseCanvas != null)
             pauseCanvas.gameObject.SetActive(false);
+    }
+
+        private void SetInputMapsForPause(bool paused)
+    {
+        // Find all PlayerInput instances and toggle their action maps.
+        // Keeps maps named "UI" (or containing "ui") enabled so UI navigation works.
+        var allPlayerInputs = FindObjectsByType<PlayerInput>(FindObjectsSortMode.InstanceID);
+        foreach (var pi in allPlayerInputs)
+        {
+            if (pi == null || pi.actions == null) continue;
+
+            foreach (var map in pi.actions.actionMaps)
+            {
+                if (map == null) continue;
+                bool isUiMap = map.name.Equals("UI", System.StringComparison.OrdinalIgnoreCase)
+                               || map.name.ToLowerInvariant().Contains("ui");
+                if (isUiMap)
+                {
+                    if (!map.enabled) map.Enable();
+                }
+                else
+                {
+                    if (paused)
+                    {
+                        if (map.enabled) map.Disable();
+                    }
+                    else
+                    {
+                        if (!map.enabled) map.Enable();
+                    }
+                }
+            }
+        }
     }
 
     public void RestartLevel()

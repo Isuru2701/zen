@@ -83,10 +83,42 @@ public class CutsceneTrigger : MonoBehaviour
                 // Configure the DialogueBox with this trigger's JSON and sprites (if assigned), then play
                 Debug.Log("CutsceneTrigger: Found DialogueBox component, setting up dialogue.");
                 db.Setup(dialogueJson, leftProfileSprite, rightProfileSprite, advanceAction, autoAdvance, textSpeed, delayBetweenLines);
+
+                // Pause the game while dialogue is playing
+                if (PauseManager.Instance != null)
+                {
+                    PauseManager.Instance.PauseGame(false);
+                }
+
+                // Subscribe to dialogue end so we can resume the game
+                db.OnDialogueEnd += OnDialogueFinished;
+
                 db.PlayAssigned();
             }
         }
 
+    }
+
+    private void OnDialogueFinished()
+    {
+        // Resume the game
+        if (PauseManager.Instance != null)
+            PauseManager.Instance.ResumeGame();
+
+        // Hide dialogue UI
+        if (dialogueBox != null)
+            dialogueBox.gameObject.SetActive(false);
+
+        // Clear playing flag
+        isPlayingCutscene = false;
+
+        // Unsubscribe from any DialogueBox (defensive)
+        if (dialogueBox != null)
+        {
+            var db = dialogueBox.GetComponent<DialogueBox>();
+            if (db != null)
+                db.OnDialogueEnd -= OnDialogueFinished;
+        }
     }
 
 

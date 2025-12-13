@@ -238,8 +238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -11.4, y: 33}
-  m_SizeDelta: {x: 254.1, y: 50}
+  m_AnchoredPosition: {x: -0.0000020266, y: 33}
+  m_SizeDelta: {x: 280.3988, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7639135242897283514
 CanvasRenderer:
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.03529412}
+  m_Color: {r: 0.081, g: 0.081, b: 0.081, a: 0.69803923}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -501,7 +501,8 @@ MonoBehaviour:
   rightPortraitImage: {fileID: 5827278309200251627}
   leftProfileSprite: {fileID: 7132093474517489512, guid: 0f0b24f35b41bee4d8662f0c7d66c4ee, type: 3}
   rightProfileSprite: {fileID: 1935991720994394289, guid: d300ac2959ebea346bab2e41341a9c83, type: 3}
-  dialogueJson: {fileID: 4900000, guid: 02d6bd69a78406c4a9355b6c8068ae7a, type: 3}
+  autoAdvance: 0
+  delayBetweenLines: 1
   textSpeed: 0.03
 --- !u!1 &6367479313671927755
 GameObject:
