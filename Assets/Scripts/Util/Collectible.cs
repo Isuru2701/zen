@@ -16,6 +16,8 @@ public class Collectible : MonoBehaviour
 
     [SerializeField] CollectibleType type;
 
+    [SerializeField] private Modal modal;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +46,10 @@ public class Collectible : MonoBehaviour
             }
 
             Destroy(gameObject);
+
+
+            if(modal != null)
+                modal.ShowItemModal();
         }
     }
 
