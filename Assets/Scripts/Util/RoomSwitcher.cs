@@ -42,12 +42,6 @@ public class RoomSwitcher : MonoBehaviour
 
         if (targetTransform != null && player != null)
         {
-            // Force current camera position before teleport to prevent visual jump
-            if (CameraManager.instance != null)
-            {
-                CameraManager.instance.ForceCurrentCameraPosition(targetTransform.position);
-            }
-            
             player.transform.position = targetTransform.position;
             if (matchRotation)
                 player.transform.rotation = targetTransform.rotation;

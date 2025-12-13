@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
 
     private Coroutine _lerpYPanCorountine;
 
-   [SerializeField]private CinemachineCamera CurrentCamera;
+    [SerializeField] private CinemachineCamera CurrentCamera;
     private CinemachinePositionComposer _transposer;
 
     public bool IsLerpingYDamping { get; private set; }
@@ -60,18 +60,12 @@ public class CameraManager : MonoBehaviour
 
     public void SetCamera(CinemachineCamera newCam)
     {
+        CurrentCamera.enabled = false;
+
+        newCam.enabled = true;
         CurrentCamera = newCam;
         _transposer = CurrentCamera.GetComponent<CinemachinePositionComposer>();
     }
-
-    public void ForceCurrentCameraPosition(Vector3 position)
-    {
-        if (CurrentCamera != null)
-        {
-            CurrentCamera.ForceCameraPosition(position, Quaternion.identity);
-        }
-    }
-
 
     public string GetCurrentCamera()
     {
