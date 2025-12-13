@@ -22,6 +22,9 @@ public class RoomHandler : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        // Force immediate camera position to avoid blend/jump
+        roomCam.ForceCameraPosition(other.transform.position, Quaternion.identity);
+        
         roomCam.Priority = 20;
         CameraManager.instance.SetCamera(roomCam);
 

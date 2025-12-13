@@ -64,6 +64,14 @@ public class CameraManager : MonoBehaviour
         _transposer = CurrentCamera.GetComponent<CinemachinePositionComposer>();
     }
 
+    public void ForceCurrentCameraPosition(Vector3 position)
+    {
+        if (CurrentCamera != null)
+        {
+            CurrentCamera.ForceCameraPosition(position, Quaternion.identity);
+        }
+    }
+
 
     public string GetCurrentCamera()
     {
