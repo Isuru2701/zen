@@ -4,14 +4,12 @@ public class WallWeakness : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private float health = 1f;
-    [SerializeField] private DamageReceiver receiver;
-    private SpriteRenderer spriteRenderer;
+    private DamageReceiver receiver;
+
+    [SerializeField]private GameObject parent;
 
     void Start()
     {
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
         receiver = GetComponent<DamageReceiver>();
         receiver.onHurt += Hit;
 
@@ -19,11 +17,9 @@ public class WallWeakness : MonoBehaviour
 
     public void Hit(DamageInfo info)
     {
+        Debug.Log("Wall weakness hit " + GameManager.CurrentGameMode);
 
-        if (GameManager.CurrentGameMode == GameManager.GameMode.Clarity)        
-        {
-            Destroy(gameObject);
-        }
+        Destroy(parent);
     }
 
 
