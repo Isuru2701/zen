@@ -50,6 +50,7 @@ public class BossEnemy : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private UIValueBar HealthBar;
+    [SerializeField] private GameObject uiParent;
 
 
     [Header("Spawn info")]
@@ -91,6 +92,10 @@ public class BossEnemy : MonoBehaviour
         chargeDirection = Vector2.zero;
         locked = false;
 
+        //reset position to spawn pos
+
+        transform.position = spawnPosition.position;
+
         // Stop all ongoing actions
         StopAllCoroutines();
 
@@ -105,7 +110,7 @@ public class BossEnemy : MonoBehaviour
         CooldownManager.Reset($"boss{GetHashCode()}Charging");
         CooldownManager.Reset($"boss{GetHashCode()}Damage");
 
-        HealthBar.gameObject.SetActive(false);
+        uiParent.SetActive(false);
     }
 
     private bool isActionInProgress = false;
@@ -142,7 +147,7 @@ public class BossEnemy : MonoBehaviour
             return;
         }
 
-        HealthBar.gameObject.SetActive(true);
+        uiParent.SetActive(true);
 
         if (currentState == State.Die) return;
 
